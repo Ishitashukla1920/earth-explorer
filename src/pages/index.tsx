@@ -82,12 +82,13 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             <Image
               src="/logoEEx.png"
               alt="Logo"
-              width={isMobile ? 50 : 64}
-              height={isMobile ? 67 : 85}
+              width={isMobile ? 50 : 58}
+              height={isMobile ? 67 : 76}
               className="rounded-full"
               priority
             />
           </div>
+         
           {/* Desktop Navigation Links */}
           {!isMobile && (
             <>
@@ -187,7 +188,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
 
               {/* Desktop: Text content - fade out when animation completes */}
               <motion.div
-                className="absolute inset-0 flex flex-col justify-center px-8 z-20"
+                className="absolute inset-0 flex flex-col justify-center align-items-center px-6 z-20"
                 initial="hidden"
                 animate={textAnimationCompleted ? "hidden" : "visible"} // Animate out when completed
                 variants={{
@@ -196,15 +197,15 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 }}
               >
                 <motion.h2
-                  className="text-xl mb-2 tracking-wide"
-                  style={{ fontFamily: 'Aboreto' }}
+                  className="text-[21px] mb-2 tracking-wide"
+                  style={{ fontFamily: "Aboreto, Sans-serif" }}
                   variants={textVariants}
                   custom={0}
                 >
                   AN ANCIENT SECRET SO POWERFUL...
                 </motion.h2>
                 <motion.h3
-                  className="text-lg mb-4 tracking-wide"
+                  className="text-[21px] mb-2.5 tracking-wide -ml-3"
                   style={{ fontFamily: 'Aboreto' }}
                   variants={textVariants}
                   custom={1}
@@ -441,8 +442,8 @@ const TeamPage = ({
             <Image
               src="/logoEEx.png"
               alt="Logo"
-              width={isMobile ? 40 : 64}
-              height={isMobile ? 40.6 : 85}
+              width={isMobile ? 40 : 58}
+              height={isMobile ? 40.6 : 76}
               className="rounded-full"
             />
           </div>
