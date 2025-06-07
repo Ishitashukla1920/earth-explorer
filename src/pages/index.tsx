@@ -31,7 +31,7 @@ interface TeamPageProps {
 
 const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen }: HomePageProps) => {
   const [textAnimationCompleted, setTextAnimationCompleted] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -151,7 +151,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 className="absolute bg-logo-responsive" // Add a new class
 
               style={{
-                zIndex: 1,
+                zIndex: 5,
                 filter: 'grayscale(100%) brightness(200%)',
               }}
               priority
@@ -297,10 +297,10 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               alt="Background decorative logo"
               width={200}
               height={180}
-              className="absolute top-0 right-0 transform translate-x-1/2"
+              className="absolute absolute top-0 bg-logo-mobile"
               style={{
-                zIndex: 50,
-                filter: 'grayscale(100%) brightness(150%) opacity(2)',
+                zIndex: 1,
+                filter: 'grayscale(100%) brightness(150%) opacity(0.7)',
               }}
               priority
             />

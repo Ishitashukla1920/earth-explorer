@@ -43,6 +43,14 @@ body {
 .bg-image-responsive {
   z-index: 0; /* Explicitly set to ensure it's below bg-logo.png and eex.png */
 }
+.bg-logo-mobile {
+  width: auto;
+  height:auto;
+  left: 110px; /* Shifted left from right: 0 and translate-x-1/2 */
+  right:0px;
+  top: 0;
+  z-index: 1; /* Matches inline zIndex */
+}
 /* Responsive styles for larger screens (1024px and above) */
 @media (min-width: 1024px) {
   .bg-logo-responsive {
