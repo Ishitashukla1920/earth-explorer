@@ -26,3 +26,56 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif,Radley;
 }
+/* Default styles for desktop */
+.bg-logo-responsive {
+  width: 350px;
+  height: 320px;
+  left: 180px;
+  top: 79px;
+}
+
+.eex-responsive {
+  width: 300px;
+  height: 200px;
+  left: 50px;
+  top: 50px;
+}
+.bg-image-responsive {
+  z-index: 0; /* Explicitly set to ensure it's below bg-logo.png and eex.png */
+}
+/* Responsive styles for larger screens (1024px and above) */
+@media (min-width: 1024px) {
+  .bg-logo-responsive {
+    width: 40vw; /* Scale width relative to viewport */
+    height: auto; /* Maintain aspect ratio */
+    left: 20vw; /* Adjust position proportionally */
+    top: 10vh;
+    max-width: 350px; /* Prevent excessive scaling */
+  }
+
+  .eex-responsive {
+    width: 36vw;
+    height: auto;
+    left: 3vw;
+    top: 5vh;
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .bg-logo-responsive {
+    width: 32vw; /* Slightly smaller scaling for very large screens */
+    height: auto;
+    left: 15vw;
+    top: 8vh;
+    max-width: 500px; /* Larger max-width for bigger screens */
+  }
+
+  .eex-responsive {
+    width: 33vw;
+    height: auto;
+    left: 4vw;
+    top: 4vh;
+    max-width: 500px;
+  }
+}
