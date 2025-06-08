@@ -69,7 +69,7 @@ body {
   width: auto;
   height:auto;
    /* Shifted left from right: 0 and translate-x-1/2 */
-  right:5%;
+  right:-5%;
   top: 0;
   z-index: 1; /* Matches inline zIndex */
 }
@@ -110,7 +110,7 @@ body {
     top: 25%;
     transform: translateY(-50%);
     max-width: 500px;
-    left: 5%;
+    left: 2%;
   }
 }
 
@@ -118,11 +118,11 @@ body {
 @media (max-width: 640px) {
   .eex-responsive {
     width: 280px;
-    left: 5%;
+    left: 2%;
     
   }
   .bg-logo-responsive {
-   right:5%;/* Larger max-width for bigger screens */
+   right:-2%;/* Larger max-width for bigger screens */
   }
 
  

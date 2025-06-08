@@ -216,7 +216,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                   IT GAVE RISE TO MODERN CIVILIZATION.
                 </motion.h3>
                    <motion.p
-  className="text-[18px] mb-[14px] tracking-wide text-[#E9D6A9]"
+  className="text-[14px] mb-[14px] tracking-wide text-[#E9D6A9]"
   style={{ fontFamily: 'Raleway' }}
   variants={textVariants}
   custom={2}
@@ -318,7 +318,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 height={174}
                 className="w-full h-auto rounded shadow-lg"
                 style={{
-                  transform: 'translateX(5%)', // Shift left
+                  transform: 'translateX(0%)', // Shift left
 
                 }}
                 priority
@@ -362,21 +362,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
 </motion.p>
 
             </motion.div>
-             <div className="relative flex space-x-4 justify-center pt-2 z-10">
-              {/* Custom Social Media Icons - Mobile */}
-              <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <Image src="/facebook.png" alt="facebook" width={16} height={16} />
-              </div>
-              <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <Image src="/instagram.png" alt="instagram" width={16} height={16} />
-              </div>
-              <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <Image src="/youtube.png" alt="youTube" width={16} height={16} />
-              </div>
-              <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <Image src="/x.png" alt="Twitter" width={16} height={16} />
-              </div>
-            </div>
+           
 
             {/* Mobile: The building image (bg-image.png) as a content image */}
             
@@ -410,7 +396,24 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
           </div>
         )}
       </div>
+       <div className="relative flex space-x-4 justify-center  pt-4 pb-4 z-10">
+              {/* Custom Social Media Icons - Mobile */}
+              <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+                <Image src="/facebook.png" alt="facebook" width={16} height={16} />
+              </div>
+              <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+                <Image src="/instagram.png" alt="instagram" width={16} height={16} />
+              </div>
+              <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+                <Image src="/youtube.png" alt="youTube" width={16} height={16} />
+              </div>
+              <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+                <Image src="/x.png" alt="Twitter" width={16} height={16} />
+              </div>
+            </div>
     </div>
+
+    
   );
 };
 
