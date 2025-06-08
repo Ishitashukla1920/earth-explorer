@@ -76,7 +76,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div>
 
       {/* Navigation */}
-      <nav className={`relative ${isMobile ? 'z-30' : 'z-20'} flex items-center ${isMobile ? 'justify-between' : 'justify-start'} p-4 md:p-8`} style={{ fontFamily: 'Radley' }}>
+      <nav className={`relative ${isMobile ? 'z-30' : 'z-20'} flex items-center ${isMobile ? 'justify-between' : 'justify-start'} p-2 md:p-8`} style={{ fontFamily: 'Radley' }}>
         <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-8">
           <div>
             <Image
@@ -160,13 +160,10 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             <Image
               src="/eex.png"
               alt="Descriptive image for main content"
-              width={450}  // Maximum size needed
-              height={288} // Maintain aspect ratio (450 * 230/360)
+              width={360}
+              height={230}
               className="absolute eex-responsive"
-              style={{
-                zIndex: 1,
-                transform: `scale(${isMobile ? '0.9' : '1'})`, // Slight scale down on mobile
-              }}
+              style={{  zIndex: 1 }}
               priority
             />
             <div className="w-2/3 fixed  top-0 right-0 h-screen flex flex-col justify-center z-10">
@@ -200,7 +197,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 }}
               >
                 <motion.h2
-                  className="text-[21px] mb-2 tracking-wide"
+                  className="text-[21px] mb-1 tracking-wide"
                   style={{ fontFamily: "Aboreto, Sans-serif" }}
                   variants={textVariants}
                   custom={0}
@@ -208,7 +205,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                   AN ANCIENT SECRET SO POWERFUL...
                 </motion.h2>
                 <motion.h3
-                  className="text-[21px] mb-2.5 tracking-wide -ml-3"
+                  className="text-[21px] mb-1 tracking-wide -ml-3"
                   style={{ fontFamily: 'Aboreto' }}
                   variants={textVariants}
                   custom={1}
@@ -216,7 +213,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                   IT GAVE RISE TO MODERN CIVILIZATION.
                 </motion.h3>
                    <motion.p
-  className="text-[14px] mb-[14px] tracking-wide text-[#E9D6A9]"
+  className="text-[14px] mb-[6px] tracking-wide text-[#E9D6A9]"
   style={{ fontFamily: 'Raleway' }}
   variants={textVariants}
   custom={2}
@@ -319,7 +316,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 className="w-full h-auto rounded shadow-lg"
                 style={{
                   transform: 'translateX(0%)', // Shift left
-
+                  
                 }}
                 priority
               />
@@ -443,7 +440,7 @@ const TeamPage = ({
       {/* Semi-transparent black overlay */}
       <div className="absolute inset-0 bg-black/50" style={{ zIndex: 0 }} />
       <nav
-        className={`relative z-50 flex items-center ${isMobile ? 'justify-between' : 'justify-start'} p-4 md:p-8`}
+        className={`relative z-50 flex items-center ${isMobile ? 'justify-between' : 'justify-start'} p-2 md:p-8`}
         style={isMobile ? { width: '100%', height: '50px', position: 'absolute', top: 0, left: 0 } : {}}
       >
         <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-8">

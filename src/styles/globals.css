@@ -57,7 +57,7 @@ body {
   transition: all 0.5s ease-in-out;
   height: auto;
   left: 20px;
-  top: 20%;
+  top: 0%;
   transform: translateY(-20%);
 }
 
