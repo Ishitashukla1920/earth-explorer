@@ -71,7 +71,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden" style={{ fontFamily: 'Radley' }}>
+    <div className="min-h-screen bg-black text-white relative overflow-hidden standard-container" >
       {/* Top to Bottom Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div>
 
@@ -160,10 +160,13 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             <Image
               src="/eex.png"
               alt="Descriptive image for main content"
-              width={360}
-              height={230}
+              width={450}  // Maximum size needed
+              height={288} // Maintain aspect ratio (450 * 230/360)
               className="absolute eex-responsive"
-              style={{  zIndex: 1 }}
+              style={{
+                zIndex: 1,
+                transform: `scale(${isMobile ? '0.9' : '1'})`, // Slight scale down on mobile
+              }}
               priority
             />
             <div className="w-2/3 fixed  top-0 right-0 h-screen flex flex-col justify-center z-10">
@@ -248,12 +251,12 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               >
                 <video
                   ref={videoRef}
-                  src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/video1.mp4?alt=media&token=5a57ee14-1d76-4026-a9f0-a4bfdd851638"
+                  src="https://firebasestorage.googleapis.com/v0/b/invictaa-f3ba8.appspot.com/o/EEX%20Teaser%20With%20end%20logo%20text%20Desktop.mp4?alt=media&token=27a65aae-161d-4d92-b4b7-47e702797b0a"
                   autoPlay
                   muted={isMuted}
                   loop
                   playsInline
-                  className="w-[75%] h-[100vh] object-cover rounded shadow-lg"
+                  className="w-[75%] tab-height object-cover rounded shadow-lg"
                 />
                 
                 {/* Transparent image on top of the video */}
@@ -298,7 +301,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               alt="Background decorative logo"
               width={200}
               height={180}
-              className="absolute absolute top-0 bg-logo-mobile"
+              className="absolute top-0 bg-logo-mobile"
               style={{
                 zIndex: 1,
                 filter: 'grayscale(100%) brightness(150%) opacity(0.7)',
@@ -314,6 +317,10 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 width={270}
                 height={174}
                 className="w-full h-auto rounded shadow-lg"
+                style={{
+                  transform: 'translateX(5%)', // Shift left
+
+                }}
                 priority
               />
             </div>
@@ -378,7 +385,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             <div className="relative w-full max-w-[550px] sm:max-w-[320px] mt-6 z-10">
               <video
                 ref={videoRef}
-                src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/video1.mp4?alt=media&token=5a57ee14-1d76-4026-a9f0-a4bfdd851638"
+                src="https://firebasestorage.googleapis.com/v0/b/invictaa-f3ba8.appspot.com/o/EEX%20Teaser%20With%20end%20logo%20text%20Desktop.mp4?alt=media&token=27a65aae-161d-4d92-b4b7-47e702797b0a"
                 autoPlay
                 muted={isMuted}
 

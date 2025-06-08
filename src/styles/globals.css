@@ -30,30 +30,46 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif,Radley;
+  /* font-family: Arial, Helvetica, sans-serif,Radley; */
+  width: 100%;
+
 }
+
+/* .standard-container {
+  width: 100%;
+  max-width: 1440px; 
+ 
+} */
 /* Default styles for desktop */
 .bg-logo-responsive {
-  width: 350px;
-  height: 350px;
+  width: 40vw; /* Scale width relative to viewport */
+  height: auto; /* Maintain aspect ratio */
   left: 180px;
-  top: 79px;
+  top: 10vh;
+}
+
+.tab-height{
+  height:100vh;
 }
 
 .eex-responsive {
-  width: 250px;
-  height: 200px;
-  left: 50px;
-  top: 50px;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  height: auto;
+  left: 20px;
+  top: 20%;
+  transform: translateY(-20%);
 }
+
 .bg-image-responsive {
   z-index: 0; /* Explicitly set to ensure it's below bg-logo.png and eex.png */
+   transition: all 0.5s ease-in-out;
 }
 .bg-logo-mobile {
   width: auto;
   height:auto;
-  left: 110px; /* Shifted left from right: 0 and translate-x-1/2 */
-  right:0px;
+   /* Shifted left from right: 0 and translate-x-1/2 */
+  right:5%;
   top: 0;
   z-index: 1; /* Matches inline zIndex */
 }
@@ -66,7 +82,9 @@ body {
     top: 10vh;
    /* Prevent excessive scaling */
   }
-
+.tab-height{
+  height:auto;
+}
   .eex-responsive {
     width: 20vw;
     height: auto;
@@ -80,15 +98,96 @@ body {
     width: 32vw; /* Slightly smaller scaling for very large screens */
     height: auto;
     left: 15vw;
-    top: 8vh;
-    max-width: 500px; /* Larger max-width for bigger screens */
+    top: 45%;
+    transform: translateY(-50%);
+    max-width: 700px; /* Larger max-width for bigger screens */
   }
 
   .eex-responsive {
-    width: 33vw;
+    width: 30vw;
     height: auto;
-    left: 4vw;
-    top: 4vh;
+    left: 2vw;
+    top: 25%;
+    transform: translateY(-50%);
     max-width: 500px;
+    left: 5%;
+  }
+}
+
+/* Mobile screens (default) */
+@media (max-width: 640px) {
+  .eex-responsive {
+    width: 280px;
+    left: 5%;
+    
+  }
+  .bg-logo-responsive {
+   right:5%;/* Larger max-width for bigger screens */
+  }
+
+ 
+}
+
+/* Small tablets */
+@media (min-width: 641px) and (max-width: 768px) {
+  .eex-responsive {
+    width: 320px;
+    left: 10%;
+  }
+.bg-logo-responsive {
+   right:10%;/* Larger max-width for bigger screens */
+  }
+  .tab-height{
+   height:auto;
+}
+}
+
+/* Large tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .eex-responsive {
+    width: 320px;
+    left: 10px;
+    top: 30%;
+    transform: translateY(-50%);
+
+  }
+   .bg-logo-responsive {
+    width: 30vw; /* Scale width relative to viewport */
+    height: auto; /* Maintain aspect ratio */
+    left: 10vw; /* Adjust position proportionally */
+    top: 45%;
+    transform: translateY(-50%);
+   /* Prevent excessive scaling */
+  }
+  .tab-height{
+  height:auto;
+}
+
+}
+
+/* Laptops */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .eex-responsive {
+    width: 360px;
+    left: 40px;
+    top: 28%;
+    transform: translateY(-50%);
+
+  }
+ .bg-logo-responsive {
+    width: 32vw; /* Slightly smaller scaling for very large screens */
+    height: auto;
+    left: 15vw;
+    top: 45%;
+    transform: translateY(-50%);
+    max-width: 700px; /* Larger max-width for bigger screens */
+  }
+
+}
+
+
+@media (min-width: 1441px) {
+  .standard-container {
+    padding: 0 40px;
   }
 }
