@@ -32,14 +32,28 @@ body {
   color: var(--foreground);
   /* font-family: Arial, Helvetica, sans-serif,Radley; */
   width: 100%;
-
 }
 
-/* .standard-container {
+/* Container with max-width and centered alignment for screens > 1440px */
+.standard-container {
   width: 100%;
-  max-width: 1440px; 
- 
-} */
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Black spacing on sides for screens larger than 1440px */
+@media (min-width: 1441px) {
+  body {
+    background: #000000; /* Black background for the sides */
+  }
+  
+  .standard-container {
+    background: #000000; /* Keep the container background black as well */
+    box-shadow: 0 0 0 100vw #000000; /* Extend black background to viewport edges */
+  }
+}
+
 /* Default styles for desktop */
 .bg-logo-responsive {
   width: 40vw; /* Scale width relative to viewport */
@@ -57,7 +71,7 @@ body {
   transition: all 0.5s ease-in-out;
   height: auto;
   left: 20px;
-  top: 0%;
+  top: 20%;
   transform: translateY(-20%);
 }
 
@@ -89,7 +103,7 @@ body {
     width: 20vw;
     height: auto;
     left: 0.5vw;
-    top: 5vh;
+    top: 4vh;
   }
 }
 
@@ -98,7 +112,7 @@ body {
     width: 32vw; /* Slightly smaller scaling for very large screens */
     height: auto;
     left: 15vw;
-    top: 45%;
+    top: 35%;
     transform: translateY(-50%);
     max-width: 700px; /* Larger max-width for bigger screens */
   }
@@ -107,10 +121,35 @@ body {
     width: 30vw;
     height: auto;
     left: 2vw;
-    top: 25%;
-    transform: translateY(-50%);
+    top: 8%;
+    transform: translateY(-20%);
     max-width: 500px;
     left: 2%;
+  }
+}
+
+/* Screens larger than 1440px - Updated EEX positioning */
+@media (min-width: 1441px) {
+  .standard-container {
+    padding: 0 40px;
+  }
+  
+  .eex-responsive {
+    width: 420px; /* Fixed width based on your reference */
+    height: auto;
+    left: 7px; /* Adjusted left positioning to match reference */
+    top: 180px;
+    transform: translateY(-30%);
+    max-width: none; /* Remove max-width constraint */
+  }
+  
+  .bg-logo-responsive {
+    width: 500px; /* Fixed width for consistency */
+    height: auto;
+    left: 160px; /* Adjusted positioning */
+    top: 23%;
+    transform: translateY(-50%);
+    max-width: none;
   }
 }
 
@@ -119,13 +158,10 @@ body {
   .eex-responsive {
     width: 280px;
     left: 2%;
-    
   }
   .bg-logo-responsive {
    right:-2%;/* Larger max-width for bigger screens */
   }
-
- 
 }
 
 /* Small tablets */
@@ -147,8 +183,8 @@ body {
   .eex-responsive {
     width: 320px;
     left: 10px;
-    top: 30%;
-    transform: translateY(-50%);
+    top: 40%;
+    transform: translateY(-40%);
 
   }
    .bg-logo-responsive {
@@ -168,10 +204,10 @@ body {
 /* Laptops */
 @media (min-width: 1025px) and (max-width: 1440px) {
   .eex-responsive {
-    width: 360px;
+    width: 340px;
     left: 40px;
-    top: 28%;
-    transform: translateY(-50%);
+    top: 40%;
+    transform: translateY(-40%);
 
   }
  .bg-logo-responsive {
@@ -181,13 +217,5 @@ body {
     top: 45%;
     transform: translateY(-50%);
     max-width: 700px; /* Larger max-width for bigger screens */
-  }
-
-}
-
-
-@media (min-width: 1441px) {
-  .standard-container {
-    padding: 0 40px;
   }
 }

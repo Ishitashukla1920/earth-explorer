@@ -77,7 +77,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
 
       {/* Navigation */}
       <nav className={`relative ${isMobile ? 'z-30' : 'z-20'} flex items-center ${isMobile ? 'justify-between' : 'justify-start'} p-2 md:p-8`} style={{ fontFamily: 'Radley' }}>
-        <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-8">
+        <div className="flex items-center ml-3 space-x-3 sm:space-x-4 md:space-x-8">
           <div>
             <Image
               src="/logoEEx.png"
@@ -114,29 +114,31 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
           )}
         </div>
         {/* Hamburger Menu Button for Mobile */}
+       
         {isMobile && (
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-amber-100 focus:outline-none z-50">
-            {menuOpen ? <X size={32} /> : <Menu size={32} />}
-          </button>
-        )}
+  <button onClick={() => setMenuOpen(!menuOpen)} className="text-amber-100 focus:outline-none z-50">
+    {menuOpen ? <X size={32} /> : <Menu size={32} />}
+  </button>
+)}
 
-        {/* Mobile Menu Dialog - HomePage */}
-        {isMobile && menuOpen && (
-          <div className="absolute top-full right-4 mt-2 w-40 bg-black/90 rounded-md shadow-lg p-4 flex flex-col items-end z-40">
-            <button
-              onClick={() => { setCurrentPage('home'); setMenuOpen(false); }}
-              className={`text-lg py-2 ${currentPage === 'home' ? 'text-amber-100' : 'text-white'} hover:text-amber-100 transition-colors w-full text-right`}
-            >
-              Home
-            </button>
-            <button
-              onClick={() => { setCurrentPage('team'); setMenuOpen(false); }}
-              className={`text-lg py-2 ${currentPage === 'team' ? 'text-amber-100' : 'text-white'} hover:text-amber-100 transition-colors w-full text-right`}
-            >
-              Team
-            </button>
-          </div>
-        )}
+{/* Mobile Menu Dialog - HomePage */}
+{isMobile && menuOpen && (
+  <div className="absolute top-full left-0 w-full bg-white z-40"> {/* Changed styling here */}
+    <button
+      onClick={() => { setCurrentPage('home'); setMenuOpen(false); }}
+      className={`text-lg py-3 w-full text-center ${currentPage === 'home' ? 'bg-white text-black' : 'bg-white text-black'} hover:bg-gray-100 transition-colors border-b border-gray-200`} // Adjusted styling
+    >
+      Home
+    </button>
+    <button
+      onClick={() => { setCurrentPage('team'); setMenuOpen(false); }}
+      className={`text-lg py-3 w-full text-center ${currentPage === 'team' ? 'bg-[#E9D6A9] text-black' : 'bg-[#E9D6A9] text-black'} hover:opacity-90 transition-opacity`} // Adjusted styling, added specific hex for gold
+    >
+      Team
+    </button>
+    {/* Add more buttons for other menu items if needed */}
+  </div>
+)}
       </nav>
 
       {/* Main Content Area */}
@@ -192,8 +194,8 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 initial="hidden"
                 animate={textAnimationCompleted ? "hidden" : "visible"} // Animate out when completed
                 variants={{
-                  hidden: { opacity: 0, transition: { duration: 0.5 } },
-                  visible: { opacity: 1, transition: { staggerChildren: 0.5 } } // Stagger children for sequential reveal
+                  hidden: { opacity: 0, transition: { duration: 2 } },
+                  visible: { opacity: 1, transition: {duration:3.5, staggerChildren: 4 } } // Stagger children for sequential reveal
                 }}
               >
                 <motion.h2
@@ -213,7 +215,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                   IT GAVE RISE TO MODERN CIVILIZATION.
                 </motion.h3>
                    <motion.p
-  className="text-[14px] mb-[6px] tracking-wide text-[#E9D6A9]"
+  className="text-[14px] mb-[14px] tracking-wide ml-7 text-[#E9D6A9]"
   style={{ fontFamily: 'Raleway' }}
   variants={textVariants}
   custom={2}
@@ -221,7 +223,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   Join us as we rediscover the mystery of earth energy.
 </motion.p>
 
-                <div className="flex space-x-6">
+                <div className="flex space-x-6 ml-[120px] pt-7">
                   {/* Custom Social Media Icons - Desktop */}
                   <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
                     <Image src="/facebook.png" alt="Facebook" width={20} height={20} />
@@ -307,7 +309,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             />
 
             {/* Mobile: the eex.png image - reduced size and shifted left */}
-            <div className="relative w-full max-w-[250px] sm:max-w-[270px]  z-10 self-start">
+            <div className="relative w-full max-w-[250px] sm:max-w-[270px] mb-[3px] z-10 self-start">
               <Image
                 src="/eex.png"
                 alt="Descriptive image for main content"
@@ -329,7 +331,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               animate="visible"
               variants={{
                 hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { staggerChildren: 0.5 } }
+                visible: { opacity: 1, transition: {dursation:3, staggerChildren: 1 } }
               }}
             >
               <motion.h2 
@@ -350,7 +352,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               </motion.h3>
              
              <motion.p
-  className="text-[15px] mb-[14px] tracking-wide text-[#E9D6A9]"
+  className="text-[15px] mb-[1px] tracking-wide text-[#E9D6A9]"
   style={{ fontFamily: 'Raleway' }}
   variants={textVariants}
   custom={2}
@@ -476,41 +478,30 @@ const TeamPage = ({
             </>
           )}
         </div>
+         {isMobile && (
+  <button onClick={() => setMenuOpen(!menuOpen)} className="text-amber-100 focus:outline-none z-50">
+    {menuOpen ? <X size={32} /> : <Menu size={32} />}
+  </button>
+)}
         {/* Hamburger Menu Button for Mobile */}
-        {isMobile && (
-          <button 
-            onClick={() => setMenuOpen(!menuOpen)} 
-            className="text-amber-100 focus:outline-none z-50" 
-            style={{ 
-              position: 'absolute', 
-              right: '10px', 
-              top: '9px',
-              backgroundColor: 'rgba(0, 0, 0, 0.5)', // Add semi-transparent background
-              borderRadius: '4px',
-              padding: '4px'
-            }}
-          >
-            {menuOpen ? <X size={32} /> : <Menu size={32} />}
-          </button>
-        )}
-
-        {/* Mobile Menu Dialog - TeamPage */}
         {isMobile && menuOpen && (
-          <div className="absolute top-full right-4 mt-2 w-40 bg-black/90 rounded-md shadow-lg p-4 flex flex-col items-end z-50">
-            <button
-              onClick={() => { setCurrentPage('home'); setMenuOpen(false); }}
-              className={`text-lg py-2 ${currentPage === 'home' ? 'text-amber-100' : 'text-white'} hover:text-amber-100 transition-colors w-full text-right`}
-            >
-              Home
-            </button>
-            <button
-              onClick={() => { setCurrentPage('team'); setMenuOpen(false); }}
-              className={`text-lg py-2 ${currentPage === 'team' ? 'text-amber-100' : 'text-white'} hover:text-amber-100 transition-colors w-full text-right`}
-            >
-              Team
-            </button>
-          </div>
+  <div className="absolute top-full left-0 w-full bg-white z-40"> {/* Changed styling here */}
+    <button
+      onClick={() => { setCurrentPage('home'); setMenuOpen(false); }}
+      className={`text-lg py-3 w-full text-center ${currentPage === 'home' ? 'bg-white text-black' : 'bg-white text-black'} hover:bg-gray-100 transition-colors border-b border-gray-200`} // Adjusted styling
+    >
+      Home
+    </button>
+    <button
+      onClick={() => { setCurrentPage('team'); setMenuOpen(false); }}
+      className={`text-lg py-3 w-full text-center ${currentPage === 'team' ? 'bg-[#E9D6A9] text-black' : 'bg-[#E9D6A9] text-black'} hover:opacity-90 transition-opacity`} // Adjusted styling, added specific hex for gold
+    >
+      Team
+    </button>
+    {/* Add more buttons for other menu items if needed */}
+  </div>
         )}
+        
       </nav>
 
       <div className="relative z-10 px-2 md:px-8 pb-8">
