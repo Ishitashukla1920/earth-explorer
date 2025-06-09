@@ -76,53 +76,63 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div>
 
       {/* Navigation */}
-      <nav className={`relative ${isMobile ? 'z-30' : 'z-20'} flex items-center ${isMobile ? 'justify-between' : 'justify-start'} p-2 md:p-8`} style={{ fontFamily: 'Radley' }}>
-        <div className="flex items-center ml-3 space-x-3 sm:space-x-4 md:space-x-8">
-          <div>
+      <nav
+  className={`relative z-50 flex items-center ${
+    isMobile ? 'justify-between' : 'justify-start'
+  } p-2 md:p-8`}
+  style={{
+    fontFamily: 'Radley',                // ← here
+    ...(isMobile
+      ? {
+          width: '100%',
+          height: '40px',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+        }
+      : {}),
+  }}
+>
+        <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-8">
+          {/* Logo */}
+          <div style={isMobile ? { position: 'absolute', left: '10px', top: '9px' } : {}}>
             <Image
               src="/logoEEx.png"
               alt="Logo"
-              width={isMobile ? 50 : 58}
-              height={isMobile ? 67 : 76}
+              width={isMobile ? 40 : 58}
+              height={isMobile ? 40.6 : 76}
               className="rounded-full"
-              priority
             />
           </div>
-         
           {/* Desktop Navigation Links */}
           {!isMobile && (
             <>
               <button
                 onClick={() => setCurrentPage('home')}
-                className={`text-sm sm:text-base md:text-lg cursor-pointer ${
+                className={`text-sm sm:text-base md:text-lg font-light cursor-pointer ${
                   currentPage === 'home' ? 'border-b-2 border-white pb-1 text-amber-100' : ''
                 }`}
-                style={{ fontFamily: 'Radley' }}
               >
                 Home
               </button>
               <button
                 onClick={() => setCurrentPage('team')}
-                className={`text-sm sm:text-base md:text-lg cursor-pointer hover-amber-100${
+                className={`text-sm sm:text-base md:text-lg font-light cursor-pointer ${
                   currentPage === 'team' ? 'border-b-2 border-white pb-1 text-amber-100' : ''
                 }`}
-                style={{ fontFamily: 'Radley' }}
               >
                 Team
               </button>
             </>
           )}
         </div>
-        {/* Hamburger Menu Button for Mobile */}
-       
-        {isMobile && (
+         {isMobile && (
   <button onClick={() => setMenuOpen(!menuOpen)} className="text-amber-100 focus:outline-none z-50">
     {menuOpen ? <X size={32} /> : <Menu size={32} />}
   </button>
 )}
-
-{/* Mobile Menu Dialog - HomePage */}
-{isMobile && menuOpen && (
+        {/* Hamburger Menu Button for Mobile */}
+        {isMobile && menuOpen && (
   <div className="absolute top-full left-0 w-full bg-white z-40"> {/* Changed styling here */}
     <button
       onClick={() => { setCurrentPage('home'); setMenuOpen(false); }}
@@ -138,11 +148,12 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
     </button>
     {/* Add more buttons for other menu items if needed */}
   </div>
-)}
+        )}
+        
       </nav>
 
       {/* Main Content Area */}
-      <div className={`relative ${isMobile ? 'pt-4 ' : 'min-h-[calc(100vh-120px)] flex items-center'}`}>
+      <div className={`relative ${isMobile ? 'pt-12 ' : 'min-h-[calc(100vh-120px)] flex items-center'}`}>
         {/* ====== DESKTOP SPECIFIC LAYOUT ====== */}
         {!isMobile && (
           <>
@@ -152,8 +163,9 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               width={350}
               height={320}
                 className="absolute bg-logo-responsive" // Add a new class
-
+               objectFit='center'
               style={{
+                alignItems:'center',
                 zIndex: 5,
                 filter: 'grayscale(100%) brightness(200%)',
               }}
@@ -352,7 +364,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               </motion.h3>
              
              <motion.p
-  className="text-[15px] mb-[1px] tracking-wide text-[#E9D6A9]"
+  className="text-[12px] mb-[1px] tracking-wide text-[#E9D6A9]"
   style={{ fontFamily: 'Raleway' }}
   variants={textVariants}
   custom={2}
@@ -443,7 +455,7 @@ const TeamPage = ({
       <div className="absolute inset-0 bg-black/50" style={{ zIndex: 0 }} />
       <nav
         className={`relative z-50 flex items-center ${isMobile ? 'justify-between' : 'justify-start'} p-2 md:p-8`}
-        style={isMobile ? { width: '100%', height: '50px', position: 'absolute', top: 0, left: 0 } : {}}
+        style={isMobile ? { width: '100%', height: '40px', position: 'absolute', top: 0, left: 0 } : {}}
       >
         <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-8">
           {/* Logo */}

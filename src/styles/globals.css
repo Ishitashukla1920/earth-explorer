@@ -112,7 +112,6 @@ body {
     width: 32vw; /* Slightly smaller scaling for very large screens */
     height: auto;
     left: 15vw;
-    top: 35%;
     transform: translateY(-50%);
     max-width: 700px; /* Larger max-width for bigger screens */
   }
