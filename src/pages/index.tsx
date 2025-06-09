@@ -71,7 +71,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden standard-container" >
+    <div className="min-h-screen bg-black text-white relative overflow-hidden  standard-container ${isXL ? 'min-h-[50vh]' : 'min-h-screen'}" >
       {/* Top to Bottom Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div>
 
@@ -519,7 +519,7 @@ const TeamPage = ({
       <div className="relative z-10 px-2 md:px-8 pb-8">
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-1/3 md:pr-8 flex flex-col items-center md:items-start mb-8 md:mb-0">
-            <div className="mb-12 md:mb-16 pt-0 md:pt-18 text-center md:text-left" style={isMobile ? { position: 'absolute', left: '10px', top: '85px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
+            <div className="mb-6 md:mb-8 pt-0 md:pt-18 text-center md:text-left" style={isMobile ? { position: 'absolute', left: '10px', top: '85px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
               {/* "OUR" text image with mobile spacing adjustment */}
               <div className="inline-block max-w-[100px] md:max-w-[200px]" style={{ marginBottom: isMobile ? '7px' : '0' }}>
                 <img
@@ -531,7 +531,7 @@ const TeamPage = ({
                 />
               </div>
               {/* "TEAM" text image with mobile spacing adjustment */}
-              <div className="inline-block max-w-[150px] md:max-w-[280px] mt-2">
+              <div className="inline-block max-w-[150px] md:max-w-[280px] mt-2 -mb-0">
                 <img
                   src="/team.png"
                   alt="TEAM text image"
@@ -542,18 +542,18 @@ const TeamPage = ({
               </div>
             </div>
             {/* Social Media Icons - Team Page */}
-            <div className="flex space-x-4 md:space-x-6 justify-center md:justify-start" style={isMobile ? { position: 'absolute', left: '20px', top: '224px' } : {}}>
+            <div className="flex space-x-6 ml-4 md:space-x-8 justify-center md:justify-start" style={isMobile ? { position: 'absolute', left: '20px', top: '200px' } : {}}>
               <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <img src="/facebook.png" alt="Facebook" width={13.38} height={13.04} />
+                <img src="/facebook.png" alt="Facebook" width={32} height={32} />
               </div>
               <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <img src="/instagram.png" alt="Instagram" width={13.38} height={13.04} />
+                <img src="/instagram.png" alt="Instagram" width={28} height={28} />
               </div>
               <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <img src="/youtube.png" alt="YouTube" width={13.38} height={13.04} />
+                <img src="/youtube.png" alt="YouTube" width={28} height={28} />
               </div>
               <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <img src="/x.png" alt="Twitter" width={13.38} height={13.04} />
+                <img src="/x.png" alt="Twitter" width={28} height={28} />
               </div>
             </div>
           </div>
@@ -563,7 +563,7 @@ const TeamPage = ({
   style={
     isMobile
       ? {
-          marginTop: '250px', // Use margin instead of absolute positioning
+          marginTop: '230px', // Reduced from 250px to account for less space above
           width: '100%',
           paddingBottom: '50px' // Add padding at bottom for mobile
         }

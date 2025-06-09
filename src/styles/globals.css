@@ -41,6 +41,9 @@ body {
   margin: 0 auto;
   position: relative;
 }
+.bg-logo{
+  background-size: contain ;
+}
 
 /* Black spacing on sides for screens larger than 1440px */
 @media (min-width: 1441px) {
@@ -216,5 +219,43 @@ body {
     top: 45%;
     transform: translateY(-50%);
     max-width: 700px; /* Larger max-width for bigger screens */
+  }
+}
+@media (min-width: 1600px) and (max-width: 1920px) {
+  .standard-container {
+    padding: 0 60px;
+  }
+  
+  .eex-responsive {
+    width: 450px;
+    left: 40px;
+    top: 200px;
+    transform: translateY(-25%);
+  }
+  
+  .bg-logo-responsive {
+    width: 550px;
+    left: 200px;
+    top: 50vh;
+    transform: translateY(-50%);
+  }
+}
+@media (min-width: 1921px) and (max-width: 2560px) {
+  .standard-container {
+    padding: 0 80px;
+  }
+  
+  .eex-responsive {
+    width: 500px;
+    left: 60px;
+    top: 220px;
+    transform: translateY(-20%);
+  }
+  
+  .bg-logo-responsive {
+    width: 600px;
+    left: 250px;
+    top: 50vh;
+    transform: translateY(-50%);
   }
 }
