@@ -527,10 +527,10 @@ const TeamPage = ({
         
       </nav>
 
-     <div className="relative z-10 px-2 md:px-8 pb-8">
+     <div className="relative z-10 px-2 md:px-8">
   <div className="flex flex-col md:flex-row">
-<div className="w-full md:w-1/3 md:pr-8 flexrape flex flex-col items-center justify-center md:items-start mb-8 md:mb-0">
-      <div className="mb-6 md:mb-8 pt-0 md:pt-18 text-center md:text-left" style={isMobile ? {  left: '10px', top: '85px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
+<div className="w-full md:w-1/3 md:pr-8 flexrape flex flex-col md:items-start md:mb-0 mt-5">
+      <div className=" md:mb-8 pt-0 md:pt-18 md:text-left" style={isMobile ? {  left: '10px', top: '55px',position:'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
         {/* "OUR" text image with responsive sizing */}
         <div className="inline-block w-[80px] sm:w-[100px] md:w-[140px] lg:w-[160px] xl:w-[200px]" style={{ marginBottom: isMobile ? '4px' : '2px' }}>
           <img
@@ -567,16 +567,17 @@ const TeamPage = ({
   "
 > */}
  <div
-        className={`
-          flex items-center space-x-4
-           top-[22%] left-4
+        className="
+          flex items-center space-x-4 left-4
 
           /* tablet (≥768px): nudge into place */
           md:static md:mt-4 md:justify-start md:space-x-6
 
           /* desktop (≥1024px): flow under headings */
           lg:mt-2 lg:space-x-8
-        `}
+          
+        "
+        style={isMobile ? { position: 'relative', left: '10px', top: '75px' } : {}}
       >
   
   <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
@@ -599,7 +600,7 @@ const TeamPage = ({
       style={
         isMobile
           ? {
-              marginTop: '230px', // Reduced from 250px to account for less space above
+              marginTop: '150px', // Reduced from 250px to account for less space above
               width: '100%',
               paddingBottom: '50px' // Add padding at bottom for mobile
             }
