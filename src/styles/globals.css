@@ -38,7 +38,7 @@ body {
 .standard-container {
   width: 100%;
   max-width: 1440px;
-  margin: 0 auto;
+  //margin: 0 10%;
   position: relative;
 }
 .bg-logo{
@@ -149,7 +149,7 @@ body {
     width: 500px; /* Fixed width for consistency */
     height: auto;
     left: 160px; /* Adjusted positioning */
-    top: 23%;
+    top: 50%;
     transform: translateY(-50%);
     max-width: none;
   }
@@ -236,7 +236,7 @@ body {
   .bg-logo-responsive {
     width: 550px;
     left: 200px;
-    top: 50vh;
+    top: 85vh;
     transform: translateY(-50%);
   }
 }
@@ -246,16 +246,16 @@ body {
   }
   
   .eex-responsive {
-    width: 500px;
-    left: 60px;
-    top: 220px;
+    width: 360px;
+    left: 0.5px;
+    top: 110px;
     transform: translateY(-20%);
   }
   
   .bg-logo-responsive {
     width: 600px;
-    left: 250px;
-    top: 50vh;
+    left: 80px;
+    top: 50%;
     transform: translateY(-50%);
   }
 }

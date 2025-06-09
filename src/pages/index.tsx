@@ -71,7 +71,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden  standard-container ${isXL ? 'min-h-[50vh]' : 'min-h-screen'}" >
+    <div className="min-h-screen bg-black text-white relative overflow-hidden  standard-container" >
       {/* Top to Bottom Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div>
 
@@ -202,55 +202,66 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
 
               {/* Desktop: Text content - fade out when animation completes */}
               <motion.div
-                className="absolute inset-0 flex flex-col justify-center align-items-center px-6 z-20"
-                initial="hidden"
-                animate={textAnimationCompleted ? "hidden" : "visible"} // Animate out when completed
-                variants={{
-                  hidden: { opacity: 0, transition: { duration: 2 } },
-                  visible: { opacity: 1, transition: {duration:3.5, staggerChildren: 4 } } // Stagger children for sequential reveal
-                }}
-              >
-                <motion.h2
-                  className="text-[21px] mb-1 tracking-wide"
-                  style={{ fontFamily: "Aboreto, Sans-serif" }}
-                  variants={textVariants}
-                  custom={0}
-                >
-                  AN ANCIENT SECRET SO POWERFUL...
-                </motion.h2>
-                <motion.h3
-                  className="text-[21px] mb-1 tracking-wide -ml-3"
-                  style={{ fontFamily: 'Aboreto' }}
-                  variants={textVariants}
-                  custom={1}
-                >
-                  IT GAVE RISE TO MODERN CIVILIZATION.
-                </motion.h3>
-                   <motion.p
-  className="text-[14px] mb-[14px] tracking-wide ml-7 text-[#E9D6A9]"
-  style={{ fontFamily: 'Raleway' }}
-  variants={textVariants}
-  custom={2}
+  // ADDED `items-center` and `text-center` to handle alignment for all children.
+  // This is the core of the fix.
+  className="absolute inset-0 flex flex-col justify-center  px-8 z-20"
+  initial="hidden"
+  animate={textAnimationCompleted ? "hidden" : "visible"}
+  variants={{
+    hidden: { opacity: 0, transition: { duration: 2 } },
+    visible: { opacity: 1, transition: { duration: 3.5, staggerChildren: 4 } }
+  }}
 >
-  Join us as we rediscover the mystery of earth energy.
-</motion.p>
+  <motion.h2
+    // CHANGED: From fixed pixels to responsive text sizes.
+    className="text-lg md:text-xl lg:text-2xl mb-2 tracking-wide"
+    style={{ fontFamily: "Aboreto, Sans-serif" }}
+    variants={textVariants}
+    custom={0}
+  >
+    AN ANCIENT SECRET SO POWERFUL...
+  </motion.h2>
 
-                <div className="flex space-x-6 ml-[120px] pt-7">
-                  {/* Custom Social Media Icons - Desktop */}
-                  <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                    <Image src="/facebook.png" alt="Facebook" width={20} height={20} />
-                  </div>
-                  <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                    <Image src="/instagram.png" alt="Instagram" width={20} height={20} />
-                  </div>
-                  <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                    <Image src="/youtube.png" alt="YouTube" width={20} height={20} />
-                  </div>
-                  <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                    <Image src="/x.png" alt="Twitter" width={20} height={20} />
-                  </div>
-                </div>
-              </motion.div>
+  <motion.h3
+    // REMOVED `-ml-3`. The parent's `items-center` now handles alignment.
+    // CHANGED: Using responsive text sizes for consistency.
+    className="text-lg md:text-xl lg:text-2xl mb-6 tracking-wide"
+    style={{ fontFamily: 'Aboreto' }}
+    variants={textVariants}
+    custom={1}
+  >
+    IT GAVE RISE TO MODERN CIVILIZATION.
+  </motion.h3>
+
+  <motion.p
+    // REMOVED `ml-7`.
+    // CHANGED: From fixed pixels to responsive text and margin.
+    className="text-sm md:text-base mb-8 tracking-wide max-w-md text-[#E9D6A9]"
+    style={{ fontFamily: 'Raleway' }}
+    variants={textVariants}
+    custom={2}
+  >
+    Join us as we rediscover the mystery of earth energy.
+  </motion.p>
+
+  {/* The container for the icons */}
+  {/* REMOVED `ml-[120px]` and `pt-7`. Spacing is now handled by the margin-bottom (`mb-8`) of the paragraph above. */}
+  <div className="flex space-x-6">
+    {/* Custom Social Media Icons - Desktop */}
+    <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+      <Image src="/facebook.png" alt="Facebook" width={20} height={20} />
+    </div>
+    <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+      <Image src="/instagram.png" alt="Instagram" width={20} height={20} />
+    </div>
+    <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+      <Image src="/youtube.png" alt="YouTube" width={20} height={20} />
+    </div>
+    <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+      <Image src="/x.png" alt="Twitter" width={20} height={20} />
+    </div>
+  </div>
+</motion.div>
 
               {/* Desktop: video fades in when text animation completes */}
               <div
@@ -516,106 +527,130 @@ const TeamPage = ({
         
       </nav>
 
-      <div className="relative z-10 px-2 md:px-8 pb-8">
-        <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/3 md:pr-8 flex flex-col items-center md:items-start mb-8 md:mb-0">
-            <div className="mb-6 md:mb-8 pt-0 md:pt-18 text-center md:text-left" style={isMobile ? { position: 'absolute', left: '10px', top: '85px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
-              {/* "OUR" text image with mobile spacing adjustment */}
-              <div className="inline-block max-w-[100px] md:max-w-[200px]" style={{ marginBottom: isMobile ? '7px' : '0' }}>
-                <img
-                  src="/our.png"
-                  alt="OUR text image"
-                 // width={200}
-                 // height={106}
-                  className="w-full h-auto" // Using Tailwind for responsive image
-                />
-              </div>
-              {/* "TEAM" text image with mobile spacing adjustment */}
-              <div className="inline-block max-w-[150px] md:max-w-[280px] mt-2 -mb-0">
-                <img
-                  src="/team.png"
-                  alt="TEAM text image"
-                  //width={280}
-                  //height={140}
-                  className="w-full h-auto" // Using Tailwind for responsive image
-                />
-              </div>
-            </div>
-            {/* Social Media Icons - Team Page */}
-            <div className="flex space-x-6 ml-4 md:space-x-8 justify-center md:justify-start" style={isMobile ? { position: 'absolute', left: '20px', top: '200px' } : {}}>
-              <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <img src="/facebook.png" alt="Facebook" width={32} height={32} />
-              </div>
-              <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <img src="/instagram.png" alt="Instagram" width={28} height={28} />
-              </div>
-              <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <img src="/youtube.png" alt="YouTube" width={28} height={28} />
-              </div>
-              <div className=" flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                <img src="/x.png" alt="Twitter" width={28} height={28} />
-              </div>
-            </div>
-          </div>
-          {/* Team Members Grid */}
-         <div
-  className="w-full md:w-2/3 md:pl-8"
-  style={
-    isMobile
-      ? {
-          marginTop: '230px', // Reduced from 250px to account for less space above
-          width: '100%',
-          paddingBottom: '50px' // Add padding at bottom for mobile
-        }
-      : {}
-  }
->
-  <div className={`grid gap-x-2 gap-y-8 justify-items-center px-2 ${isMobile ? 'grid-cols-2' : 'grid-cols-3'}`}>
-    {teamMembers.map((member: TeamMember, index: number) => (
-      <div
-        key={index}
-        className="text-center"
-        style={isMobile ? { width: '120px' } : {}}
-      >
-        <div className="mb-3 md:mb-5">
-          <div
-            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto rounded-full overflow-hidden"
-            style={isMobile ? { width: '80px', height: '80px' } : {}}
-          >
-            <img
-              src={member.image}
-              alt={member.name}
-              width={isMobile ? 80 : 128}
-              height={isMobile ? 80 : 128}
-              className="w-full h-full object-cover"
-            />
-          </div>
+     <div className="relative z-10 px-2 md:px-8 pb-8">
+  <div className="flex flex-col md:flex-row">
+<div className="w-full md:w-1/3 md:pr-8 flexrape flex flex-col items-center justify-center md:items-start mb-8 md:mb-0">
+      <div className="mb-6 md:mb-8 pt-0 md:pt-18 text-center md:text-left" style={isMobile ? {  left: '10px', top: '85px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
+        {/* "OUR" text image with responsive sizing */}
+        <div className="inline-block w-[80px] sm:w-[100px] md:w-[140px] lg:w-[160px] xl:w-[200px]" style={{ marginBottom: isMobile ? '4px' : '2px' }}>
+          <img
+            src="/our.png"
+            alt="OUR text image"
+            className="w-full h-auto" // Using Tailwind for responsive image
+          />
         </div>
-        <h3 
-          className="font-light tracking-wider mb-1 sm:mb-2"
-          style={{ 
-            fontFamily: 'Aboreto',
-            fontSize: isMobile ? '14.32px' : '28.99px'
-          }}
-        >
-          {member.name}
-        </h3>
-        <p 
-          className="text-amber-200 font-light tracking-wide"
-          style={{ 
-            fontFamily: 'Raleway',
-            fontSize: isMobile ? '12px' : '19.33px'
-          }}
-        >
-          {member.role}
-        </p>
+        {/* "TEAM" text image with responsive sizing */}
+        <div className="inline-block w-[120px] sm:w-[150px] md:w-[200px] lg:w-[240px] xl:w-[280px] mt-1">
+          <img
+            src="/team.png"
+            alt="TEAM text image"
+            className="w-full h-auto" // Using Tailwind for responsive image
+          />
+        </div>
       </div>
-    ))}
+      {/* Social Media Icons - Team Page */}
+      {/* We'll use conditional rendering to apply absolute positioning only for mobile */}
+{/* <div
+  className="
+    flex
+    absolute lg:static
+
+    left-4 top-[22%]
+    md:left-8 md:top-[18%]
+    lg:left-auto lg:top-auto
+
+    space-x-6 lg:space-x-8
+
+    justify-center lg:justify-start
+
+    mt-4 lg:mt-1
+  "
+> */}
+ <div
+        className={`
+          flex items-center space-x-4
+           top-[22%] left-4
+
+          /* tablet (≥768px): nudge into place */
+          md:static md:mt-4 md:justify-start md:space-x-6
+
+          /* desktop (≥1024px): flow under headings */
+          lg:mt-2 lg:space-x-8
+        `}
+      >
+  
+  <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+    <img src="/facebook.png" alt="Facebook" width={20} height={20} />
+  </div>
+  <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+    <img src="/instagram.png" alt="Instagram" width={20} height={20} />
+  </div>
+  <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+    <img src="/youtube.png" alt="YouTube" width={20} height={20} />
+  </div>
+  <div className="flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+    <img src="/x.png" alt="Twitter" width={20} height={20} />
   </div>
 </div>
-
-        </div>
+    </div>
+    {/* Team Members Grid */}
+    <div
+      className="w-full md:w-2/3 md:pl-8"
+      style={
+        isMobile
+          ? {
+              marginTop: '230px', // Reduced from 250px to account for less space above
+              width: '100%',
+              paddingBottom: '50px' // Add padding at bottom for mobile
+            }
+          : {}
+      }
+    >
+      <div className={`grid gap-x-2 gap-y-8 justify-items-center px-2 ${isMobile ? 'grid-cols-2' : 'grid-cols-3'}`}>
+        {teamMembers.map((member: TeamMember, index: number) => (
+          <div
+            key={index}
+            className="text-center"
+            style={isMobile ? { width: '120px' } : {}}
+          >
+            <div className="mb-3 md:mb-5">
+              <div
+                className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto rounded-full overflow-hidden"
+                style={isMobile ? { width: '80px', height: '80px' } : {}}
+              >
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  width={isMobile ? 80 : 128}
+                  height={isMobile ? 80 : 128}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <h3
+              className="font-light tracking-wider mb-1 sm:mb-2"
+              style={{
+                fontFamily: 'Aboreto',
+                fontSize: isMobile ? '14.32px' : '28.99px'
+              }}
+            >
+              {member.name}
+            </h3>
+            <p
+              className="text-amber-200 font-light tracking-wide"
+              style={{
+                fontFamily: 'Raleway',
+                fontSize: isMobile ? '12px' : '19.33px'
+              }}
+            >
+              {member.role}
+            </p>
+          </div>
+        ))}
       </div>
+    </div>
+  </div>
+</div>
     </div>
   );
 };
