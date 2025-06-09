@@ -321,7 +321,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             />
 
             {/* Mobile: the eex.png image - reduced size and shifted left */}
-            <div className="relative w-full max-w-[250px] sm:max-w-[270px] mb-[3px] z-10 self-start">
+            <div className="relative w-full max-w-[250px] sm:max-w-[270px] mb-[3px] z-10 self-start mt-3">
               <Image
                 src="/eex.png"
                 alt="Descriptive image for main content"
