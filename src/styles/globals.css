@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @import "tailwindcss";
+
 .aboreto-regular {
   font-family: "Aboreto", system-ui;
   font-weight: 400;
