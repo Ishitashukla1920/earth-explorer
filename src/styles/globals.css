@@ -238,7 +238,7 @@ body {
   .bg-logo-responsive {
     width: 550px;
     left: 200px;
-    top: 85vh;
+    top: 45%;
     transform: translateY(-50%);
   }
 }
