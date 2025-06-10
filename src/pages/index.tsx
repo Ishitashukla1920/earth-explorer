@@ -449,7 +449,7 @@ const TeamPage = ({
 }: TeamPageProps) => {
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden " style={{ fontFamily: 'Radley' }}>
+    <div className="min-h-screen bg-black text-white relative overflow-hidden standard-container">
       {/* Top to Bottom Overlay for Team Page */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div>
 
