@@ -38,7 +38,7 @@ const Watch = () => {
         {!isMobile ? <main className="flex justify-center items-center py-12 px-4 bg-black ">
   <div className="w-full max-w-[1300px] md:max-w-[1300px] aspect-[16/9]">
     <video
-      src="https://firebasestorage.googleapis.com/v0/b/invictaa-f3ba8.appspot.com/o/EEX%20Teaser%20With%20end%20logo%20text%20Desktop.mp4?alt=media&token=27a65aae-161d-4d92-b4b7-47e702797b0a"
+      src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/EEX%20Teaser%20Full%20Screen.mp4?alt=media&token=19acba95-544e-4c15-a5d5-904e958f402d"
       controls
       autoPlay
       muted
@@ -69,7 +69,7 @@ const Watch = () => {
         {/* Video Container */}
         <div className="w-full  mb-6">
           <video
-            src="https://firebasestorage.googleapis.com/v0/b/invictaa-f3ba8.appspot.com/o/EEX%20Teaser%20With%20end%20logo%20text%20Desktop.mp4?alt=media&token=27a65aae-161d-4d92-b4b7-47e702797b0a"
+            src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/EEX%20Teaser%20Full%20Screen.mp4?alt=media&token=19acba95-544e-4c15-a5d5-904e958f402d"
             controls
             autoPlay
             muted

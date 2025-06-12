@@ -50,14 +50,14 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                 className=""
                 style={{ 
                   zIndex: 10,
-                  marginTop:'-20%',
-                  transform: 'translateY(-25%)',
+                  marginTop:'-200%',
+                  transform: 'translateY(200%)',
                  
                  }}
                 priority
               />
               </div>
-                {!isMobile? (<div className="mt-6 mb-6  justify-start md:justify-start pl-8">
+                {!isMobile? (<div className="mt-6 mb-6  justify-start md:justify-start pl-8" style={{marginTop: '-100px'}}>  
             <SocialLinks />
           </div>) :''}
              </div>
