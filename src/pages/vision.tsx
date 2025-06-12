@@ -1,113 +1,95 @@
-// pages/about.tsx
+// pages/vision.tsx
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import SocialLinks from '../components/SocialLinks';
 
 const VisionPage = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="standard-container">
-      <div className="min-h-screen bg-white relative overflow-hidden">
-        {/* Background Image */}
-        
+   <div className="standard-container  bg-white">
+  <div className="min-h-screen relative overflow-hidden  standard-container">
+    <Navbar />
 
         {/* Background Logo */}
-        <div className="absolute h-[25vh] w-[100px] bg-logo-responsive  z-1">
+        {/* <div className="absolute h-[25vh] w-[100px] bg-logo-responsive z-1">
           <Image
             src="/bg-logo.png"
             alt="Background Logo"
             width={800}
             height={800}
-            className="object-contain opacity-100 filter -brightness-280 -contrast-100%" // Much more visible/darker
+            className="object-contain opacity-100 filter -brightness-280 -contrast-100%"
           />
-        </div>
-
-        <Navbar />
+        </div> */}
 
         {/* Main Content */}
-        <div className="relative z-10 min-h-screen flex items-center">
-          <div className="w-full px-6 md:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              
-              {/* Left Side - Text Content */}
-              <div className="order-2 lg:order-1">
-                {/* Title */}
-                
+      {/* Main Content */}
+      <main className=" flex flex-col-reverse md:flex-row items-center justify-center py-16 relative">
+        {/* Optional Watermark Background */}
 
-<div className="mb-8 md:mb-12 flex flex-col items-start space-y-1  transform translate-x-26 mt-3">
-  {/* ABOUT */}
-  <Image
-    src="/ouVision.png"
-    alt="About"
-    width={160}              // *intrinsic* width
-    height={80}              // *intrinsic* height
-    className="w-59 h-auto object-contain"
-  />
-
-  
-  <div className="mb-8 mt-4 md:mb-12">
-                  <SocialLinks />
-                </div>
-</div>
-
-
-
-                {/* Social Links */}
-                
-              </div>
-
-              {/* Right Side - Content */}
-             <div
-  className="
-    order-1 lg:order-2
-    flex flex-col items-start     /* 1 & 2 */
-    
-    mt-[-40px]
-    space-y-5 md:space-y-7 lg:space-y-9
-    w-full max-w-[78%]
-    ml-[-300px]       /* horizontal padding to align with grid */
-  "
->
-  {/* Main Headings */}
-  <div className="text-center space-y-1 md:space-y-2">
-    
-    <h2
-  className="
-    font-[600]                        /* font-weight: 600 */
-    text-black
-    [font-family:'Aboreto',sans-serif]  /* font-family: Aboreto */
-    text-[17px]                       /* exactly 20px font-size */
-    leading-snug
-  "
->
- If we share a big dream, together we can <br></br> make it a reality.
-</h2>
-<h3
-  className="
-    font-[600]
-    text-black
-    [font-family:'Aboreto',sans-serif]
-    text-[17px]
-    leading-snug
-    space-y-1
-  "
->
- OUR DREAM IS TO TRANSFORM THE WORLD FROM SEEING LIFE AS ORDINARY,
-      TO SEEING LIFE AS AN EXTRAORDINARY EXPLORATION!</h3>
-
-  
-  
-
-  </div>
-
-  
-</div>
-
-
-            </div>
-          </div>
+        {/* Image Section */}
+        <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0 mt-10 ">
+          <Image
+            src="/visionpage.png"
+            alt="Vision Image"
+            width={600}
+            height={300}
+            className=""
+          />
+         {!isMobile ?  <div className="mt-6 flex justify-center md:justify-start">
+            <SocialLinks />
+          </div> :''}
+          
         </div>
-      </div>
-    </div>
+
+        {/* Text Content */}
+        <div className="w-full md:w-1/2 z-10 text-center md:text-left max-w-xl md:px-2 pr-5">
+           {!isMobile ? <Image
+            src="/ourVision Laptop.png"
+            alt="Vision Image"
+            width={305.5}
+            height='150'
+            className="alignItems-center justify-center  px-2 mx-auto mb-4 md:mb-6"
+          /> : <Image
+            src="/ourVision Mobile.png"
+            alt="Vision Image"
+            width={220}
+            height='120'
+            className="alignItems-start justify-start  pl-6"/>
+            
+           }
+           {isMobile? <div className="mt-6 mb-6 flex justify-start md:justify-start pl-8">
+            <SocialLinks />
+          </div> :''}
+
+           
+          <p  style={isMobile ? { fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "18px",fontWeight:600 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "21px",fontWeight:'bold'} } className={`text-sm md:text-base font-medium mb-4 text-center mt-4 px-4`}>
+           
+            IF WE SHARE A BIG DREAM, TOGETHER WE CAN <br className="hidden md:block" />
+            MAKE IT A REALITY.
+          </p>
+          <p   style={isMobile ? { fontFamily: "Raleway, sans-serif",  color: "#92856C",  fontSize: "16px",fontWeight:700 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000", fontSize: "20px",fontWeight:'bold'} } className={`text-xs md:text-sm font-light leading-relaxed text-center mt-8 px-4`}>
+            Our dream is to transform the world from   <br className="hidden md:block" />
+            seeing life as ordinary, to seeing life as an <br className="hidden md:block" />
+            Extraordinary exploration!
+          </p>
+
+          {/* Social Icons */}
+          
+        </div>
+      </main>
+        </div>
+</div>
   );
 };
 

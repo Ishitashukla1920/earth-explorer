@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 @import "tailwindcss";
 
@@ -37,12 +38,12 @@ body {
 }
 
 /* Container with max-width and centered alignment for screens > 1440px */
-.standard-container {
+/* .standard-container-n {
   width: 100%;
   max-width: 1440px;
-  //margin: 0 10%;
+  margin: 0 10%;
   position: relative;
-}
+} */
 .bg-logo{
   background-size: contain ;
 }
@@ -53,8 +54,12 @@ body {
     background: #000000; /* Black background for the sides */
   }
   
-  .standard-container {
+  .standard-container-n {
     background: #000000; /* Keep the container background black as well */
+    box-shadow: 0 0 0 100vw #000000; /* Extend black background to viewport edges */
+  }
+  .standard-container-n1 {
+   background: #ffffff;
     box-shadow: 0 0 0 100vw #000000; /* Extend black background to viewport edges */
   }
 }
@@ -134,7 +139,7 @@ body {
 
 /* Screens larger than 1440px - Updated EEX positioning */
 @media (min-width: 1441px) {
-  .standard-container {
+  .standard-container-n {
     padding: 0 40px;
   }
   
@@ -224,7 +229,7 @@ body {
   }
 }
 @media (min-width: 1600px) and (max-width: 1920px) {
-  .standard-container {
+  .standard-container-n {
     padding: 0 60px;
   }
   
@@ -243,7 +248,7 @@ body {
   }
 }
 @media (min-width: 1921px) and (max-width: 2560px) {
-  .standard-container {
+  .standard-container-n {
     padding: 0 80px;
   }
   
