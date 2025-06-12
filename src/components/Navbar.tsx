@@ -1,52 +1,119 @@
-// components/Navbar.tsx
 import Link from 'next/link';
 import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { useRouter } from 'next/router';
+import { label } from 'framer-motion/client';
 
 const Navbar = () => {
-  return (
-    <nav className="absolute top-0 left-11 right-0 z-50 py-2 px-4 md:py-4 md:px-6">
-      <div className="flex items-center justify-start space-x-6 md:space-x-8">
-        {/* Logo */}
-        <div className="flex items-center">
-          <div className="w-16 h-16 md:w-16 md:h-16 relative">
-            <Image
-              src="/logo-black.png"
-              alt="Logo"
-              fill
-              className="object-contain"
-            />
-          </div>
-        </div>
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<string>('home');
+  const router = useRouter();
 
-        {/* Navigation Links (Desktop) */}
-        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-          <Link 
-            href="/" 
-            className="text-black hover:text-gray-700 transition-colors text-lg lg:text-xl"
-            style={{ fontFamily: 'Radley, serif' }}
-          >
-            Home
-          </Link>
-          <Link 
-            href="/team" 
-            className="text-black hover:text-gray-700 transition-colors text-lg lg:text-xl"
-            style={{ fontFamily: 'Radley, serif' }}
-          >
-            Team
-          </Link>
-        </div>
+  // Set currentPage based on URL
+  useEffect(() => {
+    const path = router.pathname;
+    const page = path === '/' ? 'home' : path.replace('/', '');
+    setCurrentPage(page);
+  }, [router.pathname]);
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden ml-auto">
-          <button className="text-black">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 12H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M3 6H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-          </button>
-        </div>
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const navLinks = [
+    // { href: '/', label: 'Home', id: 'home' },
+    { href: '/about', label: 'About', id: 'about' }, 
+    { href: '/team', label: 'Team', id: 'team' },
+    { href: '/vision', label: 'Vision', id: 'vision' },
+    { href: '/press', label: 'Press', id: 'press' },
+    { href: '/watch', label: 'Watch', id: 'watch' },
+  ];
+
+// Determine background and active link color before returning JSX
+const isLightBg = ['home', 'team','watch'].includes(currentPage);
+const linkTextColor = !isLightBg ? 'text-black' : 'text-amber-100';
+const border = isLightBg ? 'border-amber-100' : 'border-black';
+
+return (
+  <nav
+    className={`relative z-50 flex items-center ${
+      isMobile ? 'justify-between' : 'justify-start'
+    } p-2 md:p-8`}
+    style={{
+      fontFamily: 'Radley',
+      ...(isMobile
+        ? {
+            width: '100%',
+            height: '40px',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }
+        : {}),
+    }}
+  >
+    <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-8">
+      {/* Logo */}
+      <div style={isMobile ? { position: 'absolute', left: '10px', top: '9px' } : {}}>
+     <Link href='/' >   <Image
+          src={isLightBg? '/logoEEx.png' : '/logo-black.png' }
+          alt="Logo"
+          width={isMobile ? 50 : 68}
+          height={isMobile ? 50.6 : 86}
+          className="rounded-full"
+        />
+        </Link>
       </div>
+
+      {/* Desktop Navigation */}
+      {!isMobile && navLinks.map((link) => (
+  <Link href={link.href} key={link.id}>
+    <button
+      className={`text-sm sm:text-base md:text-lg font-light cursor-pointer ${linkTextColor} ${
+        currentPage === link.id ? 'border-b-2 ${border} pb-1' : ''
+      }`}
+    >
+      {link.label}
+    </button>
+  </Link>
+))}
+
+    </div>
+
+      {/* Mobile Menu Icon */}
+      {isMobile && (
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className={`text-${!['home', 'team'].includes(currentPage)? 'black' : 'amber-100' }  focus:outline-none z-50}`}
+        >
+          {menuOpen ? <X size={32}  /> : <Menu size={32} color={!['home', 'team','watch'].includes(currentPage)? 'black' : 'white' } />}
+        </button>
+      )}
+
+      {/* Mobile Menu Dropdown */}
+      {isMobile && menuOpen && (
+        <div className="fixed top-14 left-0 w-full bg-white z-40 shadow-lg transition-all">
+          {navLinks.map((link) => (
+            <Link key={link.id} href={link.href}>
+              <button
+                onClick={() => setMenuOpen(false)} // No need to manually set currentPage
+                className={`text-lg py-3 w-full text-center ${
+                  currentPage === link.id ? 'bg-gray-100 text-black' : 'text-black'
+                } hover:bg-gray-200 transition-colors border-b border-gray-300`}
+              >
+                {link.label}
+              </button>
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
