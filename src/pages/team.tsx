@@ -146,7 +146,7 @@ const TeamPage = ({
                     className="text-amber-200 font-light tracking-wide"
                     style={{
                       fontFamily: 'Raleway',
-                      fontSize: isMobile ? '12px' : '19.33px'
+                      fontSize: isMobile ? '10px' : '19.33px'
                     }}
                   >
                     {member.role}
