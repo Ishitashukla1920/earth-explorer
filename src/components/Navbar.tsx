@@ -107,9 +107,9 @@ return (
             <Link key={link.id} href={link.href}>
               <button
                 onClick={() => setMenuOpen(false)} // No need to manually set currentPage
-                className={`text-lg py-3 w-full text-center opacity-50 ${
-                  currentPage === link.id ? 'bg-gray-100 text-black' : 'text-black'
-                } hover:bg-gray-200 transition-colors border-b border-gray-300`}
+                className={`text-lg py-3 w-full text-center ${
+                  currentPage === link.id ? 'text-black bg-amber-100' : 'text-black'
+                } hover:bg-amber-200 transition-colors border-b border-gray-300`}
                 style={{
                   fontFamily: "Aboreto, Sans-serif",
                 }}
