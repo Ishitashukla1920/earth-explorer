@@ -111,10 +111,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               style={{ zIndex: 1 }}
               priority
             />
-             { !isMobile ? ( <div className="padding-new-social  mt-8 pt-8">
-        {/* Custom Social Media Icons */}
-       <SocialLinks />
-      </div>):''}
+        
 
             <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
               {/* Desktop: bg-image removed ONLY after text animation completes */}
@@ -222,7 +219,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
 
         {/* ====== MOBILE SPECIFIC LAYOUT ====== */}
         {isMobile && (
-          <div className="w-full flex flex-col items-center text-center space-y-6 z-10 relative">
+          <div className="w-full flex flex-col items-center text-center space-y-6 z-10 relative mt-2">
             {/* Mobile: bg-logo.png positioned on the right side, half visible */}
             <Image
               src="/bg-logo2.png"
@@ -254,7 +251,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             
             {/* Mobile: text content with framer motion animations */}
             <motion.div 
-              className="relative z-10"
+              className="relative z-10 "
               initial="hidden"
               animate="visible"
               variants={{
@@ -290,7 +287,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             </motion.div>
 
             {/* Mobile: video appears below the building image */}
-            <div className="relative w-full max-w-[550px] sm:max-w-[320px] mt-6 z-10">
+            <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw]  z-10">
               <video
                 ref={videoRef}
                 src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"

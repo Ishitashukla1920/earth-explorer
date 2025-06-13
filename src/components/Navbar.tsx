@@ -65,8 +65,8 @@ return (
      <Link href='/' >   <Image
           src={isLightBg? '/logoEEx.png' : '/logo-black.png' }
           alt="Logo"
-          width={isMobile ? 50 : 68}
-          height={isMobile ? 50.6 : 86}
+          width={isMobile ? 47 : 68}
+          height={isMobile ? 47.6 : 86}
           className="rounded-full opacity-60"
         />
         </Link>
@@ -96,19 +96,19 @@ return (
           onClick={() => setMenuOpen(!menuOpen)}
           className={`text-${!['home', 'team'].includes(currentPage)? 'black' : 'white' }  focus:outline-none z-50}`}
         >
-          {menuOpen ? <X size={32}  /> : <Menu size={32} color={!['home', 'team','watch'].includes(currentPage)? 'black' : 'white' } />}
+          {menuOpen ? <X size={32} className='opacity-60' /> : <Menu size={32} className='opacity-60' color={!['home', 'team','watch'].includes(currentPage)? 'black' : 'white' } />}
         </button>
       )}
 
       {/* Mobile Menu Dropdown */}
       {isMobile && menuOpen && (
-        <div className="fixed top-14 left-0 w-full bg-white z-40 shadow-lg transition-all">
+        <div className="fixed top-14 left-0 w-full bg-white z-40 shadow-lg transition-all  ">
           {navLinks.map((link) => (
             <Link key={link.id} href={link.href}>
               <button
                 onClick={() => setMenuOpen(false)} // No need to manually set currentPage
-                className={`text-lg py-3 w-full text-center ${
-                  currentPage === link.id ? 'text-black bg-amber-100' : 'text-black'
+                className={`text-lg py-3 w-full text-center  ${
+                  currentPage === link.id ? 'text-black bg-amber-100' : 'text-amber-800'
                 } hover:bg-amber-200 transition-colors border-b border-gray-300`}
                 style={{
                   fontFamily: "Aboreto, Sans-serif",
