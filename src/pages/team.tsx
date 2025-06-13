@@ -61,15 +61,16 @@ const TeamPage = ({
 
       <div className="relative z-10 px-2 md:px-8">
         <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/3 md:pr-8 flexrape flex flex-col md:items-start md:mb-0 mt-5">
+          <div className="w-full md:w-1/3 md:pr-8  md:items-center md:mb-0 mt-5">
             <div className=" md:mb-8 pt-0 md:pt-18 md:text-left" style={isMobile ? {  left: '10px', top: '55px',position:'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
               {/* "OUR" text image with responsive sizing */}
              {!isMobile ? (
-                <div className="inline-block w-[120px] sm:w-[160px] md:w-[180px] lg:w-[240px] xl:w-[300px] pr-8" style={{ marginBottom: isMobile ? '4px' : '2px' }}>
+                <div className=" " style={{ marginBottom: isMobile ? '4px' : '2px' }}>
                   <img
                     src="/ourTeam.png"
                     alt="OUR text image"
-                    className="w-full h-auto"
+                    className=" eex-responsive"
+                    style={{ width:'16vw'}}
                   />
                 </div>
               ) : ( <>
@@ -80,34 +81,17 @@ const TeamPage = ({
   <img
     src="/ourTeam.png"
     alt="OUR text image"
-    className="w-full h-auto"
+    className=""
+    style={{ width:'40vw',marginLeft:'20px' }} 
   />
 
                 </div>
-               {isMobile ? <div className='pr-4 pt-4'><SocialLinks /></div> : ''}</>
-                  
-              )}
-              {/* "TEAM" text image with responsive sizing */}
-              {/* <div className="inline-block w-[120px] sm:w-[150px] md:w-[200px] lg:w-[240px] xl:w-[280px] mt-1">
-                <img
-                  src="/team.png"
-                  alt="TEAM text image"
-                  className="w-full h-auto"
-                />
-              </div> */}
+               {isMobile ? <div className='relative pr-4 pt-4 my-5'  style={{marginLeft:'20px' }} ><SocialLinks /></div> :'' }</>)}
+             
+
             </div>
-            {/* Social Media Icons - Team Page */}
-            {/* <div
-              className="
-                flex items-center space-x-4 left-4
-                md:static md:mt-4 md:justify-start md:space-x-6
-                lg:mt-2 lg:space-x-8
-              "
-              style={isMobile ? { position: 'relative', left: '10px', top: '75px' } : {}}
-            >
-            
-            </div> */}
-            {!isMobile ? <div className='pr-4'><SocialLinks /></div> : ''}
+            {/* {!isMobile ? <div className='relative pr-4 pt-4' style={{marginTop:'100%',marginLeft:'4%',transform:'translateY(-100%)'}}><SocialLinks /></div>:''} */}
+         
           </div>
           
           {/* Team Members Grid */}
@@ -116,19 +100,24 @@ const TeamPage = ({
             style={
               isMobile
                 ? {
-                    marginTop: '150px',
+                    marginTop: '20%',
                     width: '100%',
-                    paddingBottom: '50px'
+                    paddingBottom: '10px',
+                   
                   }
-                : {}
+                : {
+                    marginTop: '10%',
+                    width: '100%',
+                    paddingBottom: '10px'
+                  }
             }
           >
-            <div className={`grid gap-x-2 gap-y-8 justify-items-center px-2 ${isMobile ? 'grid-cols-2' : 'grid-cols-3'}`}>
+            <div className={`grid gap-x-2 gap-y-8 justify-items-center align-items-center px-2 ${isMobile ? 'grid-cols-2' : 'grid-cols-3'}`}>
               {teamMembers.map((member: TeamMember, index: number) => (
                 <div
                   key={index}
                   className="text-center"
-                  style={isMobile ? { width: '120px' } : {}}
+                  style={isMobile ? { width: '100px' } : {}}
                 >
                   <div className="mb-3 md:mb-5">
                     <div
