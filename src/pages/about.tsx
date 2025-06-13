@@ -28,7 +28,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
     <div className="standard-container">
       <div className="min-h-screen bg-white text-black relative overflow-hidden standard-container1">
         {/* Top Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 pointer-events-none z-5"></div>
+        <div className="absolute inset-0  pointer-events-none z-5"></div>
 
         <Navbar />
 
@@ -76,7 +76,17 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                       zIndex: 0,
                     }}
                   />
+                  
+                  
                 )}
+                 <div
+        className="
+          absolute inset-0
+          pointer-events-none
+          bg-[linear-gradient(to_right,white_20%,rgba(255,255,255,0)_100%)]
+          z-10
+        "
+      ></div>
 
                 {/* Animated Text */}
                 <motion.div
@@ -199,15 +209,17 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
 
               {/* Bottom Image (e.g., Parthenon) */}
               <div className="w-full relative z-10">
-                <Image
-                  src="/aboutbg-image.png" // Replace with your actual filename
-                  alt="Sacred Site"
-                  width={350}
-                  height={200}
-                  className="w-full h-auto rounded-md"
-                  priority
-                />
-              </div>
+  <Image
+    src="/aboutbg-image.png" // Replace with your actual filename
+    alt="Sacred Site"
+    width={350}
+    height={200}
+    className="w-full h-auto rounded-md"
+    priority
+  />
+  
+</div>
+
 
               {/* Footer */}
             

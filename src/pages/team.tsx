@@ -24,11 +24,11 @@ interface TeamPageProps {
 
 const teamMembers: TeamMember[] = [
     { name: 'MICHAEL', role: 'Narrative & Creative Direction', image: '/profile6.png' },
-    { name: 'SANJAY', role: 'Concept & Visual Development', image: '/profile5.png' },
+    { name: 'SANJAY', role: 'Visual Development', image: '/profile5.png' },
     { name: 'ABHISHEK', role: 'Cinematography & Story Design', image: '/profile4.png' },
-    { name: 'CHARU', role: 'Photography & Tech Innovation', image: '/profile3.png' },
+    { name: 'CHARU', role: 'Technical Direction', image: '/profile3.png' },
     { name: 'NISHA', role: 'Cinematography & Story Design', image: '/profile2.png' },
-    { name: 'ARYAN', role: 'Research & Field Logistics', image: '/profile1.png' },
+    { name: 'ARYAN', role: 'Social Media', image: '/profile1.png' },
 ];
 
 const TeamPage = ({
@@ -61,8 +61,8 @@ const TeamPage = ({
 
       <div className="relative z-10 px-2 md:px-8">
         <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/3 md:pr-8  md:items-center md:mb-0 mt-5">
-            <div className=" md:mb-8 pt-0 md:pt-18 md:text-left" style={isMobile ? {  left: '10px', top: '55px',position:'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
+          <div className="w-full md:w-1/3 md:pr-8  md:items-center md:mb-0 mt-3">
+            <div className=" md:mb-8 pt-0 md:pt-16 md:text-left" style={isMobile ? {  left: '10px', top: '55px',position:'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
               {/* "OUR" text image with responsive sizing */}
              {!isMobile ? (
                 <div className=" " style={{ marginBottom: isMobile ? '4px' : '2px' }}>
@@ -106,7 +106,7 @@ const TeamPage = ({
                    
                   }
                 : {
-                    marginTop: '10%',
+                    marginTop: '5%',
                     width: '100%',
                     paddingBottom: '10px'
                   }
