@@ -89,7 +89,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
         {!isMobile && (
           <>
             <Image
-              src="/bg-logo.png"
+              src="/bg-logo2.png"
               alt="Background decorative logo"
               width={350}
               height={320}
@@ -105,7 +105,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             <Image
               src="/eex.png"
               alt="Descriptive image for main content"
-              width={360}
+              width={320}
               height={230}
               className="absolute eex-responsive"
               style={{ zIndex: 1 }}
