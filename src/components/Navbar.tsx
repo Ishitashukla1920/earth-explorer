@@ -43,7 +43,7 @@ const border = isLightBg ? 'border-amber-100' : 'border-black';
 
 return (
   <nav
-    className={`relative z-50 flex items-center ${
+    className={`relative z-50 flex items-center padding-new ${
       isMobile ? 'justify-between' : 'justify-start'
     } p-2 md:p-8`}
     style={{
