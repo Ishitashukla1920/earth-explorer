@@ -67,8 +67,8 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.5, // Stagger animation for each line
-        duration: 1,
+        delay: i * 1, // Stagger animation for each line
+        duration: 3,
         ease: "easeOut"
       },
     }),
@@ -116,20 +116,23 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
               {/* Desktop: bg-image removed ONLY after text animation completes */}
               {!textAnimationCompleted && (
-                <>
-                  <Image
-                    src="/bg-image.png"
-                    alt="Background for right side"
-                    fill
-                    style={{
-                      objectFit: 'contain',
-                      objectPosition: 'right center',
-                      filter: 'brightness(100%)',
-                      zIndex:0
-                    }}
-                  />
-                </>
-              )}
+  
+    <Image
+      src="/bg-image-4.png"
+      alt="Background for right side"
+      fill
+      style={{
+        objectFit: 'cover',
+        objectPosition: 'right center',
+        filter: 'brightness(100%)',
+        zIndex: 0,
+      }}
+    />
+
+   
+  
+)}
+
 
               {/* Desktop: Text content - fade out when animation completes */}
               <motion.div
