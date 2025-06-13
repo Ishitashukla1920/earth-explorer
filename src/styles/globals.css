@@ -235,7 +235,7 @@ body {
   .eex-responsive {
     width: 350px;
     left: 40px;
-    top: 200px;
+    top: 40%;
     transform: translateY(-25%);
   }
   
@@ -251,18 +251,22 @@ body {
   .standard-container-n {
     padding: 0 80px;
   }
+  .padding-new {
+    padding: 4% 5% 0 7%;
+  }
   
   .eex-responsive {
-    width: 370px;
-    left: 0.5px;
-    top: 110px;
+    width: 450px;
+    left: 7%;
+    top: 35%;
     transform: translateY(-20%);
   }
   
   .bg-logo-responsive {
-    width: 500px;
-    left: 80px;
-    top: 50%;
+    width: 550px;
+    left: 20%;
+    top: 42%;
+    transform: translateX(-20%);
     transform: translateY(-50%);
   }
 }
