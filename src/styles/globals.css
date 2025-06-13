@@ -253,14 +253,14 @@ body {
   }
   
   .eex-responsive {
-    width: 300px;
+    width: 370px;
     left: 0.5px;
     top: 110px;
     transform: translateY(-20%);
   }
   
   .bg-logo-responsive {
-    width: 600px;
+    width: 500px;
     left: 80px;
     top: 50%;
     transform: translateY(-50%);
