@@ -48,20 +48,6 @@ body {
 }
 
 /* Black spacing on sides for screens larger than 1440px */
-@media (min-width: 1441px) {
-  body {
-    background: #000000; /* Black background for the sides */
-  }
-  
-  .standard-container-n {
-    background: #000000; /* Keep the container background black as well */
-    box-shadow: 0 0 0 100vw #000000; /* Extend black background to viewport edges */
-  }
-  .standard-container-n1 {
-   background: #ffffff;
-    box-shadow: 0 0 0 100vw #000000; /* Extend black background to viewport edges */
-  }
-}
 
 /* Default styles for desktop */
 .bg-logo-responsive {
@@ -137,29 +123,7 @@ body {
 }
 
 /* Screens larger than 1440px - Updated EEX positioning */
-@media (min-width: 1441px) {
-  .standard-container-n {
-    padding: 0 40px;
-  }
-  
-  .eex-responsive {
-    width: 420px; /* Fixed width based on your reference */
-    height: auto;
-    left: 7px; /* Adjusted left positioning to match reference */
-    top: 180px;
-    transform: translateY(-30%);
-    max-width: none; /* Remove max-width constraint */
-  }
-  
-  .bg-logo-responsive {
-    width: 500px; /* Fixed width for consistency */
-    height: auto;
-    left: 160px; /* Adjusted positioning */
-    top: 50%;
-    transform: translateY(-50%);
-    max-width: none;
-  }
-}
+
 
 /* Mobile screens (default) */
 @media (max-width: 640px) {
@@ -170,6 +134,9 @@ body {
   .bg-logo-responsive {
    right:-2%;/* Larger max-width for bigger screens */
   }
+  .bg-logo-mobile{
+  right: 0%;
+}
 }
 
 /* Small tablets */
@@ -184,24 +151,36 @@ body {
   .tab-height{
    height:auto;
 }
+.bg-logo-mobile{
+  right: 0%;
+}
 }
 
 /* Large tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .eex-responsive {
-    width: 320px;
-    left: 10px;
-    top: 40%;
-    transform: translateY(-40%);
+  .standard-container-n {
+    padding: 0 40px;
+  }
+  .padding-new {
+    padding: 2% 5% 0 5%;
+  }
+  .padding-new-social{
+    padding: 2% 0 0 10%;
 
   }
-   .bg-logo-responsive {
-    width: 30vw; /* Scale width relative to viewport */
-    height: auto; /* Maintain aspect ratio */
-    left: 10vw; /* Adjust position proportionally */
-    top: 45%;
-    transform: translateY(-50%);
-   /* Prevent excessive scaling */
+  .eex-responsive {
+    width: 320px;
+    left: 3%;
+    top: 38%;
+    transform: translateY(-20%);
+  }
+  
+  .bg-logo-responsive {
+    width: 350px;
+    left: 10%;
+    top: 36%;
+    transform: translateX(-20%);
+    transform: translateY(-30%);
   }
   .tab-height{
   height:auto;
@@ -211,40 +190,83 @@ body {
 
 /* Laptops */
 @media (min-width: 1025px) and (max-width: 1440px) {
-  .eex-responsive {
-    width: 340px;
-    left: 40px;
-    top: 40%;
-    transform: translateY(-40%);
+   .standard-container-n {
+    padding: 0 40px;
+  }
+  .padding-new {
+    padding: 4% 5% 0 7%;
+  }
+  .padding-new-social{
+    padding: 2% 0 0 10%;
 
   }
- .bg-logo-responsive {
-    width: 32vw; /* Slightly smaller scaling for very large screens */
-    height: auto;
-    left: 15vw;
-    top: 45%;
-    transform: translateY(-50%);
-    max-width: 700px; /* Larger max-width for bigger screens */
+  .eex-responsive {
+    width: 320px;
+    left: 7%;
+    top: 30%;
+    transform: translateY(-20%);
+  }
+  
+  .bg-logo-responsive {
+    width: 350px;
+    left: 20%;
+    top: 28%;
+    transform: translateX(-20%);
+    transform: translateY(-30%);
   }
 }
+@media (min-width: 1441px) and (max-width: 1599px){
+  .standard-container-n {
+    padding: 0 40px;
+  }
+  .padding-new {
+    padding: 4% 5% 0 7%;
+  }
+  .padding-new-social{
+    padding: 6% 0 0 10%;
+
+  }
+  .eex-responsive {
+    width: 350px;
+    left: 7%;
+    top: 35%;
+    transform: translateY(-20%);
+  }
+  
+  .bg-logo-responsive {
+    width: 400px;
+    left: 20%;
+    top: 30%;
+    transform: translateX(-20%);
+    transform: translateY(-30%);
+  }
+}
+
 @media (min-width: 1600px) and (max-width: 1920px) {
   .standard-container-n {
     padding: 0 60px;
   }
-  
+   .padding-new {
+    padding: 4% 5% 0 7%;
+  }
+  .padding-new-social{
+    padding: 2% 0 0 10%;
+
+  }
   .eex-responsive {
-    width: 350px;
-    left: 40px;
-    top: 40%;
-    transform: translateY(-25%);
+    width: 420px;
+    left: 7%;
+    top: 35%;
+    transform: translateY(-35%);
+
   }
   
   .bg-logo-responsive {
-    width: 450px;
+    width: 520px;
     left: 20%;
-    transform: translateX(-50%);
-    top: 35%;
-    transform: translateY(-50%);
+    transform: translateX(-20%);
+    top: 30%;
+    transform: translateY(-30%);
   }
 }
 @media (min-width: 1921px) and (max-width: 2560px) {
@@ -254,7 +276,11 @@ body {
   .padding-new {
     padding: 4% 5% 0 7%;
   }
-  
+  .padding-new-social{
+    padding: 8% 0 0 10%;
+
+  }
+
   .eex-responsive {
     width: 450px;
     left: 7%;
