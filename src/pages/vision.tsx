@@ -47,7 +47,7 @@ const VisionPage = () => {
             width={800}
             height={800}
             className="opacity-100  absolute "
-            style={{ left:'100%',top: '15%', right: '0% !important' , zIndex: 0 }}
+            style={{ left:'170%',top: '15%', right: '0% !important' , zIndex: 0 }}
 
           />
     </div>
@@ -90,12 +90,12 @@ const VisionPage = () => {
           /> : <Image
             src="/ourVision Mobile.png"
             alt="Vision Image"
-            width={160}
-            height='100'
-            className="alignItems-start justify-start mt-6 pl-6"/>
+            width={200}
+            height='140'
+            className="alignItems-start justify-start mt-6 mb-6 pl-6"/>
             
            }
-           {isMobile? <div className="mt-6 mb-6 flex justify-start md:justify-start pl-8">
+           {isMobile? <div className="mt-9 mb-6 flex justify-start md:justify-start pl-11">
             <SocialLinks />
           </div> :''}
 
