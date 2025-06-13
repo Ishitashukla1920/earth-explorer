@@ -22,15 +22,20 @@ const VisionPage = () => {
     <Navbar />
 
         {/* Background Logo */}
-        {/* <div className="absolute h-[25vh] w-[100px] bg-logo-responsive z-1">
-          <Image
-            src="/bg-logo.png"
+        <div className="absolute h-[25vh] w-[100px] bg-logo-responsive z-1 ">
+         {!isMobile ? ( ''
+
+  
+          ):( <Image
+            src="/aboutus-logo-bg.png"
             alt="Background Logo"
             width={800}
             height={800}
-            className="object-contain opacity-100 filter -brightness-280 -contrast-100%"
-          />
-        </div> */}
+            className="opacity-100  absolute "
+            style={{ top: '0%', right: '0% !important' , zIndex: 0 }}
+
+          />)}
+        </div>
 
         {/* Main Content */}
       {/* Main Content */}
@@ -53,19 +58,19 @@ const VisionPage = () => {
         </div>
 
         {/* Text Content */}
-        <div className="w-full md:w-1/2 z-10 text-center md:text-left max-w-xl md:px-2 pr-5">
+        <div className="w-full md:w-1/2 z-10 text-center md:text-left max-w-xl md:px-2 ">
            {!isMobile ? <Image
             src="/ourVision Laptop.png"
             alt="Vision Image"
             width={305.5}
             height='150'
-            className="alignItems-center justify-center  px-2 mx-auto mb-4 md:mb-6"
+            className="alignItems-center justify-center px-2 mx-auto mb-4 md:mb-6"
           /> : <Image
             src="/ourVision Mobile.png"
             alt="Vision Image"
             width={220}
             height='120'
-            className="alignItems-start justify-start  pl-6"/>
+            className="alignItems-start justify-start mt-6 pl-6"/>
             
            }
            {isMobile? <div className="mt-6 mb-6 flex justify-start md:justify-start pl-8">

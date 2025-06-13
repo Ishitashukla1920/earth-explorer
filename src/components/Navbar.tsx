@@ -65,8 +65,8 @@ return (
      <Link href='/' >   <Image
           src={isLightBg? '/logoEEx.png' : '/logo-black.png' }
           alt="Logo"
-          width={isMobile ? 47 : 68}
-          height={isMobile ? 47.6 : 86}
+          width={isMobile ? 47 : 58}
+          height={isMobile ? 47.6 : 76}
           className="rounded-full opacity-60"
         />
         </Link>
