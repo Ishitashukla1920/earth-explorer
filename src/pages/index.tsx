@@ -36,22 +36,31 @@ interface TeamPageProps {
 const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen, router }: HomePageProps) => {
   const [textAnimationCompleted, setTextAnimationCompleted] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [showVideo, setShowVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (!isMobile) {
       const timer = setTimeout(() => {
         setTextAnimationCompleted(true);
-      }, 3000); // Increased timeout to allow for text animations
+      }, 4500); // Increased timeout to allow for text animations
       return () => clearTimeout(timer);
     } else {
       // For mobile, also use timer for text animations
       const timer = setTimeout(() => {
         setTextAnimationCompleted(true);
-      }, 3000);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, [isMobile]);
+  useEffect(() => {
+  if (textAnimationCompleted) {
+    const delay = setTimeout(() => {
+      setShowVideo(true);
+    }, 500); // Video delay AFTER text animation completes
+    return () => clearTimeout(delay);
+  }
+}, [textAnimationCompleted]);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -61,16 +70,26 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   };
 
   // Framer Motion variants for text animation
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.5, // Stagger animation for each line
-        duration: 1,
-        ease: "easeOut"
-      },
+ const textVariants = {
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 1,     // Stagger each text element
+      duration: 2,
+      ease: "easeOut",
+    },
+  }),
+  hidden: (i: number) => ({
+    opacity: 0,
+    y: 20,
+    transition: {
+      delay: i * 0.5,   // Optional: add delay for smoother fade-out
+      duration: 2,    // 🔁 slower fade-out
+      ease: "easeInOut",
+    },
+  
+
     }),
   };
 
@@ -116,29 +135,32 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
               {/* Desktop: bg-image removed ONLY after text animation completes */}
               {!textAnimationCompleted && (
-                <>
-                  <Image
-                    src="/bg-image.png"
-                    alt="Background for right side"
-                    fill
-                    style={{
-                      objectFit: 'contain',
-                      objectPosition: 'right center',
-                      filter: 'brightness(100%)',
-                      zIndex:0
-                    }}
-                  />
-                </>
-              )}
+  
+    <Image
+      src="/bg-image-4.png"
+      alt="Background for right side"
+      fill
+      style={{
+        objectFit: 'cover',
+        objectPosition: 'right center',
+        filter: 'brightness(100%)',
+        zIndex: 0,
+      }}
+    />
+
+   
+  
+)}
+
 
               {/* Desktop: Text content - fade out when animation completes */}
               <motion.div
-                className="absolute inset-0 flex flex-col justify-center px-8 z-20"
+                className="absolute inset-0 flex flex-col justify-center px-8 z-47"
                 initial="hidden"
                 animate={textAnimationCompleted ? "hidden" : "visible"}
                 variants={{
-                  hidden: { opacity: 0, transition: { duration: 2 } },
-                  visible: { opacity: 1, transition: { duration: 3.5, staggerChildren: 4 } }
+                  hidden: { opacity: 0, transition: { duration: 5} },
+                  visible: { opacity: 1, transition: { duration: 3.5, staggerChildren: 4,staggerDirection: -1 } }
                 }}
               >
                 <motion.h2
@@ -174,10 +196,10 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 className="absolute inset-0 flex justify-end items-center z-30 bg-transparent"
                 style={{
                   opacity: textAnimationCompleted ? 1 : 0,
-                  transition: 'opacity 0.5s ease-out'
+                  transition: 'opacity 0.2s ease-out'
                 }}
               >
-                <video
+                {showVideo?(<video
                   ref={videoRef}
                   src="https://firebasestorage.googleapis.com/v0/b/invictaa-f3ba8.appspot.com/o/EEX%20Teaser%20With%20end%20logo%20text%20Desktop.mp4?alt=media&token=27a65aae-161d-4d92-b4b7-47e702797b0a"
                   autoPlay
@@ -185,7 +207,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                   loop
                   playsInline
                   className="w-[75%] tab-height object-cover rounded shadow-lg"
-                />
+                />):''}
                 
                 {/* Transparent image on top of the video */}
                 {textAnimationCompleted && (
@@ -287,7 +309,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             </motion.div>
 
             {/* Mobile: video appears below the building image */}
-            <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw]  z-10">
+            <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-4 z-10">
               <video
                 ref={videoRef}
                 src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"

@@ -29,10 +29,7 @@ const Navbar = () => {
 
   const navLinks = [
     // { href: '/', label: 'Home', id: 'home' },
-    { href: '/about', label: 'About', id: 'about' }, 
     { href: '/team', label: 'Team', id: 'team' },
-    { href: '/vision', label: 'Vision', id: 'vision' },
-    { href: '/press', label: 'Press', id: 'press' },
     { href: '/watch', label: 'Watch', id: 'watch' },
   ];
 
