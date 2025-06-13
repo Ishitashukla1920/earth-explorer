@@ -217,6 +217,14 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
     className="w-full h-auto rounded-md"
     priority
   />
+   <div
+        className="
+          absolute inset-0
+          pointer-events-none
+          bg-[linear-gradient(to_bottom,white_9%,rgba(255,255,255,0)_100%)]
+          z-10
+        "
+      ></div>
   
 </div>
 
