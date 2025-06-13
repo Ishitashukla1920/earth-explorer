@@ -51,7 +51,7 @@ const Watch = () => {
   </div>
 </main>
 
-:  <main className="flex flex-col items-center justify-center px-4 pt-16 pb-10 bg-black">
+:  <main className="flex flex-col items-center justify-center px-4 pt-16 pb-10 mt-7 bg-black">
         {/* Heading */}
         <div className="text-center max-w-md mb-6">
           <Image
