@@ -111,10 +111,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               style={{ zIndex: 1 }}
               priority
             />
-             { !isMobile ? ( <div className="padding-new-social  mt-8 pt-8">
-        {/* Custom Social Media Icons */}
-       <SocialLinks />
-      </div>):''}
+        
 
             <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
               {/* Desktop: bg-image removed ONLY after text animation completes */}
