@@ -111,6 +111,11 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               style={{ zIndex: 1 }}
               priority
             />
+             { !isMobile ? ( <div className="padding-new-social  mt-8 pt-8">
+        {/* Custom Social Media Icons */}
+       <SocialLinks />
+      </div>):''}
+
             <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
               {/* Desktop: bg-image removed ONLY after text animation completes */}
               {!textAnimationCompleted && (
@@ -220,7 +225,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
           <div className="w-full flex flex-col items-center text-center space-y-6 z-10 relative">
             {/* Mobile: bg-logo.png positioned on the right side, half visible */}
             <Image
-              src="/bg-logo.png"
+              src="/bg-logo2.png"
               alt="Background decorative logo"
               width={200}
               height={180}
@@ -309,10 +314,11 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
         )}
       </div>
       
-      <div className="relative flex space-x-4 justify-center pt-4 pb-4 z-10">
+      { isMobile ? ( <div className="relative flex space-x-4 justify-center pt-4 pb-4 z-10">
         {/* Custom Social Media Icons */}
        <SocialLinks />
-      </div>
+      </div>):''}
+     
     </div>
    </div>
   );
