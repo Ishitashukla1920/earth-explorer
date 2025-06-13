@@ -26,8 +26,8 @@ const VisionPage = () => {
           {/* DESKTOP: show from md (≥768px) up */}
           {!isMobile && (
             <div className="hidden sm:block
-               absolute top-[2vw] right-[9vw]
-               h-[23vw] w-[23vw]
+               absolute top-[2vw] right-[7vw]
+               h-[27vw] w-[29vw]
                z-20">
               <Image
                 src="/bg-logo4.png"
@@ -63,7 +63,7 @@ const VisionPage = () => {
         {/* Image Section */}
         <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0 mt-10 ">
           <video
-            src="/vision1.mp4"
+            src="/vision2.mp4"
             width={500}
             height={200}
              autoPlay
@@ -98,12 +98,12 @@ const VisionPage = () => {
           </div> :''}
 
            
-          <p  style={isMobile ? { fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "18px",fontWeight:600 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "21px",fontWeight:'bold'} } className={`text-sm md:text-base font-medium mb-4 text-center mt-4 px-4`}>
+          <p  style={isMobile ? { fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "18px",fontWeight:600 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "17px",fontWeight:'bold'} } className={`text-sm md:text-base font-medium mb-2 text-center mt-4 px-4`}>
            
             IF WE SHARE A BIG DREAM, TOGETHER WE CAN <br className="hidden md:block" />
             MAKE IT A REALITY.
           </p>
-          <p   style={isMobile ? { fontFamily: "Raleway, sans-serif",  color: "#92856C",  fontSize: "16px",fontWeight:700 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000", fontSize: "20px",fontWeight:'bold'} } className={`text-xs md:text-sm font-light leading-relaxed text-center mt-8 px-4`}>
+          <p   style={isMobile ? { fontFamily: "Raleway, sans-serif",  color: "#92856C",  fontSize: "16px",fontWeight:700 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000", fontSize: "15px",fontWeight:'bold'} } className={`text-xs md:text-sm font-light leading-relaxed text-center mt-4 px-4`}>
             Our dream is to transform the world from   <br className="hidden md:block" />
             seeing life as ordinary, to seeing life as an <br className="hidden md:block" />
             Extraordinary exploration!
