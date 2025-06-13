@@ -57,7 +57,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   if (textAnimationCompleted) {
     const delay = setTimeout(() => {
       setShowVideo(true);
-    }, 2000); // Video delay AFTER text animation completes
+    }, 500); // Video delay AFTER text animation completes
     return () => clearTimeout(delay);
   }
 }, [textAnimationCompleted]);
