@@ -61,7 +61,7 @@ const TeamPage = ({
 
       <div className="relative z-10 px-2 md:px-8">
         <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/3 md:pr-8  md:items-center md:mb-0 mt-5">
+          <div className="w-full md:w-1/3 md:pr-8  md:items-center md:mb-0 mt-3">
             <div className=" md:mb-8 pt-0 md:pt-18 md:text-left" style={isMobile ? {  left: '10px', top: '55px',position:'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' } : {}}>
               {/* "OUR" text image with responsive sizing */}
              {!isMobile ? (
@@ -106,7 +106,7 @@ const TeamPage = ({
                    
                   }
                 : {
-                    marginTop: '10%',
+                    marginTop: '7%',
                     width: '100%',
                     paddingBottom: '10px'
                   }

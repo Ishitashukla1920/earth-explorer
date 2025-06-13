@@ -22,20 +22,38 @@ const VisionPage = () => {
     <Navbar />
 
         {/* Background Logo */}
-        <div className="absolute h-[25vh] w-[100px] bg-logo-responsive z-1 ">
-         {!isMobile ? ( ''
+      <div className="relative">
+          {/* DESKTOP: show from md (≥768px) up */}
+          {!isMobile && (
+            <div className="hidden sm:block
+               absolute top-[2vw] right-[9vw]
+               h-[23vw] w-[23vw]
+               z-20">
+              <Image
+                src="/bg-logo4.png"
+                alt="Background Logo"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+          )}
 
-  
-          ):( <Image
-            src="/aboutus-logo-bg.png"
+  {/* MOBILE: show below md */}
+  {isMobile && (
+    <div className="absolute h-[25vh] w-[100px] bg-logo-responsive z-1">
+      <Image
+            src="/bg-logo4.png"
             alt="Background Logo"
             width={800}
             height={800}
             className="opacity-100  absolute "
             style={{ top: '0%', right: '0% !important' , zIndex: 0 }}
 
-          />)}
-        </div>
+          />
+    </div>
+  )}
+</div>
+
 
         {/* Main Content */}
       {/* Main Content */}
@@ -44,12 +62,14 @@ const VisionPage = () => {
 
         {/* Image Section */}
         <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0 mt-10 ">
-          <Image
-            src="/visionpage.png"
-            alt="Vision Image"
-            width={600}
-            height={300}
-            className=""
+          <video
+            src="/vision1.mp4"
+            width={500}
+            height={200}
+             autoPlay
+              loop
+              muted
+              className="w-full h-auto max-w-[600px] max-h-[180px] object-cover bg-white"
           />
          {!isMobile ?  <div className="mt-6 flex justify-center md:justify-start">
             <SocialLinks />
