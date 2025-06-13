@@ -47,7 +47,7 @@ const VisionPage = () => {
             width={800}
             height={800}
             className="opacity-100  absolute "
-            style={{ left:'170%',top: '15%', right: '0% !important' , zIndex: 0 }}
+            style={{ left:'130%',top: '15%', right: '0% !important' , zIndex: 0 }}
 
           />
     </div>
