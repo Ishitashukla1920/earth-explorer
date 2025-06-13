@@ -258,6 +258,7 @@ body {
     left: 7%;
     top: 35%;
     transform: translateY(-35%);
+
   }
   
   .bg-logo-responsive {
@@ -279,6 +280,7 @@ body {
     padding: 8% 0 0 10%;
 
   }
+
   .eex-responsive {
     width: 450px;
     left: 7%;
