@@ -40,14 +40,14 @@ const VisionPage = () => {
 
   {/* MOBILE: show below md */}
   {isMobile && (
-    <div className="absolute h-[25vh] w-[100px] bg-logo-responsive z-1">
+    <div className="absolute h-[45vh] w-[160px] mt-5 bg-logo-responsive-2 z-1">
       <Image
-            src="/bg-logo4.png"
+            src="/bg-logo5.png"
             alt="Background Logo"
             width={800}
             height={800}
             className="opacity-100  absolute "
-            style={{ top: '0%', right: '0% !important' , zIndex: 0 }}
+            style={{ left:'100%',top: '15%', right: '0% !important' , zIndex: 0 }}
 
           />
     </div>
@@ -69,12 +69,14 @@ const VisionPage = () => {
              autoPlay
               loop
               muted
-              className="w-full h-auto max-w-[600px] max-h-[180px] object-cover bg-white"
+              className="w-full h-auto max-w-[600px] max-h-[180px] object-cover bg-white ${isMobile ? 'mt-20 -mb-10' : ''}"
           />
          {!isMobile ?  <div className="mt-6 flex justify-center md:justify-start">
             <SocialLinks />
-          </div> :''}
-          
+          </div> :<div className="mt-10 -mb-10 flex justify-start md:justify-start pl-25">
+            <SocialLinks />
+          </div> }
+         
         </div>
 
         {/* Text Content */}
@@ -88,8 +90,8 @@ const VisionPage = () => {
           /> : <Image
             src="/ourVision Mobile.png"
             alt="Vision Image"
-            width={220}
-            height='120'
+            width={160}
+            height='100'
             className="alignItems-start justify-start mt-6 pl-6"/>
             
            }
@@ -98,15 +100,16 @@ const VisionPage = () => {
           </div> :''}
 
            
-          <p  style={isMobile ? { fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "18px",fontWeight:600 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "17px",fontWeight:'bold'} } className={`text-sm md:text-base font-medium mb-2 text-center mt-4 px-4`}>
+          <p  style={isMobile ? { fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "18px",fontWeight:600 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000",  fontSize: "18px",fontWeight:'bold'} } className={`font-medium mb-2 text-center mt-4 ${isMobile ? "text-base px-6 mt-12" : "text-sm md:text-base px-8"}`}>
            
             IF WE SHARE A BIG DREAM, TOGETHER WE CAN <br className="hidden md:block" />
             MAKE IT A REALITY.
           </p>
-          <p   style={isMobile ? { fontFamily: "Raleway, sans-serif",  color: "#92856C",  fontSize: "16px",fontWeight:700 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000", fontSize: "15px",fontWeight:'bold'} } className={`text-xs md:text-sm font-light leading-relaxed text-center mt-4 px-4`}>
+          <p   style={isMobile ? { fontFamily: "Raleway, sans-serif",  color: "#92856C",  fontSize: "14px",fontWeight:500 } : {fontFamily: "Aboreto, Sans-serif",  color: "#000", fontSize: "15px",fontWeight:'bold'} } className={`font-light leading-relaxed text-center mt-4 ${isMobile ? "text-sm px-6 -mb-10" : "text-xs md:text-sm px-8"}`}>
             Our dream is to transform the world from   <br className="hidden md:block" />
-            seeing life as ordinary, to seeing life as an <br className="hidden md:block" />
-            Extraordinary exploration!
+             seeing life as ordinary,to seeing life as an <br className="hidden md:block" />
+              Extraordinary  exploration! 
+            
           </p>
 
           {/* Social Icons */}

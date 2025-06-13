@@ -280,4 +280,11 @@ body {
     transform: translateX(-20%);
     transform: translateY(-50%);
   }
+  .bg-logo-responsive-2 {
+    width: 450px;
+    right:0%;
+    top: 42%;
+    transform: translateX(-20%);
+    transform: translateY(-50%);
+  }
 }
