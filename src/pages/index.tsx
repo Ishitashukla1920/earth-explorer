@@ -309,7 +309,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             </motion.div>
 
             {/* Mobile: video appears below the building image */}
-            <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw]  z-10">
+            <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-4 z-10">
               <video
                 ref={videoRef}
                 src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"
