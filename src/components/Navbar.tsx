@@ -38,8 +38,8 @@ const Navbar = () => {
 
 // Determine background and active link color before returning JSX
 const isLightBg = ['home', 'team','watch'].includes(currentPage);
-const linkTextColor = !isLightBg ? 'text-black' : 'text-amber-100';
-const border = isLightBg ? 'border-amber-100' : 'border-black';
+const linkTextColor = !isLightBg ? 'text-black' : 'text-white';
+const border = isLightBg ? 'border-white' : 'border-black';
 
 return (
   <nav
@@ -67,7 +67,7 @@ return (
           alt="Logo"
           width={isMobile ? 50 : 68}
           height={isMobile ? 50.6 : 86}
-          className="rounded-full"
+          className="rounded-full opacity-60"
         />
         </Link>
       </div>
@@ -76,7 +76,10 @@ return (
       {!isMobile && navLinks.map((link) => (
   <Link href={link.href} key={link.id}>
     <button
-      className={`text-sm sm:text-base md:text-lg font-light cursor-pointer ${linkTextColor} ${
+      style={{
+                  fontFamily: "Aboreto, Sans-serif",
+                }}
+      className={`text-sm sm:text-base md:text-lg font-light cursor-pointer opacity-65 ${linkTextColor} ${
         currentPage === link.id ? 'border-b-2 ${border} pb-1' : ''
       }`}
     >
@@ -91,7 +94,7 @@ return (
       {isMobile && (
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className={`text-${!['home', 'team'].includes(currentPage)? 'black' : 'amber-100' }  focus:outline-none z-50}`}
+          className={`text-${!['home', 'team'].includes(currentPage)? 'black' : 'white' }  focus:outline-none z-50}`}
         >
           {menuOpen ? <X size={32}  /> : <Menu size={32} color={!['home', 'team','watch'].includes(currentPage)? 'black' : 'white' } />}
         </button>
@@ -104,9 +107,12 @@ return (
             <Link key={link.id} href={link.href}>
               <button
                 onClick={() => setMenuOpen(false)} // No need to manually set currentPage
-                className={`text-lg py-3 w-full text-center ${
+                className={`text-lg py-3 w-full text-center opacity-50 ${
                   currentPage === link.id ? 'bg-gray-100 text-black' : 'text-black'
                 } hover:bg-gray-200 transition-colors border-b border-gray-300`}
+                style={{
+                  fontFamily: "Aboreto, Sans-serif",
+                }}
               >
                 {link.label}
               </button>
