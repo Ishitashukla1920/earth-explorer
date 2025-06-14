@@ -151,11 +151,19 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
    
   
 )}
-
+              {textAnimationCompleted? <button
+                  onClick={toggleMute}
+                  className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-99"
+                >
+                  {isMuted
+                    ? <VolumeX className="w-5 h-5 text-white" />
+                    : <Volume2 className="w-5 h-5 text-white" />}
+                </button>
+                :null}
 
               {/* Desktop: Text content - fade out when animation completes */}
               <motion.div
-                className="absolute inset-0 flex flex-col justify-center px-8 z-47"
+                className="absolute inset-0 flex flex-col justify-center px-8 z-70"
                 initial="hidden"
                 animate={textAnimationCompleted ? "hidden" : "visible"}
                 variants={{
@@ -193,7 +201,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
 
               {/* Desktop: video fades in when text animation completes */}
               <div
-                className="absolute inset-0 flex justify-end items-center z-30 bg-transparent"
+                className="absolute inset-0 flex justify-end items-center z-10 bg-transparent"
                 style={{
                   opacity: textAnimationCompleted ? 1 : 0,
                   transition: 'opacity 0.2s ease-out'
@@ -201,16 +209,16 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               >
                 {showVideo?(<video
                   ref={videoRef}
-                  src="https://firebasestorage.googleapis.com/v0/b/invictaa-f3ba8.appspot.com/o/EEX%20Teaser%20With%20end%20logo%20text%20Desktop.mp4?alt=media&token=27a65aae-161d-4d92-b4b7-47e702797b0a"
+                  src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/lv_0_20250613230758.mp4?alt=media&token=0a98294a-1147-4524-bdf1-2485d2d52766"
                   autoPlay
                   muted={isMuted}
                   loop
                   playsInline
                   className="w-[75%] tab-height object-cover rounded shadow-lg"
                 />):''}
-                
+               
                 {/* Transparent image on top of the video */}
-                {textAnimationCompleted && (
+                {textAnimationCompleted && ( 
                   <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
                     <Image
                       src="/transparent.png"
@@ -219,21 +227,14 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                       style={{
                         objectFit: 'cover',
                         objectPosition: '20% center',
-                        zIndex: 45,
+                        zIndex: 2,
                       }}
                       priority
                     />
                   </div>
                 )}
 
-                <button
-                  onClick={toggleMute}
-                  className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40"
-                >
-                  {isMuted
-                    ? <VolumeX className="w-5 h-5 text-white" />
-                    : <Volume2 className="w-5 h-5 text-white" />}
-                </button>
+                
               </div>
             </div>
           </>
@@ -309,7 +310,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             </motion.div>
 
             {/* Mobile: video appears below the building image */}
-            <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-4 z-10">
+            <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-3 z-10">
               <video
                 ref={videoRef}
                 src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"
