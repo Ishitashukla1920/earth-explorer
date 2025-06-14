@@ -40,9 +40,8 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   const videoRef = useRef<HTMLVideoElement>(null);
   const [istoggleActive, setIstoggleActive] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-   // Calculate delay based on isMobile
-const imageFadeDelay = isMobile ? 3.5 : 4; // seconds
-const imageFadeDuration = 1; // seconds
+const imageFadeDelay = isMobile ? 3.5 : 4; 
+const imageFadeDuration = 1; 
 
   const handleVideoLoaded = () => {
     setIsVideoLoaded(true);
@@ -174,7 +173,7 @@ const imageFadeDuration = 1; // seconds
       alt="Background for right side"
       fill
       style={{
-        objectFit: 'cover',
+        objectFit: 'contain',
         objectPosition: 'right center',
         filter: 'brightness(100%)',
         zIndex: 0,
