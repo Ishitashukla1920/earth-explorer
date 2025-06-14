@@ -38,6 +38,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   const [isMuted, setIsMuted] = useState(true);
   const [showVideo, setShowVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [istoggleActive, setIstoggleActive]=useState(false);
 
   useEffect(() => {
     if (!isMobile) {
@@ -67,6 +68,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
       videoRef.current.muted = !videoRef.current.muted;
       setIsMuted(videoRef.current.muted);
     }
+    setIstoggleActive(true);
   };
 
   // Framer Motion variants for text animation
@@ -151,10 +153,16 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
    
   
 )}
-              {textAnimationCompleted? <button
-                  onClick={toggleMute}
-                  className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-99"
-                >
+              {textAnimationCompleted?  <button
+    onClick={toggleMute}
+    className={`
+      absolute bottom-4 right-4 w-12 h-12 rounded-full 
+      bg-black/50 border border-white/30 
+      flex items-center justify-center 
+      hover:bg-black/70 transition-colors cursor-pointer z-99
+      ${!istoggleActive ? 'animate-bounce' : ''}
+    `}
+  >
                   {isMuted
                     ? <VolumeX className="w-5 h-5 text-white" />
                     : <Volume2 className="w-5 h-5 text-white" />}
@@ -323,7 +331,8 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
               />
               <button
                 onClick={toggleMute}
-                className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40"
+                className={`absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40
+                ${!istoggleActive ? 'animate-bounce' : ''}`}
               >
                 {isMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
               </button>
