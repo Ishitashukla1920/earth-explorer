@@ -39,6 +39,11 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   const [showVideo, setShowVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [istoggleActive, setIstoggleActive]=useState(false);
+   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+   const handleVideoLoaded = () => {
+    setIsVideoLoaded(true);
+  };
 
   useEffect(() => {
     if (!isMobile) {
@@ -171,7 +176,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
 
               {/* Desktop: Text content - fade out when animation completes */}
               <motion.div
-                className="absolute inset-0 flex flex-col justify-center px-8 z-70"
+                className="absolute inset-0 flex flex-col justify-center px-8 ml-3 z-70"
                 initial="hidden"
                 animate={textAnimationCompleted ? "hidden" : "visible"}
                 variants={{
@@ -215,15 +220,30 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                   transition: 'opacity 0.2s ease-out'
                 }}
               >
-                {showVideo?(<video
-                  ref={videoRef}
-                  src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/lv_0_20250613230758.mp4?alt=media&token=0a98294a-1147-4524-bdf1-2485d2d52766"
-                  autoPlay
-                  muted={isMuted}
-                  loop
-                  playsInline
-                  className="w-[75%] tab-height object-cover rounded shadow-lg"
-                />):''}
+                {showVideo && (
+        <>
+          {!isVideoLoaded && textAnimationCompleted? (
+           <div className="absolute right-[0.6%] flex flex-col items-center justify-center w-[75%] h-full bg-black/40 z-20 rounded shadow-lg space-y-3">
+  <div className="flex flex-col items-center space-y-2">
+    <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
+    <div className="text-amber-100 text-lg font-medium">Exploring...</div>
+  </div>
+</div>
+          ):null}
+
+          <video
+            ref={videoRef}
+            src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/lv_0_20250613230758.mp4?alt=media&token=0a98294a-1147-4524-bdf1-2485d2d52766"
+            autoPlay
+            preload="auto"
+            muted={isMuted}
+            loop
+            playsInline
+            onLoadedData={handleVideoLoaded}
+            className="w-[75%] tab-height object-cover rounded shadow-lg"
+          />
+        </>
+      )}
                
                 {/* Transparent image on top of the video */}
                 {textAnimationCompleted && ( 
@@ -318,27 +338,43 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
             </motion.div>
 
             {/* Mobile: video appears below the building image */}
-            <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-3 z-10">
-              <video
-                ref={videoRef}
-                src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"
-                autoPlay
-                muted={isMuted}
-                loop
-                playsInline
-                webkit-playsinline="true"
-                className="w-full h-full object-cover rounded shadow-lg"
-              />
-              <button
-                onClick={toggleMute}
-                className={`absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40
-                ${!istoggleActive ? 'animate-bounce' : ''}`}
-              >
-                {isMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
-              </button>
-              {/* Overlay on video */}
-              <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10"></div>
-            </div>
+           <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-3 z-10">
+  {/* Loader Overlay for mobile */}
+  {!isVideoLoaded && textAnimationCompleted && (
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-20 rounded shadow-lg space-y-3">
+      <div className="flex flex-col items-center space-y-2">
+        <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
+        <div className="text-amber-100 text-lg font-medium">Exploring...</div>
+      </div>
+    </div>
+  )}
+
+  {/* Video */}
+  <video
+    ref={videoRef}
+    src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"
+    autoPlay
+    muted={isMuted}
+    loop
+    playsInline
+    preload="auto"
+    onLoadedData={handleVideoLoaded}
+    className="w-full h-full object-cover rounded shadow-lg"
+  />
+
+  {/* Mute Toggle Button */}
+  <button
+    onClick={toggleMute}
+    className={`absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40
+    ${!istoggleActive ? 'animate-bounce' : ''}`}
+  >
+    {isMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
+  </button>
+
+  {/* Top Gradient Overlay */}
+  <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10"></div>
+</div>
+
           </div>
         )}
       </div>
