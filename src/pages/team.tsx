@@ -106,7 +106,7 @@ const TeamPage = ({
                    
                   }
                 : {
-                    marginTop: '5%',
+                    marginTop: '2%',
                     width: '100%',
                     paddingBottom: '10px'
                   }
