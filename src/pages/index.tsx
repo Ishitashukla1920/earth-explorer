@@ -242,6 +242,22 @@ const imageFadeDuration = 1;
                   </motion.p>
                 </motion.div>
 
+                
+                  {/* Transparent image on top of the video */}
+                    <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
+                      <Image
+                        src="/transparent.png"
+                        alt="Video Overlay"
+                        fill
+                        style={{
+                          objectFit: 'cover',
+                          objectPosition: '20% center',
+                          zIndex: 2,
+                        }}
+                        priority
+                      />
+                    </div>
+
                 {/* Desktop: video fades in when text animation completes */}
                 <div
                   className="absolute inset-0 flex justify-end items-center z-10 bg-transparent"
