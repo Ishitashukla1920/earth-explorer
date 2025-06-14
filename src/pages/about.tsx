@@ -23,6 +23,25 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
       },
     }),
   };
+  const [screenSize, setScreenSize] = useState('desktop');
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setScreenSize('mobile');
+      } else if (width>768 && width < 1024) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('desktop');
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  const isTablet = screenSize === 'tablet';
+  const isDesktop = screenSize === 'desktop';
 
   return (
     <div className="standard-container">
@@ -32,41 +51,118 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
 
         <Navbar />
 
+           {/* Background Logo */}
+                <div className="relative">
+                  {/* DESKTOP: show from lg (≥1024px) up */}
+                  {isDesktop && (
+                    <div className="absolute top-[12vw] left-[5vw] h-[27vw] w-[29vw] z-20">
+                      <Image
+                        src="/bg-logo4.png"
+                        alt="Background Logo"
+                        fill
+                        style={{ objectFit: 'contain' }}
+                      />
+                    </div>
+                  )}
+        
+                  {/* TABLET: show for md to lg (768px-1023px) */}
+                  {isTablet && (
+                    <div className="absolute top-[30vw] left-[8vw] h-[35vw] w-[37vw] z-20">
+                      <Image
+                        src="/bg-logo4.png"
+                        alt="Background Logo"
+                        fill
+                        style={{ objectFit: 'contain' }}
+                      />
+                    </div>
+                  )}
+        
+                  {/* MOBILE: show below md (<768px) */}
+                  {isMobile && (
+                    <div className="absolute h-[45vh] w-[100vw] mt-5 bg-logo-responsive-2 z-1">
+                      <Image
+                        src="/bg-logo5.png"
+                        alt="Background Logo"
+                        width={800}
+                        height={800}
+                        className="opacity-100 absolute"
+                        style={{  top: '15%', right: '0px', zIndex: 0 , width: '160px', height: 'auto',}}
+                      />
+                    </div>
+                  )}
+                </div>
+
         <div className={`relative ${isMobile ? 'pt-12' : 'min-h-[calc(100vh-120px)] flex items-center'}`}>
+          
+          {isTablet ? <div className="w-1/3 pb-4 relative ">
+               <div className="" >
+                <Image
+                src="/aboutus-removebg-preview.png"
+                alt="ABOUT US"
+                width={220}
+                height={200}
+                className=""
+                style={{ 
+                  zIndex: 10,
+                  marginTop:'-50%',
+                  transform: 'translateY(50%)',
+                  marginLeft: '20%',
+                 
+                 }}
+                priority
+              />
+              </div>
+
+              
+                <div className="justify-start md:justify-start" 
+                style={{
+                  marginTop: '40%',
+                  marginLeft: '20%',}}>  
+            <SocialLinks />
+          </div> </div>  :''}
+       
+
           {/* === DESKTOP VIEW === */}
+          
           {!isMobile && (
             <>
               {/* Background Logo */}
         
 
               {/* ABOUT US Image */}
-             <div className="w-1/3 justify-start items-start pb-4 relative z-10">
-               <div className="inline-block w-[120px] sm:w-[160px] md:w-[180px] lg:w-[240px] xl:w-[300px] pl-8" >
+             <div className="w-1/3 pb-4 relative ">
+               <div className="" >
                 <Image
                 src="/aboutus-removebg-preview.png"
                 alt="ABOUT US"
-                width={360}
+                width={320}
                 height={230}
                 className=""
                 style={{ 
                   zIndex: 10,
-                  marginTop:'-200%',
-                  transform: 'translateY(200%)',
+                  marginTop:'-50%',
+                  transform: 'translateY(50%)',
+                  marginLeft: '15%',
                  
                  }}
                 priority
               />
               </div>
-                {!isMobile? (<div className="mt-6 mb-6  justify-start md:justify-start pl-8" style={{marginTop: '-100px'}}>  
+
+              
+               <div className="justify-start md:justify-start" 
+                style={{
+                  marginTop: '25%',
+                  marginLeft: '20%',}}>  
             <SocialLinks />
-          </div>) :''}
+          </div>
              </div>
 
               {/* Text on Right */}
               <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
                 {!textAnimationCompleted && (
                   <Image
-                    src="/aboutbg-image.png"
+                    src="/parth.gif"
                     alt="Background Right"
                     fill
                     style={{
@@ -164,11 +260,22 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                   width={220}
                   height={130}
                   className="w-full h-auto justify-start items-start"
+                  style={{ 
+                  zIndex: 10,
+                  marginTop:'-10%',
+                  transform: 'translateY(10%)',
+                  marginLeft: '5%',
+                 }}
                   priority
                 />
               </div>
-              <div className="mt-6 mb-6  justify-start md:justify-start pl-4">
-            <SocialLinks />
+              <div className="mt-6 justify-start md:justify-start" 
+              style={{
+                  marginTop: '10%',
+                  marginLeft: '5%',
+                  marginBottom: '20%',
+                  }}>
+            <SocialLinks  />
           </div>
 
               {/* Text */}
@@ -182,24 +289,24 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                 }}
               >
                 <motion.h2
-                  className="mb-1 tracking-wide text-[14px] leading-tight"
-                  style={{ fontFamily: "Aboreto, Sans-serif", fontWeight: 'bold',fontSize: '18px' }}
+                  className="mb-1 tracking-wide text-[23px] leading-tight"
+                  style={{ fontFamily: "Aboreto, Sans-serif", fontWeight: 'bold',fontSize: '22px' }}
                   variants={textVariants}
                   custom={0}
                 >
                   EXPLORING THE EARTH'S SURFACE
                 </motion.h2>
                 <motion.h3
-                  className="mb-3 tracking-wide text-[14px] leading-tight"
-                  style={{ fontFamily: "Aboreto, Sans-serif", fontWeight: 'bold',fontSize: '15px' }}
+                  className="mb-3 tracking-wide text-[23px] leading-tight"
+                  style={{ fontFamily: "Aboreto, Sans-serif", fontWeight: 'bold',fontSize: '22px' }}
                   variants={textVariants}
                   custom={1}
                 >
                   AWAKENING THE SPIRIT WITHIN.
                 </motion.h3>
                 <motion.p
-                  className="text-[12px] leading-relaxed text-[#5f5f5f] px-2 mb-4"
-                  style={{ fontFamily: "Raleway, sans-serif", fontWeight: 'bold', fontSize: '15px', color: "#92856C" }}
+                  className=" leading-relaxed  px-4 mb-4"
+                  style={{ fontFamily: "Raleway, sans-serif", fontWeight: 'semibold', fontSize: '18px', color: "#92856C" }}
                   variants={textVariants}
                   custom={2}
                 >
@@ -210,11 +317,11 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
               {/* Bottom Image (e.g., Parthenon) */}
               <div className="w-full relative z-10">
   <Image
-    src="/aboutbg-image.png" // Replace with your actual filename
+    src="/parth.gif" // Replace with your actual filename
     alt="Sacred Site"
     width={350}
     height={200}
-    className="w-full h-auto rounded-md"
+    className="w-full h-auto "
     priority
   />
    <div
