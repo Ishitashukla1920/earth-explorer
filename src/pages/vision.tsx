@@ -26,7 +26,7 @@ const VisionPage = () => {
           {/* DESKTOP: show from md (≥768px) up */}
           {!isMobile && (
             <div className="hidden sm:block
-               absolute top-[2vw] right-[7vw]
+               absolute top-[2vw] right-[2vw]
                h-[27vw] w-[29vw]
                z-20">
               <Image
@@ -61,7 +61,7 @@ const VisionPage = () => {
         {/* Optional Watermark Background */}
 
         {/* Image Section */}
-        <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0 mt-10 ">
+        <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0 -mt-5 ">
           <video
             src="/vision3.mp4"
             width={500}
@@ -71,7 +71,7 @@ const VisionPage = () => {
               muted
               className="w-full h-auto max-w-[600px] max-h-[300px] object-cover bg-white mb-7 ${isMobile ? 'mt-20 -mb-10' : ''}"
           />
-         {!isMobile ?  <div className="mt-6 flex justify-center md:justify-start">
+         {!isMobile ?  <div className="mt-6 ml-7 flex justify-center md:justify-start">
             <SocialLinks />
           </div> :<div className="mt-10 -mb-10 flex justify-start md:justify-start pl-25">
             <SocialLinks />
@@ -80,13 +80,13 @@ const VisionPage = () => {
         </div>
 
         {/* Text Content */}
-        <div className="w-full md:w-1/2 z-10 text-center md:text-left max-w-xl md:px-2 ">
+        <div className="w-full md:w-1/2 z-10 text-center -mt-8 md:text-left md:-ml-16 max-w-xl md:px-2 ">
            {!isMobile ? <Image
             src="/ourVision Laptop.png"
             alt="Vision Image"
-            width={305.5}
+            width={270}
             height='150'
-            className="alignItems-center justify-center px-2 mx-auto mb-4 md:mb-6"
+            className="alignItems-center justify-center px-2  mx-auto mb-4 md:mb-6"
           /> : <Image
             src="/ourVision Mobile.png"
             alt="Vision Image"
