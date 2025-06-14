@@ -38,10 +38,13 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   const [isMuted, setIsMuted] = useState(true);
   const [showVideo, setShowVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [istoggleActive, setIstoggleActive]=useState(false);
-   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [istoggleActive, setIstoggleActive] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+   // Calculate delay based on isMobile
+const imageFadeDelay = isMobile ? 3.5 : 4; // seconds
+const imageFadeDuration = 1; // seconds
 
-   const handleVideoLoaded = () => {
+  const handleVideoLoaded = () => {
     setIsVideoLoaded(true);
   };
 
@@ -59,14 +62,13 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
       return () => clearTimeout(timer);
     }
   }, [isMobile]);
+
+
   useEffect(() => {
-  if (textAnimationCompleted) {
-    const delay = setTimeout(() => {
-      setShowVideo(true);
-    }, 500); // Video delay AFTER text animation completes
-    return () => clearTimeout(delay);
-  }
-}, [textAnimationCompleted]);
+    if (textAnimationCompleted) {
+      setShowVideo(true); // Set immediately when text animation completes
+    }
+  }, [textAnimationCompleted]);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -77,71 +79,71 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
   };
 
   // Framer Motion variants for text animation
- const textVariants = {
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 1,     // Stagger each text element
-      duration: 2,
-      ease: "easeOut",
-    },
-  }),
-  hidden: (i: number) => ({
-    opacity: 0,
-    y: 20,
-    transition: {
-      delay: i * 0.5,   // Optional: add delay for smoother fade-out
-      duration: 2,    // 🔁 slower fade-out
-      ease: "easeInOut",
-    },
-  
+  const textVariants = {
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 1,     // Stagger each text element
+        duration: 2,
+        ease: "easeOut",
+      },
+    }),
+    hidden: (i: number) => ({
+      opacity: 0,
+      y: 20,
+      transition: {
+        delay: i * 0.5,   // Optional: add delay for smoother fade-out
+        duration: 2,    // 🔁 slower fade-out
+        ease: "easeInOut",
+      },
+
 
     }),
   };
 
   return (
     <div className="standard-container">
-    <div className="min-h-screen bg-black text-white relative overflow-hidden standard-container">
-      {/* Top to Bottom Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div>
+      <div className="min-h-screen bg-black text-white relative overflow-hidden standard-container">
+        {/* Top to Bottom Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div>
 
-      {/* Navigation */}
-     <Navbar />
+        {/* Navigation */}
+        <Navbar />
 
-      {/* Main Content Area */}
-      <div className={`relative ${isMobile ? 'pt-12 ' : 'min-h-[calc(100vh-120px)] flex items-center'}`}>
-        {/* ====== DESKTOP SPECIFIC LAYOUT ====== */}
-        {!isMobile && (
-          <>
-            <Image
-              src="/bg-logo2.png"
-              alt="Background decorative logo"
-              width={350}
-              height={320}
-              className="absolute bg-logo-responsive"
-              objectFit='center'
-              style={{
-                alignItems:'center',
-                zIndex: 5,
-                filter: 'grayscale(100%) brightness(200%)',
-              }}
-              priority
-            />
-            <Image
-              src="/eex.png"
-              alt="Descriptive image for main content"
-              width={320}
-              height={230}
-              className="absolute eex-responsive"
-              style={{ zIndex: 1 }}
-              priority
-            />
-        
+        {/* Main Content Area */}
+        <div className={`relative ${isMobile ? 'pt-12 ' : 'min-h-[calc(100vh-120px)] flex items-center'}`}>
+          {/* ====== DESKTOP SPECIFIC LAYOUT ====== */}
+          {!isMobile && (
+            <>
+              <Image
+                src="/bg-logo2.png"
+                alt="Background decorative logo"
+                width={350}
+                height={320}
+                className="absolute bg-logo-responsive"
+                objectFit='center'
+                style={{
+                  alignItems: 'center',
+                  zIndex: 5,
+                  filter: 'grayscale(100%) brightness(200%)',
+                }}
+                priority
+              />
+              <Image
+                src="/eex.png"
+                alt="Descriptive image for main content"
+                width={320}
+                height={230}
+                className="absolute eex-responsive"
+                style={{ zIndex: 1 }}
+                priority
+              />
 
-            <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
-              {/* Desktop: bg-image removed ONLY after text animation completes */}
-              {!textAnimationCompleted && (
+
+              <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
+                {/* Desktop: bg-image removed ONLY after text animation completes */}
+                {/* {!textAnimationCompleted && (
   
     <Image
       src="/bg-image-4.png"
@@ -153,49 +155,203 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
         filter: 'brightness(100%)',
         zIndex: 0,
       }}
-    />
+    /> */}
+               
 
-   
-  
+{!textAnimationCompleted && (
+  <motion.div
+    initial={{ opacity: 1 }}
+    animate={{ opacity: 0 }}
+    transition={{
+      duration: imageFadeDuration,
+      ease: "easeInOut",
+      delay: imageFadeDelay
+    }}
+    className="absolute inset-0"
+  >
+    <Image
+      src="/bg-image-4.png"
+      alt="Background for right side"
+      fill
+      style={{
+        objectFit: 'cover',
+        objectPosition: 'right center',
+        filter: 'brightness(100%)',
+        zIndex: 0,
+      }}
+    />
+  </motion.div>
 )}
-              {textAnimationCompleted?  <button
-    onClick={toggleMute}
-    className={`
+
+
+
+
+
+
+
+                {textAnimationCompleted ? <button
+                  onClick={toggleMute}
+                  className={`
       absolute bottom-4 right-4 w-12 h-12 rounded-full 
       bg-black/50 border border-white/30 
       flex items-center justify-center 
       hover:bg-black/70 transition-colors cursor-pointer z-99
       ${!istoggleActive ? 'animate-bounce' : ''}
     `}
-  >
+                >
                   {isMuted
                     ? <VolumeX className="w-5 h-5 text-white" />
                     : <Volume2 className="w-5 h-5 text-white" />}
                 </button>
-                :null}
+                  : null}
 
-              {/* Desktop: Text content - fade out when animation completes */}
+                {/* Desktop: Text content - fade out when animation completes */}
+                <motion.div
+                  className="absolute inset-0 flex flex-col justify-center px-8 ml-3 z-70"
+                  initial="hidden"
+                  animate={textAnimationCompleted ? "hidden" : "visible"}
+                  variants={{
+                    hidden: { opacity: 0, transition: { duration: 1 } },
+                    visible: { opacity: 1, transition: { duration: 3.5, staggerChildren: 4, staggerDirection: -1 } }
+                  }}
+                >
+                  <motion.h2
+                    className="text-lg md:text-xl lg:text-2xl mb-2 tracking-wide"
+                    style={{ fontFamily: "Aboreto, Sans-serif" }}
+                    variants={textVariants}
+                    custom={0}
+                  >
+                    AN ANCIENT SECRET SO POWERFUL...
+                  </motion.h2>
+
+                  <motion.h3
+                    className="text-lg md:text-xl lg:text-2xl mb-6 -ml-2 tracking-wide"
+                    style={{ fontFamily: 'Aboreto' }}
+                    variants={textVariants}
+                    custom={1}
+                  >
+                    IT GAVE RISE TO MODERN CIVILIZATION.
+                  </motion.h3>
+
+                  <motion.p
+                    className="text-sm md:text-base mb-8 ml-5 -mt-2 tracking-wide max-w-md text-[#E9D6A9]"
+                    style={{ fontFamily: 'Raleway' }}
+                    variants={textVariants}
+                    custom={2}
+                  >
+                    Join us as we rediscover the mystery of earth energy.
+                  </motion.p>
+                </motion.div>
+
+                {/* Desktop: video fades in when text animation completes */}
+                <div
+                  className="absolute inset-0 flex justify-end items-center z-10 bg-transparent"
+                  style={{
+                    opacity: textAnimationCompleted ? 1 : 0,
+                    transition: 'opacity 0.2s ease-out'
+                  }}
+                >
+                  {showVideo && (
+                    <>
+                      {!isVideoLoaded && textAnimationCompleted ? (
+                        <div className="absolute right-[0.6%] flex flex-col items-center justify-center w-[75%] h-full bg-black/40 z-20 rounded shadow-lg space-y-3">
+                          <div className="flex flex-col items-center space-y-2">
+                            <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin opacity-75"></div>
+                            <div className="text-amber-100 text-lg font-Aboreto opacity-75">Exploring...</div>
+                          </div>
+                        </div>
+                      ) : null}
+
+                      <video
+                        ref={videoRef}
+                        src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/lv_0_20250613230758.mp4?alt=media&token=0a98294a-1147-4524-bdf1-2485d2d52766"
+                        autoPlay
+                        preload="auto"
+                        muted={isMuted}
+                        loop
+                        playsInline
+                        onLoadedData={handleVideoLoaded}
+                        className="w-[75%] tab-height object-cover rounded shadow-lg"
+                      />
+                    </>
+                  )}
+
+                  {/* Transparent image on top of the video */}
+                  {textAnimationCompleted && (
+                    <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
+                      <Image
+                        src="/transparent.png"
+                        alt="Video Overlay"
+                        fill
+                        style={{
+                          objectFit: 'cover',
+                          objectPosition: '20% center',
+                          zIndex: 2,
+                        }}
+                        priority
+                      />
+                    </div>
+                  )}
+
+
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* ====== MOBILE SPECIFIC LAYOUT ====== */}
+          {isMobile && (
+            <div className="w-full flex flex-col items-center text-center space-y-6 z-10 relative mt-2">
+              {/* Mobile: bg-logo.png positioned on the right side, half visible */}
+              <Image
+                src="/bg-logo2.png"
+                alt="Background decorative logo"
+                width={200}
+                height={180}
+                className="absolute top-0 bg-logo-mobile"
+                style={{
+                  zIndex: 1,
+                  filter: 'grayscale(100%) brightness(150%) opacity(0.7)',
+                }}
+                priority
+              />
+
+              {/* Mobile: the eex.png image - reduced size and shifted left */}
+              <div className="relative w-full max-w-[250px] sm:max-w-[270px] mb-[3px] z-10 self-start mt-3">
+                <Image
+                  src="/eex.png"
+                  alt="Descriptive image for main content"
+                  width={270}
+                  height={174}
+                  className="w-full h-auto rounded shadow-lg"
+                  style={{
+                    transform: 'translateX(0%)', // Shift left
+                  }}
+                  priority
+                />
+              </div>
+
+              {/* Mobile: text content with framer motion animations */}
               <motion.div
-                className="absolute inset-0 flex flex-col justify-center px-8 ml-3 z-70"
+                className="relative z-10 "
                 initial="hidden"
-                animate={textAnimationCompleted ? "hidden" : "visible"}
+                animate="visible"
                 variants={{
-                  hidden: { opacity: 0, transition: { duration: 5} },
-                  visible: { opacity: 1, transition: { duration: 3.5, staggerChildren: 4,staggerDirection: -1 } }
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 3, staggerChildren: 1 } }
                 }}
               >
                 <motion.h2
-                  className="text-lg md:text-xl lg:text-2xl mb-2 tracking-wide"
-                  style={{ fontFamily: "Aboreto, Sans-serif" }}
+                  className="mb-2 tracking-wide"
+                  style={{ fontSize: '15px', fontFamily: 'Aboreto' }}
                   variants={textVariants}
                   custom={0}
                 >
                   AN ANCIENT SECRET SO POWERFUL...
                 </motion.h2>
-
                 <motion.h3
-                  className="text-lg md:text-xl lg:text-2xl mb-6 tracking-wide"
-                  style={{ fontFamily: 'Aboreto' }}
+                  className="mb-4 tracking-wide"
+                  style={{ fontSize: '15px', fontFamily: 'Aboreto' }}
                   variants={textVariants}
                   custom={1}
                 >
@@ -203,7 +359,7 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 </motion.h3>
 
                 <motion.p
-                  className="text-sm md:text-base mb-8 tracking-wide max-w-md text-[#E9D6A9]"
+                  className="text-[12px] mb-[1px] tracking-wide text-[#E9D6A9]"
                   style={{ fontFamily: 'Raleway' }}
                   variants={textVariants}
                   custom={2}
@@ -212,180 +368,55 @@ const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen
                 </motion.p>
               </motion.div>
 
-              {/* Desktop: video fades in when text animation completes */}
-              <div
-                className="absolute inset-0 flex justify-end items-center z-10 bg-transparent"
-                style={{
-                  opacity: textAnimationCompleted ? 1 : 0,
-                  transition: 'opacity 0.2s ease-out'
-                }}
-              >
-                {showVideo && (
-        <>
-          {!isVideoLoaded && textAnimationCompleted? (
-           <div className="absolute right-[0.6%] flex flex-col items-center justify-center w-[75%] h-full bg-black/40 z-20 rounded shadow-lg space-y-3">
-  <div className="flex flex-col items-center space-y-2">
-    <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
-    <div className="text-amber-100 text-lg font-medium">Exploring...</div>
-  </div>
-</div>
-          ):null}
-
-          <video
-            ref={videoRef}
-            src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/lv_0_20250613230758.mp4?alt=media&token=0a98294a-1147-4524-bdf1-2485d2d52766"
-            autoPlay
-            preload="auto"
-            muted={isMuted}
-            loop
-            playsInline
-            onLoadedData={handleVideoLoaded}
-            className="w-[75%] tab-height object-cover rounded shadow-lg"
-          />
-        </>
-      )}
-               
-                {/* Transparent image on top of the video */}
-                {textAnimationCompleted && ( 
-                  <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
-                    <Image
-                      src="/transparent.png"
-                      alt="Video Overlay"
-                      fill
-                      style={{
-                        objectFit: 'cover',
-                        objectPosition: '20% center',
-                        zIndex: 2,
-                      }}
-                      priority
-                    />
+              {/* Mobile: video appears below the building image */}
+              <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-3 z-10">
+                {/* Loader Overlay for mobile */}
+                {!isVideoLoaded && textAnimationCompleted && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-20 rounded shadow-lg space-y-3">
+                    <div className="flex flex-col items-center space-y-2">
+                      <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
+                      <div className="text-amber-100 text-lg font-medium">Exploring...</div>
+                    </div>
                   </div>
                 )}
 
-                
-              </div>
-            </div>
-          </>
-        )}
+                {/* Video */}
+                <video
+                  ref={videoRef}
+                  src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"
+                  autoPlay
+                  muted={isMuted}
+                  loop
+                  playsInline
+                  preload="auto"
+                  onLoadedData={handleVideoLoaded}
+                  className="w-full h-full object-cover rounded shadow-lg"
+                />
 
-        {/* ====== MOBILE SPECIFIC LAYOUT ====== */}
-        {isMobile && (
-          <div className="w-full flex flex-col items-center text-center space-y-6 z-10 relative mt-2">
-            {/* Mobile: bg-logo.png positioned on the right side, half visible */}
-            <Image
-              src="/bg-logo2.png"
-              alt="Background decorative logo"
-              width={200}
-              height={180}
-              className="absolute top-0 bg-logo-mobile"
-              style={{
-                zIndex: 1,
-                filter: 'grayscale(100%) brightness(150%) opacity(0.7)',
-              }}
-              priority
-            />
-
-            {/* Mobile: the eex.png image - reduced size and shifted left */}
-            <div className="relative w-full max-w-[250px] sm:max-w-[270px] mb-[3px] z-10 self-start mt-3">
-              <Image
-                src="/eex.png"
-                alt="Descriptive image for main content"
-                width={270}
-                height={174}
-                className="w-full h-auto rounded shadow-lg"
-                style={{
-                  transform: 'translateX(0%)', // Shift left
-                }}
-                priority
-              />
-            </div>
-            
-            {/* Mobile: text content with framer motion animations */}
-            <motion.div 
-              className="relative z-10 "
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: {duration:3, staggerChildren: 1 } }
-              }}
-            >
-              <motion.h2 
-                className="mb-2 tracking-wide"
-                style={{fontSize:'15px', fontFamily: 'Aboreto' }}
-                variants={textVariants}
-                custom={0}
-              >
-                AN ANCIENT SECRET SO POWERFUL...
-              </motion.h2>
-              <motion.h3 
-                className="mb-4 tracking-wide"
-                style={{ fontSize:'15px', fontFamily: 'Aboreto' }}
-                variants={textVariants}
-                custom={1}
-              >
-                IT GAVE RISE TO MODERN CIVILIZATION.
-              </motion.h3>
-             
-              <motion.p
-                className="text-[12px] mb-[1px] tracking-wide text-[#E9D6A9]"
-                style={{ fontFamily: 'Raleway' }}
-                variants={textVariants}
-                custom={2}
-              >
-                Join us as we rediscover the mystery of earth energy.
-              </motion.p>
-            </motion.div>
-
-            {/* Mobile: video appears below the building image */}
-           <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-3 z-10">
-  {/* Loader Overlay for mobile */}
-  {!isVideoLoaded && textAnimationCompleted && (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-20 rounded shadow-lg space-y-3">
-      <div className="flex flex-col items-center space-y-2">
-        <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
-        <div className="text-amber-100 text-lg font-medium">Exploring...</div>
-      </div>
-    </div>
-  )}
-
-  {/* Video */}
-  <video
-    ref={videoRef}
-    src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"
-    autoPlay
-    muted={isMuted}
-    loop
-    playsInline
-    preload="auto"
-    onLoadedData={handleVideoLoaded}
-    className="w-full h-full object-cover rounded shadow-lg"
-  />
-
-  {/* Mute Toggle Button */}
-  <button
-    onClick={toggleMute}
-    className={`absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40
+                {/* Mute Toggle Button */}
+                <button
+                  onClick={toggleMute}
+                  className={`absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40
     ${!istoggleActive ? 'animate-bounce' : ''}`}
-  >
-    {isMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
-  </button>
+                >
+                  {isMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
+                </button>
 
-  {/* Top Gradient Overlay */}
-  <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10"></div>
-</div>
+                {/* Top Gradient Overlay */}
+                <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10"></div>
+              </div>
 
-          </div>
-        )}
+            </div>
+          )}
+        </div>
+
+        {isMobile ? (<div className="relative flex space-x-4 justify-center pt-4 pb-4 z-10">
+          {/* Custom Social Media Icons */}
+          <SocialLinks />
+        </div>) : ''}
+
       </div>
-      
-      { isMobile ? ( <div className="relative flex space-x-4 justify-center pt-4 pb-4 z-10">
-        {/* Custom Social Media Icons */}
-       <SocialLinks />
-      </div>):''}
-     
     </div>
-   </div>
   );
 };
 

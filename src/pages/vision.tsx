@@ -63,13 +63,13 @@ const VisionPage = () => {
         {/* Image Section */}
         <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0 mt-10 ">
           <video
-            src="/vision2.mp4"
+            src="/vision3.mp4"
             width={500}
             height={200}
              autoPlay
               loop
               muted
-              className="w-full h-auto max-w-[600px] max-h-[180px] object-cover bg-white ${isMobile ? 'mt-20 -mb-10' : ''}"
+              className="w-full h-auto max-w-[600px] max-h-[300px] object-cover bg-white mb-7 ${isMobile ? 'mt-20 -mb-10' : ''}"
           />
          {!isMobile ?  <div className="mt-6 flex justify-center md:justify-start">
             <SocialLinks />
