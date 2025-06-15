@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, VolumeX, Menu, X } from 'lucide-react';
-import Image from 'next/image';
-import { motion } from 'framer-motion'; // Import motion from framer-motion
-import { useRouter } from 'next/router';
+import React, { useState, useEffect, useRef } from "react";
+import { Volume2, VolumeX, Menu, X } from "lucide-react";
+import Image from "next/image";
+import { motion } from "framer-motion"; // Import motion from framer-motion
+import { useRouter } from "next/router";
 
-import Navbar from '@/components/Navbar';
-import SocialLinks from '@/components/SocialLinks';
+import Navbar from "@/components/Navbar";
+import SocialLinks from "@/components/SocialLinks";
 
 // --- Type Definitions ---
 interface TeamMember {
@@ -33,15 +33,22 @@ interface TeamPageProps {
 }
 // --- End Type Definitions ---
 
-const HomePage = ({ currentPage, setCurrentPage, isMobile, menuOpen, setMenuOpen, router }: HomePageProps) => {
+const HomePage = ({
+  currentPage,
+  setCurrentPage,
+  isMobile,
+  menuOpen,
+  setMenuOpen,
+  router,
+}: HomePageProps) => {
   const [textAnimationCompleted, setTextAnimationCompleted] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [showVideo, setShowVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [istoggleActive, setIstoggleActive] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-const imageFadeDelay = isMobile ? 3.5 : 4; 
-const imageFadeDuration = 1; 
+  const imageFadeDelay = isMobile ? 3.5 : 4;
+  const imageFadeDuration = 1;
 
   const handleVideoLoaded = () => {
     setIsVideoLoaded(true);
@@ -61,7 +68,6 @@ const imageFadeDuration = 1;
       return () => clearTimeout(timer);
     }
   }, [isMobile]);
-
 
   useEffect(() => {
     if (textAnimationCompleted) {
@@ -83,7 +89,7 @@ const imageFadeDuration = 1;
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 1,     // Stagger each text element
+        delay: i * 1, // Stagger each text element
         duration: 2,
         ease: "easeOut",
       },
@@ -92,12 +98,10 @@ const imageFadeDuration = 1;
       opacity: 0,
       y: 20,
       transition: {
-        delay: i * 0.5,   // Optional: add delay for smoother fade-out
-        duration: 2,    // 🔁 slower fade-out
+        delay: i * 0.5, // Optional: add delay for smoother fade-out
+        duration: 2, // 🔁 slower fade-out
         ease: "easeInOut",
       },
-
-
     }),
   };
 
@@ -105,13 +109,17 @@ const imageFadeDuration = 1;
     <div className="standard-container">
       <div className="min-h-screen bg-black text-white relative overflow-hidden standard-container">
         {/* Top to Bottom Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div> */}
 
         {/* Navigation */}
         <Navbar />
 
         {/* Main Content Area */}
-        <div className={`relative ${isMobile ? 'pt-12 ' : 'min-h-[calc(100vh-120px)] flex items-center'}`}>
+        <div
+          className={`relative ${
+            isMobile ? "pt-12 " : "min-h-[calc(100vh-120px)] flex items-center"
+          }`}
+        >
           {/* ====== DESKTOP SPECIFIC LAYOUT ====== */}
           {!isMobile && (
             <>
@@ -120,25 +128,23 @@ const imageFadeDuration = 1;
                 alt="Background decorative logo"
                 width={350}
                 height={320}
-                className="absolute bg-logo-responsive"
-                objectFit='center'
+                className="centered-bg-logo"
+                objectFit="center"
                 style={{
-                  alignItems: 'center',
+                  alignItems: "center",
                   zIndex: 5,
-                  filter: 'grayscale(100%) brightness(200%)',
+                  filter: "grayscale(100%) brightness(200%)",
                 }}
                 priority
               />
               <Image
-                src="/eex.png"
-                alt="Descriptive image for main content"
-                width={320}
-                height={230}
-                className="absolute eex-responsive"
-                style={{ zIndex: 1 }}
-                priority
-              />
-
+  src="/eex.png"
+  alt="Descriptive image for main content"
+  width={320}
+  height={230}
+  className="centered-eex"
+  priority
+/>
 
               <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
                 {/* Desktop: bg-image removed ONLY after text animation completes */}
@@ -155,7 +161,6 @@ const imageFadeDuration = 1;
         zIndex: 0,
       }}
     /> */}
-               
 
 {!textAnimationCompleted && (
   <motion.div
@@ -164,45 +169,42 @@ const imageFadeDuration = 1;
     transition={{
       duration: imageFadeDuration,
       ease: "easeInOut",
-      delay: imageFadeDelay
+      delay: imageFadeDelay,
     }}
-    className="absolute inset-0"
+    className="absolute top-0 right-0 w-[51vw] h-full"
   >
     <Image
-      src="/bg-image-4.png"
+      src="/bg-final.png"
       alt="Background for right side"
       fill
       style={{
-        objectFit: 'contain',
-        objectPosition: 'right center',
-        filter: 'brightness(100%)',
+        objectFit: "contain",
+        objectPosition: "right center",
+        filter: "brightness(100%)",
         zIndex: 0,
       }}
     />
   </motion.div>
 )}
 
-
-
-
-
-
-
-                {textAnimationCompleted ? <button
-                  onClick={toggleMute}
-                  className={`
+                {textAnimationCompleted ? (
+                  <button
+                    onClick={toggleMute}
+                    className={`
       absolute bottom-4 right-4 w-12 h-12 rounded-full 
       bg-black/50 border border-white/30 
       flex items-center justify-center 
       hover:bg-black/70 transition-colors cursor-pointer z-99
-      ${!istoggleActive ? 'animate-bounce' : ''}
+      ${!istoggleActive ? "animate-bounce" : ""}
     `}
-                >
-                  {isMuted
-                    ? <VolumeX className="w-5 h-5 text-white" />
-                    : <Volume2 className="w-5 h-5 text-white" />}
-                </button>
-                  : null}
+                  >
+                    {isMuted ? (
+                      <VolumeX className="w-5 h-5 text-white" />
+                    ) : (
+                      <Volume2 className="w-5 h-5 text-white" />
+                    )}
+                  </button>
+                ) : null}
 
                 {/* Desktop: Text content - fade out when animation completes */}
                 <motion.div
@@ -211,7 +213,14 @@ const imageFadeDuration = 1;
                   animate={textAnimationCompleted ? "hidden" : "visible"}
                   variants={{
                     hidden: { opacity: 0, transition: { duration: 1 } },
-                    visible: { opacity: 1, transition: { duration: 3.5, staggerChildren: 4, staggerDirection: -1 } }
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        duration: 3.5,
+                        staggerChildren: 4,
+                        staggerDirection: -1,
+                      },
+                    },
                   }}
                 >
                   <motion.h2
@@ -225,7 +234,7 @@ const imageFadeDuration = 1;
 
                   <motion.h3
                     className="text-lg md:text-xl lg:text-2xl mb-6 -ml-2 tracking-wide"
-                    style={{ fontFamily: 'Aboreto' }}
+                    style={{ fontFamily: "Aboreto" }}
                     variants={textVariants}
                     custom={1}
                   >
@@ -234,7 +243,7 @@ const imageFadeDuration = 1;
 
                   <motion.p
                     className="text-sm md:text-base mb-8 ml-5 -mt-2 tracking-wide max-w-md text-[#E9D6A9]"
-                    style={{ fontFamily: 'Raleway' }}
+                    style={{ fontFamily: "Raleway" }}
                     variants={textVariants}
                     custom={2}
                   >
@@ -242,9 +251,8 @@ const imageFadeDuration = 1;
                   </motion.p>
                 </motion.div>
 
-                
-                  {/* Transparent image on top of the video */}
-                    <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
+                {/* Transparent image on top of the video */}
+                {/* <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
                       <Image
                         src="/transparent.png"
                         alt="Video Overlay"
@@ -256,14 +264,14 @@ const imageFadeDuration = 1;
                         }}
                         priority
                       />
-                    </div>
+                    </div> */}
 
                 {/* Desktop: video fades in when text animation completes */}
                 <div
                   className="absolute inset-0 flex justify-end items-center z-10 bg-transparent"
                   style={{
                     opacity: textAnimationCompleted ? 1 : 0,
-                    transition: 'opacity 0.2s ease-out'
+                    transition: "opacity 0.2s ease-out",
                   }}
                 >
                   {showVideo && (
@@ -272,7 +280,9 @@ const imageFadeDuration = 1;
                         <div className="absolute right-[0.6%] flex flex-col items-center justify-center w-[75%] h-full bg-black/40 z-20 rounded shadow-lg space-y-3">
                           <div className="flex flex-col items-center space-y-2">
                             <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin opacity-75"></div>
-                            <div className="text-amber-100 text-lg font-Aboreto opacity-75">Exploring...</div>
+                            <div className="text-amber-100 text-lg font-Aboreto opacity-75">
+                              Exploring...
+                            </div>
                           </div>
                         </div>
                       ) : null}
@@ -292,7 +302,7 @@ const imageFadeDuration = 1;
                   )}
 
                   {/* Transparent image on top of the video */}
-                  {textAnimationCompleted && (
+                  {/* {textAnimationCompleted && (
                     <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
                       <Image
                         src="/transparent.png"
@@ -306,9 +316,7 @@ const imageFadeDuration = 1;
                         priority
                       />
                     </div>
-                  )}
-
-
+                  )} */}
                 </div>
               </div>
             </>
@@ -326,7 +334,7 @@ const imageFadeDuration = 1;
                 className="absolute top-0 bg-logo-mobile"
                 style={{
                   zIndex: 1,
-                  filter: 'grayscale(100%) brightness(150%) opacity(0.7)',
+                  filter: "grayscale(100%) brightness(150%) opacity(0.7)",
                 }}
                 priority
               />
@@ -340,7 +348,7 @@ const imageFadeDuration = 1;
                   height={174}
                   className="w-full h-auto rounded shadow-lg"
                   style={{
-                    transform: 'translateX(0%)', // Shift left
+                    transform: "translateX(0%)", // Shift left
                   }}
                   priority
                 />
@@ -353,12 +361,15 @@ const imageFadeDuration = 1;
                 animate="visible"
                 variants={{
                   hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 3, staggerChildren: 1 } }
+                  visible: {
+                    opacity: 1,
+                    transition: { duration: 3, staggerChildren: 1 },
+                  },
                 }}
               >
                 <motion.h2
                   className="mb-2 tracking-wide"
-                  style={{ fontSize: '15px', fontFamily: 'Aboreto' }}
+                  style={{ fontSize: "15px", fontFamily: "Aboreto" }}
                   variants={textVariants}
                   custom={0}
                 >
@@ -366,7 +377,7 @@ const imageFadeDuration = 1;
                 </motion.h2>
                 <motion.h3
                   className="mb-4 tracking-wide"
-                  style={{ fontSize: '15px', fontFamily: 'Aboreto' }}
+                  style={{ fontSize: "15px", fontFamily: "Aboreto" }}
                   variants={textVariants}
                   custom={1}
                 >
@@ -375,7 +386,7 @@ const imageFadeDuration = 1;
 
                 <motion.p
                   className="text-[12px] mb-[1px] tracking-wide text-[#E9D6A9]"
-                  style={{ fontFamily: 'Raleway' }}
+                  style={{ fontFamily: "Raleway" }}
                   variants={textVariants}
                   custom={2}
                 >
@@ -390,7 +401,9 @@ const imageFadeDuration = 1;
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-20 rounded shadow-lg space-y-3">
                     <div className="flex flex-col items-center space-y-2">
                       <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
-                      <div className="text-amber-100 text-lg font-medium">Exploring...</div>
+                      <div className="text-amber-100 text-lg font-medium">
+                        Exploring...
+                      </div>
                     </div>
                   </div>
                 )}
@@ -412,33 +425,37 @@ const imageFadeDuration = 1;
                 <button
                   onClick={toggleMute}
                   className={`absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40
-    ${!istoggleActive ? 'animate-bounce' : ''}`}
+    ${!istoggleActive ? "animate-bounce" : ""}`}
                 >
-                  {isMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
+                  {isMuted ? (
+                    <VolumeX className="w-5 h-5 text-white" />
+                  ) : (
+                    <Volume2 className="w-5 h-5 text-white" />
+                  )}
                 </button>
 
                 {/* Top Gradient Overlay */}
-                <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10"></div>
+                {/* <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10"></div> */}
               </div>
-
             </div>
           )}
         </div>
 
-        {isMobile ? (<div className="relative flex space-x-4 justify-center pt-4 pb-4 z-10">
-          {/* Custom Social Media Icons */}
-          <SocialLinks />
-        </div>) : ''}
-
+        {isMobile ? (
+          <div className="relative flex space-x-4 justify-center pt-4 pb-4 z-10">
+            {/* Custom Social Media Icons */}
+            <SocialLinks />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
 };
 
-
-
 const EarthEnergyXplorers = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
@@ -448,11 +465,11 @@ const EarthEnergyXplorers = () => {
       setIsMobile(window.innerWidth <= 768);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  return currentPage === 'home' ? (
+  return currentPage === "home" ? (
     <HomePage
       currentPage={currentPage}
       setCurrentPage={setCurrentPage}
