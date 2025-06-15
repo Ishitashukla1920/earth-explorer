@@ -102,7 +102,7 @@ const ProfilePage = ({
               />
             </button>
           </div>
-          <h1 className="font-Aboreto text-lg sm:text-xl md:text-2xl lg:text-3xl">
+          <h1 className="aboreto-regular text-lg sm:text-xl md:text-2xl lg:text-3xl">
             {member.name}
           </h1>
           <p className="font-Raleway text-base sm:text-lg md:text-lg lg:text-xl text-amber-200">
