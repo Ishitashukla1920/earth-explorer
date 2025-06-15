@@ -70,7 +70,7 @@ const TeamPage = () => {
           </div>
 
           {/* Right Team Grid */}
-          <div className="w-full md:w-2/3 md:pl-8" style={{ marginTop: isMobile ? '20%' : '2%' }}>
+          <div className="w-full md:w-2/3 md:pl-8" style={{ marginTop: isMobile ? '20%' : '2%', marginLeft: isMobile ? '8px' : '0px' }}>
             <div className={`grid gap-x-2 gap-y-8 justify-items-center px-2 ${isMobile ? 'grid-cols-2' : 'grid-cols-3'}`}>
               {teamMembers.map((member, index) => (
                 <Link href={`/team2/${member.id}`} key={index}>
