@@ -64,15 +64,15 @@ const ProfilePage = ({
       </div>
 
       {/* main content: top padding varies by viewport */}
-      <div
-        className="
-          relative z-10
-          px-4
-          pt-40 sm:pt-48 lg:pt-[30vh]
-          flex flex-col lg:flex-row items-center lg:items-start justify-center
-          gap-8 max-w-7xl mx-auto
-        "
-      >
+<div
+  className="
+    relative z-10
+    px-4
+    pt-24 sm:pt-32 md:pt-40 lg:pt-[30vh]
+    flex flex-col lg:flex-row items-center lg:items-start justify-center
+    gap-8 max-w-7xl mx-auto
+  "
+>
         {/* PROFILE */}
         <div className="flex flex-col items-center text-center gap-4 w-full lg:w-1/3">
           <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8">

@@ -35,7 +35,7 @@ const TeamPage = () => {
       <Navbar />
 
       {/* Content */}
-      <div className="relative z-10 px-2 md:px-8">
+      <div className="relative z-10 px-2 md:px-8 md:mr-9">
         <div className="flex flex-col md:flex-row">
           {/* Left Title + Social */}
           <div className="w-full md:w-1/3 md:pr-8 mt-3">
