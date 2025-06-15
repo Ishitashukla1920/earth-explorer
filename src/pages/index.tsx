@@ -47,27 +47,35 @@ const HomePage = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [istoggleActive, setIstoggleActive] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const imageFadeDelay = isMobile ? 3.5 : 4;
+  const imageFadeDelay = 9;
+
   const imageFadeDuration = 1;
 
   const handleVideoLoaded = () => {
     setIsVideoLoaded(true);
   };
 
+  // useEffect(() => {
+  //   if (!isMobile) {
+  //     const timer = setTimeout(() => {
+  //       setTextAnimationCompleted(true);
+  //     }, 4500); // Increased timeout to allow for text animations
+  //     return () => clearTimeout(timer);
+  //   } else {
+  //     // For mobile, also use timer for text animations
+  //     const timer = setTimeout(() => {
+  //       setTextAnimationCompleted(true);
+  //     }, 4000);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [isMobile]);
+
   useEffect(() => {
-    if (!isMobile) {
-      const timer = setTimeout(() => {
-        setTextAnimationCompleted(true);
-      }, 4500); // Increased timeout to allow for text animations
-      return () => clearTimeout(timer);
-    } else {
-      // For mobile, also use timer for text animations
-      const timer = setTimeout(() => {
-        setTextAnimationCompleted(true);
-      }, 4000);
-      return () => clearTimeout(timer);
-    }
-  }, [isMobile]);
+    const timer = setTimeout(() => {
+      setTextAnimationCompleted(true);
+    }, 9000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (textAnimationCompleted) {
@@ -89,20 +97,12 @@ const HomePage = ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 1, // Stagger each text element
-        duration: 2,
+        delay: i * 3, // show line 0 at 0s, line1 at 3s, line2 at 6s
+        duration: 1, // 1s fade
         ease: "easeOut",
       },
     }),
-    hidden: (i: number) => ({
-      opacity: 0,
-      y: 20,
-      transition: {
-        delay: i * 0.5, // Optional: add delay for smoother fade-out
-        duration: 2, // 🔁 slower fade-out
-        ease: "easeInOut",
-      },
-    }),
+    hidden: { opacity: 0, y: 20 }, // initial state
   };
 
   return (
@@ -138,13 +138,13 @@ const HomePage = ({
                 priority
               />
               <Image
-  src="/eex.png"
-  alt="Descriptive image for main content"
-  width={320}
-  height={230}
-  className="centered-eex"
-  priority
-/>
+                src="/eex.png"
+                alt="Descriptive image for main content"
+                width={320}
+                height={230}
+                className="centered-eex"
+                priority
+              />
 
               <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
                 {/* Desktop: bg-image removed ONLY after text animation completes */}
@@ -162,30 +162,30 @@ const HomePage = ({
       }}
     /> */}
 
-{!textAnimationCompleted && (
-  <motion.div
-    initial={{ opacity: 1 }}
-    animate={{ opacity: 0 }}
-    transition={{
-      duration: imageFadeDuration,
-      ease: "easeInOut",
-      delay: imageFadeDelay,
-    }}
-    className="absolute top-0 right-0 w-[51vw] h-full"
-  >
-    <Image
-      src="/bg-final.png"
-      alt="Background for right side"
-      fill
-      style={{
-        objectFit: "contain",
-        objectPosition: "right center",
-        filter: "brightness(100%)",
-        zIndex: 0,
-      }}
-    />
-  </motion.div>
-)}
+                {!textAnimationCompleted && (
+                  <motion.div
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    transition={{
+                      duration: imageFadeDuration,
+                      ease: "easeInOut",
+                      delay: imageFadeDelay,
+                    }}
+                    className="absolute top-0 right-0 w-[51vw] h-full"
+                  >
+                    <Image
+                      src="/bg-final.png"
+                      alt="Background for right side"
+                      fill
+                      style={{
+                        objectFit: "contain",
+                        objectPosition: "right center",
+                        filter: "brightness(100%)",
+                        zIndex: 0,
+                      }}
+                    />
+                  </motion.div>
+                )}
 
                 {textAnimationCompleted ? (
                   <button
@@ -208,7 +208,7 @@ const HomePage = ({
 
                 {/* Desktop: Text content - fade out when animation completes */}
                 <motion.div
-                  className="absolute inset-0 flex flex-col justify-center px-8 ml-3 z-70"
+                  className="absolute inset-0 flex flex-col justify-center transform -translate-y-8 px-8 ml-3 z-70"
                   initial="hidden"
                   animate={textAnimationCompleted ? "hidden" : "visible"}
                   variants={{
@@ -224,7 +224,7 @@ const HomePage = ({
                   }}
                 >
                   <motion.h2
-                    className="text-lg md:text-xl lg:text-2xl mb-2 tracking-wide"
+                    className="text-lg md:text-xl lg:text-2xl mb-2 tracking-wide drop-shadow-lg"
                     style={{ fontFamily: "Aboreto, Sans-serif" }}
                     variants={textVariants}
                     custom={0}
@@ -233,7 +233,7 @@ const HomePage = ({
                   </motion.h2>
 
                   <motion.h3
-                    className="text-lg md:text-xl lg:text-2xl mb-6 -ml-2 tracking-wide"
+                    className="text-lg md:text-xl lg:text-2xl mb-6 -ml-2 tracking-wide drop-shadow-lg"
                     style={{ fontFamily: "Aboreto" }}
                     variants={textVariants}
                     custom={1}
@@ -241,8 +241,17 @@ const HomePage = ({
                     IT GAVE RISE TO MODERN CIVILIZATION.
                   </motion.h3>
 
+                  {/* <motion.p
+                    className="text-base md:text-lg lg:text-xl mb-8 tracking-wide max-w-md mx-auto text-center text-[#ada08c]"
+                    style={{ fontFamily: "Raleway" }}
+                    variants={textVariants}
+                    custom={2}
+                  >
+                    Join us as we rediscover the mystery of earth energy.
+                  </motion.p> */}
+
                   <motion.p
-                    className="text-sm md:text-base mb-8 ml-5 -mt-2 tracking-wide max-w-md text-[#E9D6A9]"
+                    className="text-[1.15rem] ml-1 mb-[1px] -mt-2 tracking-wide text-[#ada08c] drop-shadow-lg"
                     style={{ fontFamily: "Raleway" }}
                     variants={textVariants}
                     custom={2}
@@ -356,7 +365,7 @@ const HomePage = ({
 
               {/* Mobile: text content with framer motion animations */}
               <motion.div
-                className="relative z-10 "
+                className="relative z-10"
                 initial="hidden"
                 animate="visible"
                 variants={{
@@ -368,16 +377,35 @@ const HomePage = ({
                 }}
               >
                 <motion.h2
-                  className="mb-2 tracking-wide"
-                  style={{ fontSize: "15px", fontFamily: "Aboreto" }}
+                  className="
+      font-Aboreto tracking-wide drop-shadow-lg
+      text-sm        /* ≤640px */
+      sm:text-base  /* 640–767px */
+      md:text-lg    /* 768–1023px */
+      lg:text-xl    /* 1024–1279px */
+      xl:text-2xl   /* 1280–1535px */
+      2xl:text-3xl  /* ≥1536px */
+      mb-2
+    "
+                  style={{ fontFamily: "Aboreto, Sans-serif" }}
                   variants={textVariants}
                   custom={0}
                 >
                   AN ANCIENT SECRET SO POWERFUL...
                 </motion.h2>
+
                 <motion.h3
-                  className="mb-4 tracking-wide"
-                  style={{ fontSize: "15px", fontFamily: "Aboreto" }}
+                  className="
+      font-Aboreto tracking-wide drop-shadow-lg
+      text-sm
+      sm:text-base
+      md:text-lg
+      lg:text-xl
+      xl:text-2xl
+      2xl:text-3xl
+      mb-6 -ml-2
+    "
+                  style={{ fontFamily: "Aboreto" }}
                   variants={textVariants}
                   custom={1}
                 >
@@ -385,7 +413,16 @@ const HomePage = ({
                 </motion.h3>
 
                 <motion.p
-                  className="text-[12px] mb-[1px] tracking-wide text-[#E9D6A9]"
+                  className="
+      font-Raleway tracking-wide drop-shadow-lg text-[#ada08c]
+      text-xs        /* ≤640px */
+      sm:text-sm    /* 640–767px */
+      md:text-base  /* 768–1023px */
+      lg:text-lg    /* 1024–1279px */
+      xl:text-xl    /* 1280–1535px */
+      2xl:text-2xl  /* ≥1536px */
+      mx-auto mb-2 -mt-2 ml-1 max-w-md text-center
+    "
                   style={{ fontFamily: "Raleway" }}
                   variants={textVariants}
                   custom={2}
@@ -396,46 +433,54 @@ const HomePage = ({
 
               {/* Mobile: video appears below the building image */}
               <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-3 z-10">
-                {/* Loader Overlay for mobile */}
-                {!isVideoLoaded && textAnimationCompleted && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-20 rounded shadow-lg space-y-3">
-                    <div className="flex flex-col items-center space-y-2">
-                      <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
-                      <div className="text-amber-100 text-lg font-medium">
-                        Exploring...
+                {!textAnimationCompleted ? (
+                  
+                  <Image
+                    src="/bg-image-2.png" // use your placeholder
+                    alt="Placeholder"
+                    width={600}
+                    height={800}
+                    className="w-full h-auto object-cover rounded shadow-lg"
+                    priority
+                  />
+                ) : (
+                  // 2️⃣ once slogans complete, switch to video
+                  <>
+                    {!isVideoLoaded && (
+                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-20 rounded shadow-lg space-y-3">
+                        <div className="loader border-4 border-amber-100 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
                       </div>
-                    </div>
-                  </div>
+                    )}
+                    <video
+                      ref={videoRef}
+                      src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"
+                      autoPlay
+                      muted={isMuted}
+                      loop
+                      playsInline
+                      preload="auto"
+                      onLoadedData={handleVideoLoaded}
+                      className="w-full h-full object-cover rounded shadow-lg"
+                    />
+                  </>
                 )}
 
-                {/* Video */}
-                <video
-                  ref={videoRef}
-                  src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/Final%20EEX%20Teaser%20vertical%20increase%20With%20end%20logo%20text.mp4?alt=media&token=4dab2742-f1c8-40f5-a93e-effc60766da1"
-                  autoPlay
-                  muted={isMuted}
-                  loop
-                  playsInline
-                  preload="auto"
-                  onLoadedData={handleVideoLoaded}
-                  className="w-full h-full object-cover rounded shadow-lg"
-                />
+                {/* keep your mute toggle only when the video is active */}
+                {textAnimationCompleted && (
+                  <button
+                    onClick={toggleMute}
+                    className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40"
+                  >
+                    {isMuted ? (
+                      <VolumeX className="w-5 h-5 text-white" />
+                    ) : (
+                      <Volume2 className="w-5 h-5 text-white" />
+                    )}
+                  </button>
+                )}
 
-                {/* Mute Toggle Button */}
-                <button
-                  onClick={toggleMute}
-                  className={`absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors cursor-pointer z-40
-    ${!istoggleActive ? "animate-bounce" : ""}`}
-                >
-                  {isMuted ? (
-                    <VolumeX className="w-5 h-5 text-white" />
-                  ) : (
-                    <Volume2 className="w-5 h-5 text-white" />
-                  )}
-                </button>
-
-                {/* Top Gradient Overlay */}
-                <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10"></div>
+                {/* optional top-gradient overlay */}
+                <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10" />
               </div>
             </div>
           )}
