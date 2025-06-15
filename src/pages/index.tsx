@@ -435,7 +435,7 @@ const HomePage = ({
                 </button>
 
                 {/* Top Gradient Overlay */}
-                {/* <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10"></div> */}
+                <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/100 to-transparent z-10"></div>
               </div>
             </div>
           )}
