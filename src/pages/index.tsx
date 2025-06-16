@@ -147,21 +147,7 @@ const HomePage = ({
               />
 
               <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
-                {/* Desktop: bg-image removed ONLY after text animation completes */}
-                {/* {!textAnimationCompleted && (
-  
-    <Image
-      src="/bg-image-4.png"
-      alt="Background for right side"
-      fill
-      style={{
-        objectFit: 'cover',
-        objectPosition: 'right center',
-        filter: 'brightness(100%)',
-        zIndex: 0,
-      }}
-    /> */}
-
+              
                 {!textAnimationCompleted && (
                   <motion.div
                     initial={{ opacity: 1 }}
@@ -171,10 +157,10 @@ const HomePage = ({
                       ease: "easeInOut",
                       delay: imageFadeDelay,
                     }}
-                    className="absolute top-0 right-0 w-[51vw] h-full"
+                    className="absolute top-0 right-0 w-[60vw] h-[100vh]"
                   >
                     <Image
-                      src="/bg-final.png"
+                      src="/bg-final5.png"
                       alt="Background for right side"
                       fill
                       style={{
@@ -241,15 +227,6 @@ const HomePage = ({
                     IT GAVE RISE TO MODERN CIVILIZATION.
                   </motion.h3>
 
-                  {/* <motion.p
-                    className="text-base md:text-lg lg:text-xl mb-8 tracking-wide max-w-md mx-auto text-center text-[#ada08c]"
-                    style={{ fontFamily: "Raleway" }}
-                    variants={textVariants}
-                    custom={2}
-                  >
-                    Join us as we rediscover the mystery of earth energy.
-                  </motion.p> */}
-
                   <motion.p
                     className="text-[1.15rem] ml-1 mb-[1px] -mt-2 tracking-wide text-[#ada08c] drop-shadow-lg"
                     style={{ fontFamily: "Raleway" }}
@@ -260,22 +237,6 @@ const HomePage = ({
                   </motion.p>
                 </motion.div>
 
-                {/* Transparent image on top of the video */}
-                {/* <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
-                      <Image
-                        src="/transparent.png"
-                        alt="Video Overlay"
-                        fill
-                        style={{
-                          objectFit: 'cover',
-                          objectPosition: '20% center',
-                          zIndex: 2,
-                        }}
-                        priority
-                      />
-                    </div> */}
-
-                {/* Desktop: video fades in when text animation completes */}
                 <div
                   className="absolute inset-0 flex justify-end items-center z-10 bg-transparent"
                   style={{
@@ -298,34 +259,18 @@ const HomePage = ({
 
                       <video
                         ref={videoRef}
-                        src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/lv_0_20250613230758.mp4?alt=media&token=0a98294a-1147-4524-bdf1-2485d2d52766"
+                        src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/teaser%20new%20ratio%20desktop%201.mp4?alt=media&token=898fd058-ce27-4b8b-a745-2efefbc935aa"
                         autoPlay
                         preload="auto"
                         muted={isMuted}
                         loop
                         playsInline
                         onLoadedData={handleVideoLoaded}
-                        className="w-[75%] tab-height object-cover rounded shadow-lg"
+                        className="w-[90%] tab-height object-cover rounded shadow-lg"
                       />
                     </>
                   )}
 
-                  {/* Transparent image on top of the video */}
-                  {/* {textAnimationCompleted && (
-                    <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
-                      <Image
-                        src="/transparent.png"
-                        alt="Video Overlay"
-                        fill
-                        style={{
-                          objectFit: 'cover',
-                          objectPosition: '20% center',
-                          zIndex: 2,
-                        }}
-                        priority
-                      />
-                    </div>
-                  )} */}
                 </div>
               </div>
             </>

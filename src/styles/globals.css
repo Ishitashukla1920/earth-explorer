@@ -60,7 +60,7 @@ body {
 .centered-bg-logo {
   position: absolute;
   top: 40%;
-  right: 50%;
+  right: 58.5%;
   transform: translateY(-50%);
   /* slightly smaller base clamp */
   width: clamp(160px, 26vw, 500px);
@@ -107,10 +107,10 @@ body {
   position: absolute;
   top: 43%;
   /* pin its right edge at the 50vw line, then shift it 10px further left */
-  right: calc(70%);
+  right: calc(71%);
   transform: translateY(-50%);
   width: clamp(225px, 26vw, 500px);
-  max-height: clamp(225px, 26vh, 400px);
+  max-height: clamp(220px, 26vh, 380px);
   height: auto;
   z-index: 1;
   object-fit: contain;
