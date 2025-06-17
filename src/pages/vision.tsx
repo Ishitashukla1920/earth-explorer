@@ -181,7 +181,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                 </motion.h3>
               </motion.div>
 
-              <div className="w-full max-w-[90vw] mb-4">
+              <div className="w-full max-w-[90vw] -mt-12">
                 <video
                   src="/visionBlack.mp4"
                   autoPlay
@@ -192,9 +192,6 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                 />
               </div>
 
-              <div className="flex justify-center mt-4 z-50">
-                <SocialLinks />
-              </div>
             </div>
           )}
         </div>
