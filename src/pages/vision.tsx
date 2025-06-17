@@ -169,9 +169,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                   custom={1}
                 >
                   Our dream is to transform the world from
-                  <br />
                   seeing life as ordinary, to seeing life as an
-                  <br />
                   Extraordinary exploration!
                 </motion.h3>
               </motion.div>
