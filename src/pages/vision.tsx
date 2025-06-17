@@ -110,7 +110,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
 
           {/* ===== Mobile ===== */}
           {isMobile && (
-            <div className="w-full flex flex-col items-center text-center -mt-4 ml-4 relative space-y-6">
+            <div className="w-full flex flex-col items-center text-center -mt-4  relative space-y-6">
               <Image
                 src="/bg-logo2.png"
                 alt="Background logo"
@@ -123,7 +123,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                 priority
               />
 
-              <div className="relative w-full max-w-[200px] mb-16 -mt-2 self-start ml-3">
+              <div className="relative w-full max-w-[200px] mb-16 -mt-2 self-start ml-6">
                 <Image
                   src="/ouVision.png"
                   alt="Our Vision logo"
@@ -162,7 +162,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                   className="
                     font-Aboreto font-light drop-shadow-md
                     text-sm sm:text-base md:text-lg
-                    text-center
+                    text-center p-2
                   "
                   style={{ fontFamily: "Aboreto, sans-serif" }}
                   variants={textVariants}
