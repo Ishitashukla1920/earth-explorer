@@ -27,18 +27,19 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    // { href: '/', label: 'Home', id: 'home' },
+    { href: "/", label: "Home", id: "home" },
     { href: "/team", label: "Team", id: "team" },
+    { href: "/vision", label: "Vision", id: "vision" },
+    { href: "/about", label: "About Us", id: "about" },
     { href: "/watch", label: "Watch", id: "watch" },
-     { href: '/vision', label: 'Vision', id: 'vision' },
-     { href: '/about', label: 'About Us', id: 'about' },
   ];
 
   const isLightBg =
-    ["home", "team", "watch","vision","about"].includes(currentPage) ||
+    ["home", "team", "watch", "vision", "about"].includes(currentPage) ||
     router.asPath.startsWith("/team2");
   const linkTextColor = isLightBg ? "text-white" : "text-black";
   const border = isLightBg ? "border-white" : "border-black";
+    const borderColor = isLightBg ? "border-white" : "border-black";
 
   return (
     <nav
@@ -77,31 +78,30 @@ const Navbar = () => {
         </div>
 
         {!isMobile &&
-          navLinks.map((link) => (
-            <Link href={link.href} key={link.id}>
-              <button
-                style={{
-                  fontFamily: "Aboreto, Sans-serif",
-                }}
-                className={`
-       text-sm 
-       sm:text-base 
-       md:text-lg 
-       lg:text-lg
-       font-medium 
-       cursor-pointer 
-       opacity-80 
-       sm:opacity-80 
-       md:opacity-80 
-       ${linkTextColor} ${
-                  currentPage === link.id ? `border-b-2 ${border} pb-1` : ""
-                }`}
-              >
-                {link.label}
-              </button>
-            </Link>
-          ))}
+          navLinks.map((link) => {
+            const isWatch = link.id === "watch";
+            return (
+              <Link href={link.href} key={link.id}>
+                <button
+                  style={{ fontFamily: "Aboreto, Sans-serif" }}
+                  className={[
+                    "text-sm sm:text-base md:text-lg font-medium cursor-pointer opacity-80",
+                    linkTextColor,
+                    currentPage === link.id
+                      ? `border-b-2 ${borderColor} pb-1`
+                      : "",
+                    link.id === "watch" ? "bg-[#92856C] !text-white font-bold px-3 rounded-md" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  {link.label}
+                </button>
+              </Link>
+            );
+          })}
       </div>
+
       {isMobile && (
         <button
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -117,12 +117,14 @@ const Navbar = () => {
 
       {isMobile && menuOpen && (
         <div className="fixed top-14 left-0 w-full bg-white z-40 shadow-lg">
-          {navLinks.map((link,index) => (
+          {navLinks.map((link, index) => (
             <Link key={link.id} href={link.href}>
               <button
                 onClick={() => setMenuOpen(false)}
-                 className={`w-full py-3 text-center font-Aboreto border-b border-gray-300 text-black text-sm
-             ${currentPage === link.id ? "bg-[#e6d1a3]" : "bg-white"} hover:bg-amber-200`} 
+                className={`w-full py-3 text-center font-Aboreto border-b border-gray-300 text-black text-sm
+             ${
+               currentPage === link.id ? "bg-[#e6d1a3]" : "bg-white"
+             } hover:bg-amber-200`}
               >
                 {link.label}
               </button>
