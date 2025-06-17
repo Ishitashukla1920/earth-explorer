@@ -28,9 +28,9 @@ const Navbar = () => {
 
   const navLinks = [
     { href: "/", label: "Home", id: "home" },
-    { href: "/team", label: "Team", id: "team" },
+    { href: "/about", label: "About", id: "about" },
     { href: "/vision", label: "Vision", id: "vision" },
-    { href: "/about", label: "About Us", id: "about" },
+    { href: "/team", label: "Team", id: "team" },
     { href: "/watch", label: "Watch", id: "watch" },
   ];
 
@@ -39,7 +39,7 @@ const Navbar = () => {
     router.asPath.startsWith("/team2");
   const linkTextColor = isLightBg ? "text-white" : "text-black";
   const border = isLightBg ? "border-white" : "border-black";
-    const borderColor = isLightBg ? "border-white" : "border-black";
+  const borderColor = isLightBg ? "border-white" : "border-black";
 
   return (
     <nav
@@ -90,7 +90,9 @@ const Navbar = () => {
                     currentPage === link.id
                       ? `border-b-2 ${borderColor} pb-1`
                       : "",
-                    link.id === "watch" ? "bg-[#92856C] !text-white font-bold px-3 rounded-md" : "",
+                    link.id === "watch"
+                      ? "bg-[#92856C] !text-white font-bold px-3 rounded-md"
+                      : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
@@ -120,7 +122,7 @@ const Navbar = () => {
           {navLinks.map((link, index) => (
             <Link key={link.id} href={link.href}>
               <button
-              style={{ fontFamily: "Aboreto, Sans-serif" }}
+                style={{ fontFamily: "Aboreto, Sans-serif" }}
                 onClick={() => setMenuOpen(false)}
                 className={`w-full py-3 text-center font-Aboreto border-b border-gray-300 text-black text-sm
              ${
