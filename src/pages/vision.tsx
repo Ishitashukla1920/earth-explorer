@@ -23,9 +23,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
 
         <div
           className={`relative ${
-            isMobile
-              ? "pt-24"
-              : "min-h-[calc(100vh-120px)] flex items-center"
+            isMobile ? "pt-24" : "min-h-[calc(100vh-120px)] flex items-center"
           }`}
         >
           {/* ===== Desktop & Tablet ===== */}
@@ -112,20 +110,20 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
 
           {/* ===== Mobile ===== */}
           {isMobile && (
-            <div className="w-full flex flex-col items-center text-center ml-4 relative space-y-6">
+            <div className="w-full flex flex-col items-center text-center -mt-4 ml-4 relative space-y-6">
               <Image
                 src="/bg-logo2.png"
                 alt="Background logo"
                 width={200}
                 height={180}
-                className="absolute top-0 bg-logo-mobile"
+                className="absolute top-0 bg-logo-mobile -mt-4"
                 style={{
                   filter: "grayscale(100%) brightness(150%) opacity(0.7)",
                 }}
                 priority
               />
 
-              <div className="relative w-full max-w-[200px] mb-16 self-start mt-3 ml-3">
+              <div className="relative w-full max-w-[200px] mb-16 -mt-2 self-start ml-3">
                 <Image
                   src="/ouVision.png"
                   alt="Our Vision logo"
@@ -134,9 +132,6 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                   className="w-full h-auto rounded shadow-lg"
                   priority
                 />
-                {/* <div className="absolute bottom-0 right-0 mt-20 mb-2 mr-2">
-                  <SocialLinks />
-                </div> */}
               </div>
 
               <motion.div
@@ -151,7 +146,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                 <motion.h2
                   className="
                     font-Aboreto font-light drop-shadow-md
-                    text-xs sm:text-sm md:text-base
+                    text-sm sm:text-base md:text-lg
                     text-center
                   "
                   style={{ fontFamily: "Aboreto, sans-serif" }}
@@ -166,7 +161,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                 <motion.h3
                   className="
                     font-Aboreto font-light drop-shadow-md
-                    text-xs sm:text-sm md:text-base
+                    text-sm sm:text-base md:text-lg
                     text-center
                   "
                   style={{ fontFamily: "Aboreto, sans-serif" }}
@@ -190,6 +185,10 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                   playsInline
                   className="w-full h-auto object-cover rounded shadow-lg"
                 />
+              </div>
+
+              <div className="flex justify-center mt-4 z-50">
+                <SocialLinks />
               </div>
             </div>
           )}

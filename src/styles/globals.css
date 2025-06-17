@@ -118,7 +118,7 @@ body {
 
 .centered-ourVision {
   position: absolute;
-  top: 37%;
+  top: 35%;
   /* pin its right edge at the 50vw line, then shift it 10px further left */
   right: calc(75%);
   transform: translateY(-50%);
