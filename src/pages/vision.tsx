@@ -82,7 +82,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                     text-sm sm:text-base md:text-lg lg:text-xl
                     text-center
                   "
-                  style={{ fontFamily: "Aboreto, sans-serif" }}
+                  style={{ fontFamily: "Raleway, sans-serif",color: "#92856C", fontSize: '19px' }}
                   variants={textVariants}
                   custom={1}
                 >
@@ -95,7 +95,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
               </motion.div>
 
               {/* Video */}
-              <div className="absolute right-0 top-[40%] transform -translate-y-1/2 z-10 w-[clamp(300px,35vw,800px)]">
+              <div className="absolute -right-8 top-[40%] transform -translate-y-1/2 z-10 w-[clamp(380px,40vw,800px)]">
                 <video
                   src="/visionBlack.mp4"
                   autoPlay
@@ -171,7 +171,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                     text-sm sm:text-base md:text-lg
                     text-center p-2
                   "
-                  style={{ fontFamily: "Aboreto, sans-serif",color: "#92856C" }}
+                  style={{ fontFamily: "Raleway, sans-serif",color: "#92856C" }}
                   variants={textVariants}
                   custom={1}
                 >
