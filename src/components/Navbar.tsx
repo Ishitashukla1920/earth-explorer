@@ -30,12 +30,12 @@ const Navbar = () => {
     // { href: '/', label: 'Home', id: 'home' },
     { href: "/team", label: "Team", id: "team" },
     { href: "/watch", label: "Watch", id: "watch" },
-    // { href: '/vision', label: 'Vision', id: 'vision' },
+     { href: '/vision', label: 'Vision', id: 'vision' },
     //      { href: '/about', label: 'About Us', id: 'about' },
   ];
 
   const isLightBg =
-    ["home", "team", "watch"].includes(currentPage) ||
+    ["home", "team", "watch","vision"].includes(currentPage) ||
     router.asPath.startsWith("/team2");
   const linkTextColor = isLightBg ? "text-white" : "text-black";
   const border = isLightBg ? "border-white" : "border-black";

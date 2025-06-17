@@ -1,165 +1,265 @@
-// pages/vision.tsx
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import Navbar from '../components/Navbar';
-import SocialLinks from '../components/SocialLinks';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import SocialLinks from "@/components/SocialLinks";
+import { motion } from "framer-motion"; // Import motion from framer-motion
 
-const VisionPage = () => {
-  const [screenSize, setScreenSize] = useState('desktop');
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 768) {
-        setScreenSize('mobile');
-      } else if (width < 1024) {
-        setScreenSize('tablet');
-      } else {
-        setScreenSize('desktop');
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
+  const isTablet =
+    typeof window !== "undefined" &&
+    window.innerWidth <= 1024 &&
+    window.innerWidth > 768;
 
-  const isMobile = screenSize === 'mobile';
-  const isTablet = screenSize === 'tablet';
-  const isDesktop = screenSize === 'desktop';
+   const textVariants = {
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 3, // show line 0 at 0s, line1 at 3s, line2 at 6s
+        duration: 1, // 1s fade
+        ease: "easeOut",
+      },
+    }),
+    hidden: { opacity: 0, y: 20 }, // initial state
+  };
 
   return (
-    <div className="standard-container bg-white">
-      <div className="min-h-screen relative overflow-hidden standard-container">
+    <div className="standard-container">
+      <div className="min-h-screen bg-black text-white relative overflow-hidden">
+        {/* Navbar */}
         <Navbar />
 
-        {/* Background Logo */}
-        <div className="relative">
-          {/* DESKTOP: show from lg (≥1024px) up */}
-          {isDesktop && (
-            <div className="absolute top-[2vw] right-[2vw] h-[27vw] w-[29vw] z-20">
+        <div
+          className={`relative ${isMobile
+              ? "pt-12"
+              : "min-h-[calc(100vh-120px)] flex items-center"
+            }`}
+        >
+          {/* ===== Desktop View ===== */}
+          {!isMobile && (
+            <>
               <Image
-                src="/bg-logo4.png"
-                alt="Background Logo"
-                fill
-                style={{ objectFit: 'contain' }}
+                src="/bg-logo2.png"
+                alt="Background decorative logo"
+                width={350}
+                height={320}
+                className="centered-bg-logo"
+                style={{
+                  objectFit: "contain",
+                  alignItems: "center",
+                  zIndex: 5,
+                  filter: "grayscale(100%) brightness(200%)",
+                }}
+                priority
               />
-            </div>
+
+              <Image
+                src="/ouVision.png"
+                alt="Descriptive image"
+                width={300}
+                height={210}
+                className="centered-ourVision"
+                priority
+              />
+
+              {/* Shared Vision Text - Centered between logo and image */}
+              {/* <div className="absolute inset-0 flex items-center justify-center z-16 px-15 md:px-9">
+                <div
+                  className="flex flex-col items-center text-center
+      ml-[1rem] lg:ml-[3rem] xl:ml-[6rem] 2xl:ml-[8rem]
+      mr-[3rem] lg:mr-[5rem] xl:mr-[6rem] 2xl:mr-[8rem]
+      max-w-[80%] md:max-w-[300px] lg:max-w-[600px]"
+                >
+                  <p
+                    style={{
+                      fontFamily: "Aboreto, Sans-serif",
+                      color: "#fff",
+                      fontWeight: "500",
+                    }}
+                    className="font-aboreto mb-3
+        text-sm md:text-sm lg:text-lg
+        leading-tight"
+                  >
+                    IF WE SHARE A BIG DREAM, TOGETHER WE CAN <br />
+                    MAKE IT A REALITY.
+                  </p>
+
+                  <p
+                    style={{
+                      fontFamily: "Aboreto, Sans-serif",
+                      color: "#fff",
+                      fontWeight: 400,
+                    }}
+                    className="text-xs md:text-sm lg:text-base
+        leading-snug"
+                  >
+                    Our dream is to transform the world from <br />
+                    seeing life as ordinary, to seeing life as an <br />
+                    Extraordinary exploration!
+                  </p>
+                </div>
+              </div> */}
+            <div className="w-2/3 ml-[15%] mr-[10%] px-8 md:px-12 lg:px-16 flex flex-col text-center space-y-3 pt-1 pb-4 relative">
+  <div className="relative z-16 pl-4 pr-4">
+    <motion.div
+      className="flex flex-col justify-center transform -translate-y-8 space-y-4 mr-6 pr-7"
+      variants={{
+        hidden: { opacity: 0, transition: { duration: 1 } },
+        visible: {
+          opacity: 1,
+          transition: {
+            duration: 3.5,
+            staggerChildren: 4,
+            staggerDirection: -1,
+          },
+        },
+      }}
+    >
+      <motion.h5
+        className="text-[clamp(0.60rem,1.2vw,1.1rem)] ml-[15%] mr-[12%]"
+        style={{ fontFamily: "Aboreto, Sans-serif" }}
+        variants={textVariants}
+        custom={0}
+      >
+        IF WE SHARE A BIG DREAM, TOGETHER WE CAN <br></br>MAKE IT A REALITY.
+      </motion.h5>
+
+      <motion.h5
+        className="text-[clamp(0.60rem,1.2vw,1rem)] "
+        style={{ fontFamily: "Aboreto" }}
+        variants={textVariants}
+        custom={1}
+      >
+        Our dream is to transform the world from <br />
+        seeing life as ordinary, to seeing life as an <br />
+        Extraordinary exploration!
+      </motion.h5>
+    </motion.div>
+  </div>
+</div>
+
+              <div className="absolute right-0 top-[40%] transform -translate-y-1/2 z-10">
+  <div className="ml-10 lg:ml-12 xl:ml-16">
+    <video
+      src="/visionBlack.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="rounded shadow-lg object-contain
+        w-[300px] sm:w-[400px] md:w-[470px] lg:w-[500px] xl:w-[600px] 2xl:w-[700px]
+        h-auto"
+    />
+  </div>
+</div>
+
+
+            </>
           )}
 
-          {/* TABLET: show for md to lg (768px-1023px) */}
-          {isTablet && (
-            <div className="absolute top-[3vw] right-[3vw] h-[35vw] w-[37vw] z-20">
-              <Image
-                src="/bg-logo4.png"
-                alt="Background Logo"
-                fill
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
-          )}
-
-          {/* MOBILE: show below md (<768px) */}
+          {/* ===== Mobile View ===== */}
           {isMobile && (
-            <div className="absolute h-[45vh] w-[160px] mt-5 bg-logo-responsive-2 z-1">
+            <div className="w-full flex flex-col items-center text-center z-10 relative mt-2">
+              {/* Background Logo */}
               <Image
-                src="/bg-logo5.png"
-                alt="Background Logo"
-                width={800}
-                height={800}
-                className="opacity-100 absolute"
-                style={{ left: '15rem', top: '15%', right: '0% !important', zIndex: 0 }}
+                src="/bg-logo2.png"
+                alt="Background logo"
+                width={200}
+                height={180}
+                className="absolute top-0 bg-logo-mobile"
+                style={{
+                  zIndex: 1,
+                  filter: "grayscale(100%) brightness(150%) opacity(0.7)",
+                }}
+                priority
               />
+
+              {/* OUR VISION Logo */}
+              <div className="relative w-full max-w-[160px] sm:max-w-[240px] mb-[3px] z-10 self-start mt-3 ml-3">
+                <Image
+                  src="/ouVision.png"
+                  alt="Descriptive image"
+                  width={250}
+                  height={154}
+                  className="w-full h-auto rounded shadow-lg"
+                  priority
+                />
+                <div
+                  className="relative pr-4 pt-4 my-2 z-10 ml-6"
+
+                >
+                  <SocialLinks />
+                </div>
+              </div>
+
+              {/* Social Links */}
+
+
+              {/* Text: Quote and Paragraph */}
+              <div className="relative w-full flex flex-col justify-center items-center text-center px-4 mt-2 z-10">
+                <p
+                  style={{
+                    fontFamily: "Aboreto, Sans-serif",
+                    color: "#fff",
+                    fontSize: "15px",
+                  }}
+                  className="font-medium mb-2 text-base px-3"
+                >
+                  IF WE SHARE A BIG DREAM, TOGETHER WE CAN  MAKE IT A
+                  REALITY.
+                </p>
+
+                <p
+                  style={{
+                    fontFamily: "Aboreto, Sans-serif",
+                    color: "#92856C",
+                    fontSize: "12px",
+                    fontWeight: 400,
+                  }}
+                  className="leading-relaxed mt-4 text-sm px-3"
+                >
+                  Our dream is to transform the world  <br />
+                  from seeing life as ordinary, to seeing  <br />
+                  life as an Extraordinary exploration!
+                </p>
+              </div>
+
+              {/* Vision Image */}
+              <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[90vw] mb-2 mt-6 pl-5 pr-4 z-10">
+                <video
+                  src="/visionBlack.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  width={500}
+                  height={600}
+                  className="w-full h-auto object-cover rounded shadow-lg"
+                />
+
+              </div>
             </div>
           )}
         </div>
-
-        {/* Main Content */}
-        <main className="flex flex-col-reverse md:flex-row items-center justify-center py-16 relative">
-          {/* Image Section */}
-          <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0 -mt-5">
-            <video
-              src="/vision3.mp4"
-              width={500}
-              height={200}
-              autoPlay
-              loop
-              muted
-              className={`w-full h-auto max-w-[600px] max-h-[350px] object-cover bg-white mb-7 ${isMobile ? 'mt-20 -mb-10' : ''} ${isDesktop ? 'object-center' : ''}`}
-            />
-            {!isMobile ? (
-              <div className="mt-6 ml-7 flex justify-center md:justify-start">
-                <SocialLinks />
-              </div>
-            ) : (
-              <div className="mt-10 -mb-10 flex justify-start md:justify-start pl-25">
-                <SocialLinks />
-              </div>
-            )}
-          </div>
-
-          {/* Text Content */}
-          <div className="w-full md:w-1/2 z-10 text-center -mt-8 md:text-left md:-ml-16 max-w-xl md:px-2">
-            {!isMobile ? (
-              <Image
-                src="/ourVision Laptop.png"
-                alt="Vision Image"
-                width={isTablet ? 240 : 270}
-                height={isTablet ? 135 : 150}
-                className="alignItems-center justify-center px-2 mx-auto mb-4 md:mb-6"
-              />
-            ) : (
-              <Image
-                src="/ourVision Mobile.png"
-                alt="Vision Image"
-                width={200}
-                height={140}
-                className="alignItems-start justify-start mt-6 mb-6 pl-6"
-              />
-            )}
-
-            {isMobile && (
-              <div className="mt-9 mb-6 flex justify-start md:justify-start pl-11">
-                <SocialLinks />
-              </div>
-            )}
-
-            <p
-              style={
-                isMobile
-                  ? { fontFamily: "Aboreto, Sans-serif", color: "#000", fontSize: "18px", fontWeight: 600 }
-                  : isTablet
-                  ? { fontFamily: "Aboreto, Sans-serif", color: "#000", fontSize: "17px", fontWeight: 'bold' }
-                  : { fontFamily: "Aboreto, Sans-serif", color: "#000", fontSize: "18px", fontWeight: 'bold' }
-              }
-              className={`font-medium mb-2 text-center mt-4 ${
-                isMobile ? "text-base px-6 mt-12" : isTablet ? "text-base px-6" : "text-sm md:text-base px-8"
-              }`}
-            >
-              IF WE SHARE A BIG DREAM, TOGETHER WE CAN <br className="hidden md:block" />
-              MAKE IT A REALITY.
-            </p>
-
-            <p
-              style={
-                isMobile
-                  ? { fontFamily: "Raleway, sans-serif", color: "#92856C", fontSize: "14px", fontWeight: 500 }
-                  : isTablet
-                  ? { fontFamily: "Aboreto, Sans-serif", color: "#000", fontSize: "14px", fontWeight: 'bold' }
-                  : { fontFamily: "Aboreto, Sans-serif", color: "#000", fontSize: "15px", fontWeight: 'bold' }
-              }
-              className={`font-light leading-relaxed text-center mt-4 ${
-                isMobile ? "text-sm px-6 -mb-10" : isTablet ? "text-sm px-6" : "text-xs md:text-sm px-8"
-              }`}
-            >
-              Our dream is to transform the world from <br className="hidden md:block" />
-              seeing life as ordinary,to seeing life as an <br className="hidden md:block" />
-              Extraordinary exploration!
-            </p>
-          </div>
-        </main>
       </div>
     </div>
   );
+};
+
+const VisionPage = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  return <VisionContent isMobile={isMobile} />;
 };
 
 export default VisionPage;

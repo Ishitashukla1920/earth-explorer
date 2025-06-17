@@ -74,8 +74,8 @@ const ProfilePage = ({
   "
 >
         {/* PROFILE */}
-        <div className="flex flex-col items-center text-center gap-4 w-full lg:w-1/3">
-          <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8">
+        <div className="flex flex-col items-center text-center gap-4 mt-5 w-full lg:w-1/3">
+          <div className="flex items-center justify-center gap-4 sm:gap-6  md:gap-8">
             <button
               onClick={prev}
               className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition"
@@ -90,7 +90,7 @@ const ProfilePage = ({
               alt={member.name}
               width={96}
               height={96}
-              className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full object-cover"
+              className="w-24 h-24  sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full object-cover"
             />
             <button
               onClick={next}
@@ -111,7 +111,7 @@ const ProfilePage = ({
         </div>
 
         {/* DESCRIPTION (moved up and enlarged) */}
-<div className="flex justify-center items-center w-full lg:w-2/3 px-2 sm:px-4 md:px-8 lg:-mt-20">
+<div className="flex justify-center items-center w-full mt-5 lg:w-2/3 px-2 sm:px-4 md:px-8 lg:-mt-20">
           {descSrc ? (
             <Image
               src={descSrc}
