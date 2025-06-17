@@ -45,52 +45,14 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
 
   return (
     <div className="standard-container">
-      <div className="min-h-screen bg-white text-black relative overflow-hidden standard-container1">
+      <div className="min-h-screen bg-black text-white relative overflow-hidden standard-container1">
         {/* Top Overlay */}
         <div className="absolute inset-0  pointer-events-none z-5"></div>
 
         <Navbar />
 
            {/* Background Logo */}
-                <div className="relative">
-                  {/* DESKTOP: show from lg (≥1024px) up */}
-                  {isDesktop && (
-                    <div className="absolute top-[12vw] left-[5vw] h-[27vw] w-[29vw] z-20">
-                      <Image
-                        src="/bg-logo4.png"
-                        alt="Background Logo"
-                        fill
-                        style={{ objectFit: 'contain' }}
-                      />
-                    </div>
-                  )}
         
-                  {/* TABLET: show for md to lg (768px-1023px) */}
-                  {isTablet && (
-                    <div className="absolute top-[30vw] left-[8vw] h-[35vw] w-[37vw] z-20">
-                      <Image
-                        src="/bg-logo4.png"
-                        alt="Background Logo"
-                        fill
-                        style={{ objectFit: 'contain' }}
-                      />
-                    </div>
-                  )}
-        
-                  {/* MOBILE: show below md (<768px) */}
-                  {isMobile && (
-                    <div className="absolute h-[45vh] w-[100vw] mt-5 bg-logo-responsive-2 z-1">
-                      <Image
-                        src="/bg-logo5.png"
-                        alt="Background Logo"
-                        width={800}
-                        height={800}
-                        className="opacity-100 absolute"
-                        style={{  top: '15%', right: '0px', zIndex: 0 , width: '160px', height: 'auto',}}
-                      />
-                    </div>
-                  )}
-                </div>
 
         <div className={`relative ${isMobile ? 'pt-12' : 'min-h-[calc(100vh-120px)] flex items-center'}`}>
           
@@ -128,41 +90,50 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
             <>
               {/* Background Logo */}
         
-
+<Image
+      src="/bg-logo2.png"
+      alt="Background decorative logo"
+      width={350}
+      height={320}
+      className="centered-bg-logo"
+      objectFit="center"
+      style={{
+        alignItems: "center",
+        zIndex: 5,
+        filter: "grayscale(100%) brightness(200%)",
+      }}
+      priority
+    />
               {/* ABOUT US Image */}
-             <div className="w-1/3 pb-4 relative ">
+             <div className="w-full -mt-[10%] pb-4 relative ">
                <div className="" >
                 <Image
                 src="/aboutus-removebg-preview.png"
                 alt="ABOUT US"
-                width={320}
-                height={230}
-                className=""
-                style={{ 
-                  zIndex: 10,
-                  marginTop:'-50%',
-                  transform: 'translateY(50%)',
-                  marginLeft: '15%',
+                width={300}
+                height={220}
+                className="centered-ourVision"
+                // style={{ 
+                //   zIndex: 10,
+                //   marginTop:'-29%',
+                //   transform: 'translateY(10%)',
+                //   marginLeft: '15%',
                  
-                 }}
+                //  }}
                 priority
               />
+            
               </div>
 
               
-               <div className="justify-start md:justify-start" 
-                style={{
-                  marginTop: '25%',
-                  marginLeft: '20%',}}>  
-            <SocialLinks />
-          </div>
+               
              </div>
 
               {/* Text on Right */}
               <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
                 {!textAnimationCompleted && (
                   <Image
-                    src="/parth.gif"
+                    src="/aboutusBg1.png"
                     alt="Background Right"
                     fill
                     style={{
@@ -175,14 +146,14 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                   
                   
                 )}
-                 <div
+                 {/* <div
         className="
-          absolute inset-0
+          absolute inset-0 left-[19%]
           pointer-events-none
-          bg-[linear-gradient(to_right,white_20%,rgba(255,255,255,0)_100%)]
+          bg-[linear-gradient(to_right,black_20%,rgba(255,255,255,0)_100%)]
           z-10
         "
-      ></div>
+      ></div> */}
 
                 {/* Animated Text */}
                 <motion.div
@@ -212,7 +183,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                   </motion.h3>
                   <motion.p
                     className="text-sm md:text-base mb-8 tracking-wide max-w-md text-[#5f5f5f]"
-                    style={{ fontFamily: 'Raleway' }}
+                    style={{ fontFamily: 'Raleway',color: "#92856C" }}
                     variants={textVariants}
                     custom={2}
                   >
@@ -228,9 +199,9 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                     transition: 'opacity 0.5s ease-out',
                   }}
                 >
-                  <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
+                  {/* <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
                     <Image
-                      src="/whiteoverlay.png"
+                      src="/transparent.png"
                       alt="Overlay Shadow"
                       fill
                       style={{
@@ -240,7 +211,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                       }}
                       priority
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </>
@@ -250,7 +221,18 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
           {isMobile && (
             <div className="w-full px-4 flex flex-col  text-center space-y-4 pt-16 relative">
               {/* Background logo light */}
-        
+             <Image
+                             src="/bg-logo2.png"
+                             alt="Background decorative logo"
+                             width={200}
+                             height={180}
+                             className="absolute top-0 bg-logo-mobile"
+                             style={{
+                               zIndex: 1,
+                               filter: "grayscale(100%) brightness(150%) opacity(0.7)",
+                             }}
+                             priority
+                           />
 
               {/* ABOUT US Image */}
               <div className="w-full max-w-[220px] mb-2 z-10">
@@ -290,7 +272,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
               >
                 <motion.h2
                   className="mb-1 tracking-wide text-[23px] leading-tight"
-                  style={{ fontFamily: "Aboreto, Sans-serif", fontWeight: 'bold',fontSize: '22px' }}
+                  style={{ fontFamily: "Aboreto, Sans-serif",fontSize: '22px' }}
                   variants={textVariants}
                   custom={0}
                 >
@@ -298,7 +280,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                 </motion.h2>
                 <motion.h3
                   className="mb-3 tracking-wide text-[23px] leading-tight"
-                  style={{ fontFamily: "Aboreto, Sans-serif", fontWeight: 'bold',fontSize: '22px' }}
+                  style={{ fontFamily: "Aboreto, Sans-serif",fontSize: '22px' }}
                   variants={textVariants}
                   custom={1}
                 >
@@ -317,7 +299,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
               {/* Bottom Image (e.g., Parthenon) */}
               <div className="w-full relative z-10">
   <Image
-    src="/parth.gif" // Replace with your actual filename
+    src="/aboutusBg.png" // Replace with your actual filename
     alt="Sacred Site"
     width={350}
     height={200}
@@ -328,7 +310,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
         className="
           absolute inset-0
           pointer-events-none
-          bg-[linear-gradient(to_bottom,white_9%,rgba(255,255,255,0)_100%)]
+          bg-[linear-gradient(to_bottom,black_9%,rgba(255,255,255,0)_100%)]
           z-10
         "
       ></div>
