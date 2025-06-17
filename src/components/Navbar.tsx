@@ -44,7 +44,7 @@ const Navbar = () => {
     <nav
       className={`relative z-50 flex items-center padding-new ${
         isMobile ? "justify-between" : "justify-start"
-      } p-2 md:p-8`}
+      } p-2 md:p-4 `}
       style={{
         fontFamily: "Radley",
         ...(isMobile
@@ -69,8 +69,8 @@ const Navbar = () => {
             <Image
               src={isLightBg ? "/logoEEx.png" : "/logo-black.png"}
               alt="Logo"
-              width={isMobile ? 47 : 58}
-              height={isMobile ? 47.6 : 76}
+              width={isMobile ? 47 : 52}
+              height={isMobile ? 47.6 : 67}
               className="rounded-full opacity-80"
             />
           </Link>
@@ -87,9 +87,7 @@ const Navbar = () => {
        text-sm 
        sm:text-base 
        md:text-lg 
-       lg:text-lg 
-       xl:text-xl 
-       2xl:text-2xl 
+       lg:text-lg
        font-medium 
        cursor-pointer 
        opacity-80 
@@ -119,11 +117,12 @@ const Navbar = () => {
 
       {isMobile && menuOpen && (
         <div className="fixed top-14 left-0 w-full bg-white z-40 shadow-lg">
-          {navLinks.map((link) => (
+          {navLinks.map((link,index) => (
             <Link key={link.id} href={link.href}>
               <button
                 onClick={() => setMenuOpen(false)}
-                className="w-full py-3 text-center font-Aboreto text-amber-800 hover:bg-amber-200 border-b border-gray-300"
+                 className={`w-full py-3 text-center font-Aboreto border-b border-gray-300 text-black text-sm
+             ${currentPage === link.id ? "bg-[#e6d1a3]" : "bg-white"} hover:bg-amber-200`} 
               >
                 {link.label}
               </button>

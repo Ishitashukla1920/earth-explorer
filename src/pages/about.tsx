@@ -12,16 +12,12 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
   const [textAnimationCompleted, setTextAnimationCompleted] = useState(false);
 
   const textVariants = {
-    hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        delay: i * 0.5,
-        duration: 1,
-        ease: 'easeOut',
-      },
+      transition: { delay: i * 3, duration: 1, ease: "easeOut" },
     }),
+    hidden: { opacity: 0, y: 20 },
   };
   const [screenSize, setScreenSize] = useState('desktop');
 
@@ -138,7 +134,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                     fill
                     style={{
                       objectFit: 'contain',
-                      objectPosition: 'right center',
+                      objectPosition: ' right center',
                       filter: 'brightness(100%)',
                       zIndex: 0,
                     }}
@@ -267,7 +263,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                 animate="visible"
                 variants={{
                   hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 3, staggerChildren: 0.6 } },
+                  visible: { opacity: 1, transition: { staggerChildren: 3 } },
                 }}
               >
                 <motion.h2
@@ -275,6 +271,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                   style={{ fontFamily: "Aboreto, Sans-serif",fontSize: '18px' }}
                   variants={textVariants}
                   custom={0}
+                  
                 >
                   EXPLORING THE EARTH'S SURFACE
                 </motion.h2>

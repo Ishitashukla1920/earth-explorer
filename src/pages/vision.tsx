@@ -122,7 +122,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                 }}
                 priority
               />
-
+              
               <div className="relative w-full max-w-[200px] mb-16 -mt-2 self-start ml-6">
                 <Image
                   src="/ouVision.png"
@@ -132,6 +132,13 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                   className="w-full h-auto rounded shadow-lg"
                   priority
                 />
+                 <div className="mt-6 justify-start md:justify-start" 
+              style={{
+                  marginTop: '20%',
+                  marginLeft: '12%',
+                  marginBottom: '1%',
+                  }}>
+            <SocialLinks  /></div>
               </div>
 
               <motion.div
@@ -149,13 +156,13 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                     text-sm sm:text-base md:text-lg
                     text-center
                   "
-                  style={{ fontFamily: "Aboreto, sans-serif" }}
+                  style={{ fontFamily: "Aboreto, sans-serif",fontSize: '18px' }}
                   variants={textVariants}
                   custom={0}
                 >
-                  IF WE SHARE A BIG DREAM, TOGETHER WE CAN
+                  IF WE SHARE A BIG DREAM, 
                   <br />
-                  MAKE IT A REALITY.
+                 TOGETHER WE CAN MAKE IT A REALITY.
                 </motion.h2>
 
                 <motion.h3
@@ -164,7 +171,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                     text-sm sm:text-base md:text-lg
                     text-center p-2
                   "
-                  style={{ fontFamily: "Aboreto, sans-serif" }}
+                  style={{ fontFamily: "Aboreto, sans-serif",color: "#92856C" }}
                   variants={textVariants}
                   custom={1}
                 >
