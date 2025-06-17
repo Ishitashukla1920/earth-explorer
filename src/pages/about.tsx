@@ -235,7 +235,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                            />
 
               {/* ABOUT US Image */}
-              <div className="w-full max-w-[220px] mb-2 z-10">
+              <div className="w-full max-w-[200px] mb-5 z-10">
                 <Image
                   src="/aboutus-removebg-preview.png"
                   alt="About Us"
@@ -262,7 +262,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
 
               {/* Text */}
               <motion.div
-                className="z-10 w-full"
+                className="z-10 w-full -mt-7"
                 initial="hidden"
                 animate="visible"
                 variants={{
@@ -272,7 +272,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
               >
                 <motion.h2
                   className="mb-1 tracking-wide text-[23px] leading-tight"
-                  style={{ fontFamily: "Aboreto, Sans-serif",fontSize: '22px' }}
+                  style={{ fontFamily: "Aboreto, Sans-serif",fontSize: '18px' }}
                   variants={textVariants}
                   custom={0}
                 >
@@ -280,7 +280,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                 </motion.h2>
                 <motion.h3
                   className="mb-3 tracking-wide text-[23px] leading-tight"
-                  style={{ fontFamily: "Aboreto, Sans-serif",fontSize: '22px' }}
+                  style={{ fontFamily: "Aboreto, Sans-serif",fontSize: '18px' }}
                   variants={textVariants}
                   custom={1}
                 >
@@ -288,7 +288,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                 </motion.h3>
                 <motion.p
                   className=" leading-relaxed  px-4 mb-4"
-                  style={{ fontFamily: "Raleway, sans-serif", fontWeight: 'semibold', fontSize: '18px', color: "#92856C" }}
+                  style={{ fontFamily: "Raleway, sans-serif", fontWeight: 'semibold', fontSize: '15px', color: "#92856C" }}
                   variants={textVariants}
                   custom={2}
                 >
