@@ -120,6 +120,7 @@ const Navbar = () => {
           {navLinks.map((link, index) => (
             <Link key={link.id} href={link.href}>
               <button
+              style={{ fontFamily: "Aboreto, Sans-serif" }}
                 onClick={() => setMenuOpen(false)}
                 className={`w-full py-3 text-center font-Aboreto border-b border-gray-300 text-black text-sm
              ${
