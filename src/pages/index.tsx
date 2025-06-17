@@ -147,7 +147,6 @@ const HomePage = ({
               />
 
               <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
-              
                 {!textAnimationCompleted && (
                   <motion.div
                     initial={{ opacity: 1 }}
@@ -211,7 +210,7 @@ const HomePage = ({
                 >
                   <motion.h2
                     className="text-lg md:text-xl lg:text-2xl mb-2 tracking-wide drop-shadow-lg"
-                    style={{ fontFamily: "Aboreto, Sans-serif" }}
+                    style={{ fontFamily: "Aboreto, Sans-serif", fontWeight: 300 }}
                     variants={textVariants}
                     custom={0}
                   >
@@ -220,16 +219,31 @@ const HomePage = ({
 
                   <motion.h3
                     className="text-lg md:text-xl lg:text-2xl mb-6 -ml-2 tracking-wide drop-shadow-lg"
-                    style={{ fontFamily: "Aboreto" }}
+                    style={{ fontFamily: "Aboreto", fontWeight: 300  }}
                     variants={textVariants}
                     custom={1}
                   >
                     IT GAVE RISE TO MODERN CIVILIZATION.
                   </motion.h3>
 
-                  <motion.p
+                  {/* <motion.p
                     className="text-[1.15rem] ml-1 mb-[1px] -mt-2 tracking-wide text-[#ada08c] drop-shadow-lg"
                     style={{ fontFamily: "Raleway" }}
+                    variants={textVariants}
+                    custom={2}
+                  >
+                    Join us as we rediscover the mystery of earth energy.
+                  </motion.p> */}
+
+                  <motion.p
+                    className="
+                      relative
+                      text-[1.15rem] ml-1 mb-[1px] -mt-2 tracking-wide text-[#ded0ba]
+                      font-Raleway font-light
+                       backdrop-blur-[1px] px-4 py-2 rounded-lg
+                      max-w-lg w-full mx-auto
+                      drop-shadow-lg
+                    "
                     variants={textVariants}
                     custom={2}
                   >
@@ -259,7 +273,7 @@ const HomePage = ({
 
                       <video
                         ref={videoRef}
-                        src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/teaser%20new%20ratio%20desktop%201.mp4?alt=media&token=898fd058-ce27-4b8b-a745-2efefbc935aa"
+                        src="https://firebasestorage.googleapis.com/v0/b/invicta-29211.firebasestorage.app/o/teaser%20new%20ratio%20desktop%20V%201.mp4?alt=media&token=8c2c7b58-ffc9-4ed0-b064-e2ed737872ad"
                         autoPlay
                         preload="auto"
                         muted={isMuted}
@@ -270,7 +284,6 @@ const HomePage = ({
                       />
                     </>
                   )}
-
                 </div>
               </div>
             </>
@@ -379,7 +392,6 @@ const HomePage = ({
               {/* Mobile: video appears below the building image */}
               <div className="relative w-full max-w-[550px] md:max-w-[450px] sm:max-w-[100vw] mb-3 z-10">
                 {!textAnimationCompleted ? (
-                  
                   <Image
                     src="/bg-image-2.png" // use your placeholder
                     alt="Placeholder"
