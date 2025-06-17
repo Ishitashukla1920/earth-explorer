@@ -52,7 +52,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
 
         <div className={`relative ${isMobile ? 'pt-12' : 'min-h-[calc(100vh-120px)] flex items-center'}`}>
           
-          {!isMobile ? <div className="w-1/3 pb-4 relative ">
+          {isTablet ? <div className="w-1/3 pb-4 relative ">
                <div className="" >
                 <Image
                 src="/aboutus-removebg-preview.png"
@@ -103,7 +103,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
               {/* ABOUT US Image */}
              <div className="w-full -mt-[10%] pb-4 relative ">
                <div className="" >
-                {/* <Image
+                <Image
                 src="/aboutus-removebg-preview.png"
                 alt="ABOUT US"
                 width={300}
@@ -118,7 +118,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                 //  }}
                 priority
               />
-             */}
+            
               </div>
 
               
@@ -126,7 +126,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
              </div>
 
               {/* Text on Right */}
-              <div className="w-[60%] max-w-[60%] fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
+              <div className="w-2/3 fixed top-0 right-0 h-screen flex flex-col justify-center z-10">
                 {!textAnimationCompleted && (
                   <Image
                     src="/aboutusBg1.png"
