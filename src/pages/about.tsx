@@ -15,7 +15,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 3, duration: 1, ease: "easeOut" },
+      transition: { delay: i * 2, duration: 1, ease: "easeOut" },
     }),
     hidden: { opacity: 0, y: 20 },
   };
