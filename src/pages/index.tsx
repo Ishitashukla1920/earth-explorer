@@ -97,7 +97,7 @@ const HomePage = ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 3, // show line 0 at 0s, line1 at 3s, line2 at 6s
+        delay: i * 2, // show line 0 at 0s, line1 at 3s, line2 at 6s
         duration: 1, // 1s fade
         ease: "easeOut",
       },
@@ -240,7 +240,7 @@ const HomePage = ({
                       relative
                       text-[1.15rem] ml-1 mb-[1px] -mt-2 tracking-wide text-[#ded0ba]
                       font-Raleway font-light
-                       backdrop-blur-[1px] px-4 py-2 rounded-lg
+                        backdrop-blur-[1px] px-4 py-2 rounded-lg
                       max-w-lg w-full mx-auto
                       drop-shadow-lg
                     "

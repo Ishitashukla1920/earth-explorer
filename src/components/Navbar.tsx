@@ -88,7 +88,7 @@ const Navbar = () => {
                     "text-sm sm:text-base md:text-lg font-medium cursor-pointer opacity-80",
                     linkTextColor,
                     currentPage === link.id
-                      ? `border-b-2 ${borderColor} pb-1`
+                      ? ` ${borderColor} border-b-1`
                       : "",
                     link.id === "watch"
                       ? "bg-[#92856C] !text-white font-bold px-3 rounded-md"

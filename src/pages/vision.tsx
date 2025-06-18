@@ -90,7 +90,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
                   <br />
                   seeing life as ordinary, to seeing life as an
                   <br />
-                  Extraordinary exploration!
+                  extraordinary exploration!
                 </motion.h3>
               </motion.div>
 
