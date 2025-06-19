@@ -37,22 +37,17 @@ body {
   width: 100%;
 }
 
-/* Container with max-width and centered alignment for screens > 1440px */
-/* .standard-container-n {
-  width: 100%;
 
-  position: relative;
-} */
 .bg-logo{
   background-size: contain ;
 }
 
-/* Black spacing on sides for screens larger than 1440px */
+
 
 /* Default styles for desktop */
 .bg-logo-responsive {
-  width: 40vw; /* Scale width relative to viewport */
-  height: auto; /* Maintain aspect ratio */
+  width: 40vw; 
+  height: auto; 
   left: 180px;
   top: 10vh;
 }
@@ -60,9 +55,8 @@ body {
 .centered-bg-logo {
   position: absolute;
   top: 40%;
-  right: 59%;
+  right: 58.5%;
   transform: translateY(-50%);
-  /* slightly smaller base clamp */
   width: clamp(160px, 26vw, 500px);
   height: auto;
   z-index: 5;
@@ -106,7 +100,6 @@ body {
 .centered-eex {
   position: absolute;
   top: 43%;
-  /* pin its right edge at the 50vw line, then shift it 10px further left */
   right: calc(71%);
   transform: translateY(-50%);
   width: clamp(225px, 26vw, 500px);
@@ -116,18 +109,6 @@ body {
   object-fit: contain;
 }
 
-.centered-ourVision {
-  position: absolute;
-  top: 35%;
-  /* pin its right edge at the 50vw line, then shift it 10px further left */
-  right: calc(75%);
-  transform: translateY(-50%);
-  width: clamp(180px, 20vw, 350px);
-  max-height: clamp(150px, 20vh, 300px);
-  height: auto;
-  z-index: 1;
-  object-fit: contain;
-}
 
 
 
@@ -136,7 +117,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* make it fill the same “viewport area” as the video/container */
   width: clamp(300px, 80vw, 1200px);
   height: clamp(200px, 60vh, 800px);
   object-fit: cover;
@@ -160,25 +140,23 @@ body {
 }
 
 .bg-image-responsive {
-  z-index: 0; /* Explicitly set to ensure it's below bg-logo.png and eex.png */
+  z-index: 0; 
    transition: all 0.5s ease-in-out;
 }
 .bg-logo-mobile {
   width: auto;
   height:auto;
-   /* Shifted left from right: 0 and translate-x-1/2 */
   right:-5%;
   top: 0;
-  z-index: 1; /* Matches inline zIndex */
+  z-index: 1; 
 }
-/* Responsive styles for larger screens (1024px and above) */
+
 @media (min-width: 1024px) {
   .bg-logo-responsive {
-    width: 30vw; /* Scale width relative to viewport */
-    height: auto; /* Maintain aspect ratio */
-    left: 20vw; /* Adjust position proportionally */
+    width: 30vw; 
+    height: auto; 
+    left: 20vw; 
     top: 10vh;
-   /* Prevent excessive scaling */
   }
 .tab-height{
   height:auto;
@@ -192,10 +170,6 @@ body {
 }
 
 
-
-/* Screens larger than 1440px - Updated EEX positioning */
-
-
 /* Mobile screens (default) */
 @media (max-width: 640px) {
   .eex-responsive {
@@ -203,7 +177,7 @@ body {
     left: 2%;
   }
   .bg-logo-responsive {
-   right:-2%;/* Larger max-width for bigger screens */
+   right:-2%;
   }
   .bg-logo-mobile{
   right: 0%;
@@ -217,7 +191,7 @@ body {
     left: 10%;
   }
 .bg-logo-responsive {
-   right:10%;/* Larger max-width for bigger screens */
+   right:10%;
   }
   .tab-height{
    height:auto;
@@ -233,7 +207,7 @@ body {
     padding: 0 40px;
   }
   .padding-new {
-    padding: 2% 5% 0 5%;
+    padding: 2% 1% 0 5%;
   }
   .padding-new-social{
     padding: 18% 0 0 8%;

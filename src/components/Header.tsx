@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react'; // Make sure you have these icons installed
+import { Menu, X } from 'lucide-react'; 
 
 const Navbar = () => {
     const [currentPage, setCurrentPage] = useState<string>('home');

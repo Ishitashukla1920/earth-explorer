@@ -43,9 +43,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`relative z-50 flex items-center padding-new ${
+      className={`relative z-50 flex items-center pl-4 md:pl-[7%]  ${
         isMobile ? "justify-between" : "justify-start"
-      } p-2 md:p-4 `}
+      } p-2 md:pt-[4%] md:pb-2 md:px-6 `}
       style={{
         fontFamily: "Radley",
         ...(isMobile

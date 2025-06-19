@@ -137,14 +137,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                         />
                     )}
     
-                {/* <div
-        className="
-          absolute inset-0 left-[19%]
-          pointer-events-none
-          bg-[linear-gradient(to_right,black_20%,rgba(255,255,255,0)_100%)]
-          z-10
-        "
-      ></div> */}
+                
 
                 {/* Animated Text */}
                 <motion.div
@@ -195,19 +188,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                     transition: "opacity 0.5s ease-out",
                   }}
                 >
-                  {/* <div className="absolute inset-0 pointer-events-none h-auto w-full lg:h-screen lg:w-auto">
-                    <Image
-                      src="/transparent.png"
-                      alt="Overlay Shadow"
-                      fill
-                      style={{
-                        objectFit: 'cover',
-                        objectPosition: '20% center',
-                        zIndex: 45,
-                      }}
-                      priority
-                    />
-                  </div> */}
+                 
                 </div>
               </div>
             </>
@@ -309,7 +290,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
               {/* Bottom Image (e.g., Parthenon) */}
               <div className="w-full relative z-10">
                 <Image
-                  src="/aboutusBg.png" // Replace with your actual filename
+                  src="/aboutusBg.png" 
                   alt="Sacred Site"
                   width={350}
                   height={200}
@@ -318,15 +299,15 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
                 />
                 <div
                   className="
-          absolute inset-0
-          pointer-events-none
-          bg-[linear-gradient(to_bottom,black_9%,rgba(255,255,255,0)_100%)]
-          z-10
-        "
+                    absolute inset-0
+                    pointer-events-none
+                    bg-[linear-gradient(to_bottom,black_9%,rgba(255,255,255,0)_100%)]
+                    z-10
+                  "
                 ></div>
               </div>
 
-              {/* Footer */}
+              
             </div>
           )}
         </div>

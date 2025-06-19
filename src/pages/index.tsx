@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Volume2, VolumeX, Menu, X } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion"; // Import motion from framer-motion
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 import Navbar from "@/components/Navbar";
@@ -20,7 +20,7 @@ interface HomePageProps {
   isMobile: boolean;
   menuOpen: boolean;
   setMenuOpen: (isOpen: boolean) => void;
-  router: any; // Add router prop
+  router: any;
 }
 
 interface TeamPageProps {
@@ -55,20 +55,6 @@ const HomePage = ({
     setIsVideoLoaded(true);
   };
 
-  // useEffect(() => {
-  //   if (!isMobile) {
-  //     const timer = setTimeout(() => {
-  //       setTextAnimationCompleted(true);
-  //     }, 4500); // Increased timeout to allow for text animations
-  //     return () => clearTimeout(timer);
-  //   } else {
-  //     // For mobile, also use timer for text animations
-  //     const timer = setTimeout(() => {
-  //       setTextAnimationCompleted(true);
-  //     }, 4000);
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [isMobile]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -79,7 +65,7 @@ const HomePage = ({
 
   useEffect(() => {
     if (textAnimationCompleted) {
-      setShowVideo(true); // Set immediately when text animation completes
+      setShowVideo(true);
     }
   }, [textAnimationCompleted]);
 
@@ -97,7 +83,7 @@ const HomePage = ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 2, // show line 0 at 0s, line1 at 3s, line2 at 6s
+        delay: i * 2,
         duration: 1, // 1s fade
         ease: "easeOut",
       },
@@ -108,17 +94,15 @@ const HomePage = ({
   return (
     <div className="standard-container">
       <div className="min-h-screen bg-black text-white relative overflow-hidden standard-container">
-        {/* Top to Bottom Overlay */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5"></div> */}
+
 
         {/* Navigation */}
         <Navbar />
 
         {/* Main Content Area */}
         <div
-          className={`relative ${
-            isMobile ? "pt-12 " : "min-h-[calc(100vh-120px)] flex items-center"
-          }`}
+          className={`relative ${isMobile ? "pt-12 " : "min-h-[calc(100vh-120px)] flex items-center"
+            }`}
         >
           {/* ====== DESKTOP SPECIFIC LAYOUT ====== */}
           {!isMobile && (
@@ -176,12 +160,12 @@ const HomePage = ({
                   <button
                     onClick={toggleMute}
                     className={`
-      absolute bottom-4 right-4 w-12 h-12 rounded-full 
-      bg-black/50 border border-white/30 
-      flex items-center justify-center 
-      hover:bg-black/70 transition-colors cursor-pointer z-99
-      ${!istoggleActive ? "animate-bounce" : ""}
-    `}
+                      absolute bottom-4 right-4 w-12 h-12 rounded-full 
+                      bg-black/50 border border-white/30 
+                      flex items-center justify-center 
+                      hover:bg-black/70 transition-colors cursor-pointer z-99
+                      ${!istoggleActive ? "animate-bounce" : ""}
+                    `}
                   >
                     {isMuted ? (
                       <VolumeX className="w-5 h-5 text-white" />
@@ -219,21 +203,14 @@ const HomePage = ({
 
                   <motion.h3
                     className="text-lg md:text-xl lg:text-2xl mb-6 -ml-2 tracking-wide drop-shadow-lg"
-                    style={{ fontFamily: "Aboreto", fontWeight: 300  }}
+                    style={{ fontFamily: "Aboreto", fontWeight: 300 }}
                     variants={textVariants}
                     custom={1}
                   >
                     IT GAVE RISE TO MODERN CIVILIZATION.
                   </motion.h3>
 
-                  {/* <motion.p
-                    className="text-[1.15rem] ml-1 mb-[1px] -mt-2 tracking-wide text-[#ada08c] drop-shadow-lg"
-                    style={{ fontFamily: "Raleway" }}
-                    variants={textVariants}
-                    custom={2}
-                  >
-                    Join us as we rediscover the mystery of earth energy.
-                  </motion.p> */}
+
 
                   <motion.p
                     className="
@@ -336,15 +313,15 @@ const HomePage = ({
               >
                 <motion.h2
                   className="
-      font-Aboreto tracking-wide drop-shadow-lg
-      text-sm        /* ≤640px */
-      sm:text-base  /* 640–767px */
-      md:text-lg    /* 768–1023px */
-      lg:text-xl    /* 1024–1279px */
-      xl:text-2xl   /* 1280–1535px */
-      2xl:text-3xl  /* ≥1536px */
-      mb-2
-    "
+                  font-Aboreto tracking-wide drop-shadow-lg
+                  text-sm        /* ≤640px */
+                  sm:text-base  /* 640–767px */
+                  md:text-lg    /* 768–1023px */
+                  lg:text-xl    /* 1024–1279px */
+                  xl:text-2xl   /* 1280–1535px */
+                  2xl:text-3xl  /* ≥1536px */
+                  mb-2
+                "
                   style={{ fontFamily: "Aboreto, Sans-serif" }}
                   variants={textVariants}
                   custom={0}
@@ -354,15 +331,15 @@ const HomePage = ({
 
                 <motion.h3
                   className="
-      font-Aboreto tracking-wide drop-shadow-lg
-      text-sm
-      sm:text-base
-      md:text-lg
-      lg:text-xl
-      xl:text-2xl
-      2xl:text-3xl
-      mb-6 -ml-2
-    "
+                  font-Aboreto tracking-wide drop-shadow-lg
+                  text-sm
+                  sm:text-base
+                  md:text-lg
+                  lg:text-xl
+                  xl:text-2xl
+                  2xl:text-3xl
+                  mb-6 -ml-2
+                "
                   style={{ fontFamily: "Aboreto" }}
                   variants={textVariants}
                   custom={1}
@@ -372,15 +349,15 @@ const HomePage = ({
 
                 <motion.p
                   className="
-      font-Raleway tracking-wide drop-shadow-lg text-[#ada08c]
-      text-xs        /* ≤640px */
-      sm:text-sm    /* 640–767px */
-      md:text-base  /* 768–1023px */
-      lg:text-lg    /* 1024–1279px */
-      xl:text-xl    /* 1280–1535px */
-      2xl:text-2xl  /* ≥1536px */
-      mx-auto mb-2 -mt-2 ml-1 max-w-md text-center
-    "
+                  font-Raleway tracking-wide drop-shadow-lg text-[#ada08c]
+                  text-xs        /* ≤640px */
+                  sm:text-sm    /* 640–767px */
+                  md:text-base  /* 768–1023px */
+                  lg:text-lg    /* 1024–1279px */
+                  xl:text-xl    /* 1280–1535px */
+                  2xl:text-2xl  /* ≥1536px */
+                  mx-auto mb-2 -mt-2 ml-1 max-w-md text-center
+                "
                   style={{ fontFamily: "Raleway" }}
                   variants={textVariants}
                   custom={2}

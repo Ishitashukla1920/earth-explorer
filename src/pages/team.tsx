@@ -70,41 +70,40 @@ const TeamPage = () => {
           </div>
 
           {/* Right Team Grid */}
-          <div className="w-full md:w-2/3 md:pl-8" style={{ marginTop: isMobile ? '20%' : '2%', marginLeft: isMobile ? '8px' : '0px' }}>
-            <div className={`grid gap-x-2 gap-y-8 justify-items-center px-2 ${isMobile ? 'grid-cols-2' : 'grid-cols-3'}`}>
+          <div className="w-full md:w-2/3 md:pl-0 lg:pl-0 mt-8" style={{ marginTop: isMobile ? '20%' : '3%', marginLeft: isMobile ? '8px' : '', marginRight: isMobile? '':'3%' }}>
+            <div className={`grid gap-x-6 gap-y-10 px-2 ${isMobile ? 'grid-cols-2' : 'grid-cols-3'}`}>
               {teamMembers.map((member, index) => (
                 <Link href={`/team2/${member.id}`} key={index}>
-                  <div className="text-center cursor-pointer  transition-all duration-300">
-                    <div className="mb-3 md:mb-5">
-                      <div
-                        className="mx-auto rounded-full overflow-hidden"
-                        style={{
-                          width: isMobile ? '80px' : '100px',
-                          height: isMobile ? '80px' : '100px',
-                        }}
-                      >
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          width={100}
-                          height={100}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                    <h3
-                      className="tracking-wider mb-1"
-                      style={{ fontFamily: 'Aboreto', fontSize: isMobile ? '14.32px' : '20px' }}
-                    >
-                      {member.name}
-                    </h3>
-                    <p
-                      className="text-amber-200 font-light tracking-wide"
-                      style={{ fontFamily: 'Raleway', fontSize: isMobile ? '10px' : '16px' }}
-                    >
-                      {member.role}
-                    </p>
-                  </div>
+                 <div className="flex flex-col items-center text-center cursor-pointer transition-all duration-300">
+  <div
+    className="rounded-full overflow-hidden mb-2"
+    style={{
+      width: isMobile ? '80px' : '100px',
+      height: isMobile ? '80px' : '100px',
+    }}
+  >
+    <Image
+      src={member.image}
+      alt={member.name}
+      width={100}
+      height={100}
+      className="w-full h-full object-cover"
+    />
+  </div>
+  <h3
+    className="tracking-wider mb-1"
+    style={{ fontFamily: 'Aboreto', fontSize: isMobile ? '14.32px' : '20px' }}
+  >
+    {member.name}
+  </h3>
+  <p
+    className="text-amber-200 font-light tracking-wide"
+    style={{ fontFamily: 'Raleway', fontSize: isMobile ? '10px' : '16px' }}
+  >
+    {member.role}
+  </p>
+</div>
+
                 </Link>
               ))}
             </div>

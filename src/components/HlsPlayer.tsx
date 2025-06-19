@@ -1,6 +1,5 @@
-// components/HlsPlayer.tsx
 
-'use client'; // if using Next.js 13+
+'use client'; 
 
 import React, { useEffect, useRef } from 'react';
 import Hls from 'hls.js';

@@ -56,23 +56,21 @@ const ProfilePage = ({
       </div>
 
       {/* background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url("/ourTeamBg.png")' }}
-      >
-        <div className="absolute inset-0 bg-black/30" />
-      </div>
 
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-5" />
+
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/ourTeamBg.png")', filter: 'brightness(250%)', zIndex: 0 }} />
+      <div className="absolute inset-0 bg-black/50" style={{ zIndex: 0 }} />
       {/* main content: top padding varies by viewport */}
-<div
-  className="
-    relative z-10
-    px-4
-    pt-24 sm:pt-32 md:pt-40 lg:pt-[30vh]
-    flex flex-col lg:flex-row items-center lg:items-start justify-center
-    gap-8 max-w-7xl mx-auto
-  "
->
+      <div
+        className="
+              relative z-10
+              px-4
+              pt-24 sm:pt-32 md:pt-40 lg:pt-[30vh]
+              flex flex-col lg:flex-row items-center lg:items-start justify-center
+              gap-8 max-w-7xl mx-auto
+            "
+      >
         {/* PROFILE */}
         <div className="flex flex-col items-center text-center gap-4 mt-5 w-full lg:w-1/3">
           <div className="flex items-center justify-center gap-4 sm:gap-6  md:gap-8">
@@ -111,7 +109,7 @@ const ProfilePage = ({
         </div>
 
         {/* DESCRIPTION (moved up and enlarged) */}
-<div className="flex justify-center items-center w-full mt-5 lg:w-2/3 px-2 sm:px-4 md:px-8 lg:-mt-20">
+        <div className="flex justify-center items-center w-full mt-5 lg:w-2/3 px-2 sm:px-4 md:px-8 lg:-mt-10">
           {descSrc ? (
             <Image
               src={descSrc}
