@@ -93,7 +93,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
               {/* Background Logo */}
 
               <Image
-                src="/bg-logo2.png"
+                src="/bg-logo9.png"
                 alt="Background decorative logo"
                 width={350}
                 height={320}
@@ -199,7 +199,7 @@ const AboutContent = ({ isMobile }: HomePageProps) => {
             <div className="w-full px-4 flex flex-col  text-center space-y-4 pt-16 relative">
               {/* Background logo light */}
               <Image
-                src="/bg-logo2.png"
+                src="/bg-logo9.png"
                 alt="Background decorative logo"
                 width={200}
                 height={180}

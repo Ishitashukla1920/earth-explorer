@@ -108,7 +108,7 @@ const HomePage = ({
           {!isMobile && (
             <>
               <Image
-                src="/bg-logo2.png"
+                src="/bg-logo9.png"
                 alt="Background decorative logo"
                 width={350}
                 height={320}
@@ -271,14 +271,14 @@ const HomePage = ({
             <div className="w-full flex flex-col items-center text-center space-y-6 z-10 relative mt-2">
               {/* Mobile: bg-logo.png positioned on the right side, half visible */}
               <Image
-                src="/bg-logo2.png"
+                src="/bg-logo9.png"
                 alt="Background decorative logo"
                 width={200}
                 height={180}
                 className="absolute top-0 bg-logo-mobile"
                 style={{
                   zIndex: 1,
-                  filter: "grayscale(100%) brightness(150%) opacity(0.7)",
+                  filter: "grayscale(100%) brightness(150%)",
                 }}
                 priority
               />

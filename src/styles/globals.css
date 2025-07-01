@@ -55,13 +55,12 @@ body {
 .centered-bg-logo {
   position: absolute;
   top: 40%;
-  right: 58.5%;
+  right: 59%;
   transform: translateY(-50%);
-  width: clamp(160px, 26vw, 500px);
+  width: clamp(120px, 18vw, 380px); /* reduced more */
   height: auto;
   z-index: 5;
   object-fit: contain;
-  opacity: 0.8;
 
   mask-image: linear-gradient(to right, black 0%, black 80%, transparent 100%);
   mask-mode: alpha;
@@ -74,25 +73,25 @@ body {
 
 @media (min-width: 1024px) {
   .centered-bg-logo {
-    width: clamp(180px, 24vw, 550px);
+    width: clamp(140px, 20vw, 440px);
   }
 }
 
 @media (min-width: 1440px) {
   .centered-bg-logo {
-    width: clamp(200px, 28vw, 700px);
+    width: clamp(160px, 22vw, 560px);
   }
 }
 
 @media (min-width: 1920px) {
   .centered-bg-logo {
-    width: clamp(220px, 32vw, 840px);
+    width: clamp(180px, 25vw, 680px);
   }
 }
 
 @media (min-width: 2560px) {
   .centered-bg-logo {
-   width: clamp(220px, 32vw, 840px);
+    width: clamp(180px, 27vw, 720px);
   }
 }
 
@@ -108,6 +107,7 @@ body {
   z-index: 1;
   object-fit: contain;
 }
+
 .centered-ourVision {
   position: absolute;
   top: 35%;
@@ -192,6 +192,7 @@ body {
   }
   .bg-logo-mobile{
   right: 0%;
+  width: 200px;
 }
 }
 
@@ -208,6 +209,7 @@ body {
    height:auto;
 }
 .bg-logo-mobile{
+  width: 240px;
   right: 0%;
 }
 }

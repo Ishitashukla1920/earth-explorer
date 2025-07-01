@@ -30,7 +30,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
           {!isMobile && (
             <>
               <Image
-                src="/bg-logo2.png"
+                src="/bg-logo9.png"
                 alt="Background decorative logo"
                 width={350}
                 height={320}
@@ -112,7 +112,7 @@ const VisionContent = ({ isMobile }: { isMobile: boolean }) => {
           {isMobile && (
             <div className="w-full flex flex-col items-center text-center -mt-4  relative space-y-6">
               <Image
-                src="/bg-logo2.png"
+                src="/bg-logo9.png"
                 alt="Background logo"
                 width={200}
                 height={180}
